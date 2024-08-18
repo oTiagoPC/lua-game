@@ -6,6 +6,8 @@ function love.load()
     camera = require 'libraries/camera'
     wf = require 'libraries/windfield'
 
+    font = love.graphics.newFont('fonts/pixel-font.ttf', 30)
+    love.graphics.setFont(font)
     cam = camera()
     gameMap = sti('maps/test-map.lua')
     world = wf.newWorld(0, 0)
@@ -26,6 +28,9 @@ function love.load()
     player.x = 400
     player.y = 200
     player.speed = 300
+
+    -- robo teste
+    robo = love.graphics.newImage('sprites/robot.png')
     
     -- carrega spritesheet e separa cada animação
     player.spritesheet = love.graphics.newImage('sprites/player-sheet.png')
@@ -48,8 +53,6 @@ function love.load()
             table.insert(walls, wall)
         end
     end
-    
-    
 end
 
 function love.update(dt)
@@ -115,16 +118,23 @@ function love.update(dt)
     if cam.y > (mapH - h/2) then
         cam.y = (mapH - h/2)
     end
+
+    -- sistema de interacao basico
+    if player.x > 700 and player.x < 900 and player.y > 700 and player.y < 900 then
+        texto = true
+        if love.keyboard.isDown('space') then
+            sounds.blip:play()
+        end
+    else
+        texto = false
+    end
     
     -- testando som
-    if love.keyboard.isDown('space') then
-        sounds.blip:play()
-    end
     if love.keyboard.isDown('z') then
         sounds.music:stop()
     end
 end 
-    
+
 function love.draw()
     cam:attach()
     -- desenha layer do mapa primeiro
@@ -133,9 +143,13 @@ function love.draw()
     -- desenha player
     player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 6, 9)
     gameMap:drawLayer(gameMap.layers["buildings"])
+    -- robozin de teste
+    love.graphics.draw(robo, 700, 700, nil, 0.5)
     -- ver colisões
     --world:draw()
     cam:detach()
     -- hud fora da câmera
-    love.graphics.print('TESTE', 20, 20)
+    if texto then
+        fala = love.graphics.print('Aperte [Espaço] para interagir!', 50, 550)
+    end
 end

@@ -227,9 +227,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 448,
-          y = 1344,
+          y = 1408,
           width = 320,
-          height = 192,
+          height = 128,
           rotation = 0,
           visible = true,
           properties = {}
@@ -240,9 +240,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 1088,
-          y = 1344,
+          y = 1408,
           width = 320,
-          height = 192,
+          height = 128,
           rotation = 0,
           visible = true,
           properties = {}
