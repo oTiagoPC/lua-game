@@ -72,7 +72,7 @@ function love.update(dt)
     
     -- movimentação do player
     local vx, vy, isMoving = movements.basicMovement(player)
-    local vx, vy, isMoving = dash(player, vx, vy, isMoving, dt) -- To-do: Arrumar dt do dash
+    vx, vy, isMoving, isDashing, canDash = dash(player, vx, vy, isMoving, dt)
 
     
     
