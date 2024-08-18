@@ -17,6 +17,7 @@ function love.load()
     sounds.music:setLooping(true)
 
     sounds.music:play()
+    sounds.music:setVolume(.5)
 
     player = {}
     -- colisao de player
@@ -47,16 +48,16 @@ function love.load()
             table.insert(walls, wall)
         end
     end
-
-
+    
+    
 end
 
 function love.update(dt)
     local isMoving = false
-
-    local vx = 0
-    local vy = 0
-
+    
+    vx = 0
+    vy = 0
+    
     -- movimentação do player
     if love.keyboard.isDown("d") then
         vx = player.speed
@@ -76,23 +77,23 @@ function love.update(dt)
         player.anim = player.animations.down
         isMoving = true
     end
-
+    
     player.collider:setLinearVelocity(vx, vy)
-
+    
     -- checa se player está se movendo
     if isMoving == false then
         player.anim:gotoFrame(2)
     end
-
+    
     world:update(dt)
     player.x = player.collider:getX()
     player.y = player.collider:getY()
-
+    
     player.anim:update(dt)
-
+    
     -- camera seguindo player
     cam:lookAt(player.x, player.y)
-
+    
     -- pega tamanho do mapa pra camera nao ultrapassar
     w = love.graphics.getWidth()
     h = love.graphics.getHeight()
@@ -114,7 +115,7 @@ function love.update(dt)
     if cam.y > (mapH - h/2) then
         cam.y = (mapH - h/2)
     end
-
+    
     -- testando som
     if love.keyboard.isDown('space') then
         sounds.blip:play()
@@ -122,18 +123,18 @@ function love.update(dt)
     if love.keyboard.isDown('z') then
         sounds.music:stop()
     end
-
-end
-
+end 
+    
 function love.draw()
     cam:attach()
-        -- desenha layer do mapa primeiro
-        gameMap:drawLayer(gameMap.layers["ground"])
-        gameMap:drawLayer(gameMap.layers["trees"])
-        -- desenha player
-        player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 6, 9)
-        -- ver colisões
-        --world:draw()
+    -- desenha layer do mapa primeiro
+    gameMap:drawLayer(gameMap.layers["ground"])
+    gameMap:drawLayer(gameMap.layers["trees"])
+    -- desenha player
+    player.anim:draw(player.spritesheet, player.x, player.y, nil, 6, nil, 6, 9)
+    gameMap:drawLayer(gameMap.layers["buildings"])
+    -- ver colisões
+    --world:draw()
     cam:detach()
     -- hud fora da câmera
     love.graphics.print('TESTE', 20, 20)
