@@ -1,6 +1,6 @@
 local dashSpeed = 5 -- velocidade do dash
 local dashTime = 0.2 -- tempo de duração do dash
-local dashCooldown = 0.5 -- tempo de cooldown do dash
+local dashCooldown = 1 -- tempo de cooldown do dash
 local canDash = true -- se pode dar dash
 local isDashing = false -- se está dando dash
 local dashDirection = {
@@ -16,7 +16,7 @@ function dash(player, vx, vy, isMoving, dt)
         canDash = false
         dashDirection.x, dashDirection.y = vx, vy
         dashTime = 0.2 -- reset dash time
-        dashCooldown = 0.5 -- reset dash cooldown
+        dashCooldown = 1 -- reset dash cooldown
     end
 
     if isDashing then -- se está dando dash aumenta a velocidade e decrementa o tempo
