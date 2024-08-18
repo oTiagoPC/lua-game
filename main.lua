@@ -5,6 +5,8 @@ function love.load()
     sti = require 'libraries/sti'
     camera = require 'libraries/camera'
     wf = require 'libraries/windfield'
+    movements = require 'utils/movements' -- importa funcoes de movimento
+    dash = require 'utils/dash' -- importa funcoes de dash
 
     font = love.graphics.newFont('fonts/pixel-font.ttf', 30)
     love.graphics.setFont(font)
@@ -69,25 +71,18 @@ function love.update(dt)
     vy = 0
     
     -- movimentação do player
-    if love.keyboard.isDown("d") then
-        vx = player.speed
-        player.anim = player.animations.right
-        isMoving = true
-    elseif love.keyboard.isDown("a") then
-        vx = player.speed * -1
-        player.anim = player.animations.left
-        isMoving = true
-    end
-    if love.keyboard.isDown("w") then
-        vy = player.speed * -1
-        player.anim = player.animations.up
-        isMoving = true
-    elseif love.keyboard.isDown("s") then
-        vy = player.speed
-        player.anim = player.animations.down
-        isMoving = true
-    end
+    local vx, vy, isMoving = movements.basicMovement(player)
+    local vx, vy, isMoving = dash(player, vx, vy, isMoving, dt) -- To-do: Arrumar dt do dash
+
     
+    
+    player.collider:setLinearVelocity(vx, vy)
+
+    -- checa se player está se movendo
+    if not isMoving then
+        player.anim:gotoFrame(2)
+    end
+
     -- Dash
     if love.keyboard.isDown("lshift") and canDash then
         isDashing = true
@@ -113,8 +108,6 @@ function love.update(dt)
         end
     end
 
-
-    player.collider:setLinearVelocity(vx, vy)
     
     -- checa se player está se movendo
     if isMoving == false then
