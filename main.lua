@@ -12,6 +12,6 @@ function love.draw()
 
     drawInCamera()
     world:draw()
-
+    
     cam:detach()
 end
