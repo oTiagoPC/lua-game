@@ -46,6 +46,9 @@ function player:update(dt)
 
     player.collider:setLinearVelocity(vx,vy)
     
+    player.x = player.collider:getX()
+    player.y = player.collider:getY()
+    
     if previousX ~= player.x or previousY ~= player.y then
         player.walking = true
     else
@@ -53,8 +56,6 @@ function player:update(dt)
         player.anim:gotoFrame(2)
     end
     
-    player.x = player.collider:getX()
-    player.y = player.collider:getY()
 
     if player.walking == true then
         player.anim:update(dt)
