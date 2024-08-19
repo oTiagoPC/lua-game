@@ -1,8 +1,8 @@
 player = {}
 player.collider = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
-player.x = 400
-player.y = 250
-player.speed = 200
+player.x = 0
+player.y = 0
+player.speed = 300
 player.walking = false
 
 --player.setCollisionClass('Player')
@@ -21,12 +21,10 @@ player.anim = player.animations.down
 function player:update(dt)
     local previousX = player.x
     local previousY = player.y
-
     
     local vx = 0
     local vy = 0
-    
-    
+
     if love.keyboard.isDown('d') or love.keyboard.isDown('right') then
         vx = player.speed
         player.anim = player.animations.right
@@ -48,7 +46,7 @@ function player:update(dt)
     
     player.x = player.collider:getX()
     player.y = player.collider:getY()
-    
+
     if previousX ~= player.x or previousY ~= player.y then
         player.walking = true
     else
@@ -56,8 +54,7 @@ function player:update(dt)
         player.anim:gotoFrame(2)
     end
     
-
-    if player.walking == true then
+    if player.walking then
         player.anim:update(dt)
     end
 
