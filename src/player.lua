@@ -1,11 +1,12 @@
-player = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
+player = {}
+player.collider = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
 player.x = 400
 player.y = 250
-player.speed = 5
+player.speed = 200
 player.walking = false
 
 --player.setCollisionClass('Player')
-player:setFixedRotation(true)
+player.collider:setFixedRotation(true)
 
 player.spritesheet = love.graphics.newImage('sprites/playerSheet.png')
 player.grid = anim8.newGrid(12, 18, player.spritesheet:getWidth(), player.spritesheet:getHeight())
@@ -27,21 +28,23 @@ function player:update(dt)
     
     
     if love.keyboard.isDown('d') or love.keyboard.isDown('right') then
-        player.x = player.x + player.speed
+        vx = player.speed
         player.anim = player.animations.right
     end
     if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
-        player.x = player.x - player.speed
+        vx = -player.speed
         player.anim = player.animations.left
     end
     if love.keyboard.isDown('s') or love.keyboard.isDown('down') then
-        player.y = player.y + player.speed
+        vy = player.speed
         player.anim = player.animations.down
     end
     if love.keyboard.isDown('w') or love.keyboard.isDown('up') then
-        player.y = player.y - player.speed
+        vy = -player.speed
         player.anim = player.animations.up
     end
+
+    player.collider:setLinearVelocity(vx,vy)
     
     if previousX ~= player.x or previousY ~= player.y then
         player.walking = true
@@ -50,8 +53,9 @@ function player:update(dt)
         player.anim:gotoFrame(2)
     end
     
-    
-    
+    player.x = player.collider:getX()
+    player.y = player.collider:getY()
+
     if player.walking == true then
         player.anim:update(dt)
     end
