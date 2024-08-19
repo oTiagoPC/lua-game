@@ -10,6 +10,7 @@ function love.load()
 
     font = love.graphics.newFont('fonts/pixel-font.ttf', 30)
     love.graphics.setFont(font)
+    love.window.setMode(0,0,{fullscreen = true})
     cam = camera()
     gameMap = sti('maps/test-map.lua')
     world = wf.newWorld(0, 0)
@@ -159,6 +160,11 @@ function love.update(dt)
     if love.keyboard.isDown('z') then
         sounds.music:stop()
     end
+
+    -- Botão para sair do jogo (esc)
+    if love.keyboard.isDown("escape") then
+        love.event.quit()
+    end 
 end 
 
 function love.draw()
