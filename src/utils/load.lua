@@ -3,12 +3,13 @@ function loadAll()
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
     -- Import libraries
+    vector = require('libraries/hump/vector')
     anim8 = require('libraries/anim8')
     sti = require('libraries/sti')
 
     -- Initializes world
-    windfield = require('libraries/windfield')
-    world = windfield.newWorld(0, 0)
+    local windfield = require('libraries/windfield')
+    world = windfield.newWorld(0, 0, false)
 
     -- Other requirements
     require('src/utils/update')

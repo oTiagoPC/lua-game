@@ -1,5 +1,5 @@
 player = {}
-player.collider = world:newBSGRectangleCollider(400, 250, 50, 100, 10)
+player.collider = world:newBSGRectangleCollider(400, 250, 55, 90, 10)
 player.x = 0
 player.y = 0
 player.speed = 300
@@ -18,44 +18,42 @@ player.animations.down = anim8.newAnimation(player.grid('1-4', 3), 0.2)
 player.animations.up = anim8.newAnimation(player.grid('1-4', 4), 0.2)
 player.anim = player.animations.down
 
-function player:update(dt)
-    local previousX = player.x
-    local previousY = player.y
-    
-    local vx = 0
-    local vy = 0
+function player:update(dt)    
+    local vectorX = 0
+    local vectorY = 0
 
     if love.keyboard.isDown('d') or love.keyboard.isDown('right') then
-        vx = player.speed
+        vectorX = 1
         player.anim = player.animations.right
     end
     if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
-        vx = -player.speed
+        vectorX = -1
         player.anim = player.animations.left
     end
     if love.keyboard.isDown('s') or love.keyboard.isDown('down') then
-        vy = player.speed
+        vectorY = 1
         player.anim = player.animations.down
     end
     if love.keyboard.isDown('w') or love.keyboard.isDown('up') then
-        vy = -player.speed
+        vectorY = -1
         player.anim = player.animations.up
     end
 
-    player.collider:setLinearVelocity(vx,vy)
+    local vec = vector(vectorX, vectorY):normalized() * player.speed
+    player.collider:setLinearVelocity(vec.x, vec.y)
     
-    player.x = player.collider:getX()
-    player.y = player.collider:getY()
-
-    if previousX ~= player.x or previousY ~= player.y then
-        player.walking = true
-    else
+    if vectorX == 0 and vectorY == 0 then
         player.walking = false
         player.anim:gotoFrame(2)
+    else
+        player.walking = true
     end
     
     if player.walking then
         player.anim:update(dt)
     end
+
+    player.x = player.collider:getX()
+    player.y = player.collider:getY()
 
 end

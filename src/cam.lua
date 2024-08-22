@@ -1,4 +1,4 @@
-camera = require('libraries/camera')
+camera = require('libraries/hump/camera')
 cam = camera()
 
 function cam:update(dt)
