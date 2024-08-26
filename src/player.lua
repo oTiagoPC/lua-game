@@ -3,6 +3,8 @@ player.x = 0
 player.y = 0
 player.speed = 300
 player.walking = false
+player.dashCooldown = 2 -- Tempo de cooldown em segundos
+player.lastDashTime = 0 -- Tempo do último dash
 
 --player.setCollisionClass('Player')
 player:setFixedRotation(true)
@@ -20,22 +22,20 @@ player.animations.up = anim8.newAnimation(player.grid('1-4', 4), 0.2)
 player.anim = player.animations.down
 
 function player:update(dt)
-    local vectorX = 0
-    local vectorY = 0
+    local vectorX, vectorY = 0, 0
 
-    if love.keyboard.isDown('d') or love.keyboard.isDown('right') then
+    if love.keyboard.isDown('d', 'right') then
         vectorX = 1
         player.anim = player.animations.right
-    end
-    if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
+    elseif love.keyboard.isDown('a', 'left') then
         vectorX = -1
         player.anim = player.animations.left
     end
-    if love.keyboard.isDown('s') or love.keyboard.isDown('down') then
+
+    if love.keyboard.isDown('s', 'down') then
         vectorY = 1
         player.anim = player.animations.down
-    end
-    if love.keyboard.isDown('w') or love.keyboard.isDown('up') then
+    elseif love.keyboard.isDown('w', 'up') then
         vectorY = -1
         player.anim = player.animations.up
     end
@@ -59,26 +59,34 @@ function player:update(dt)
     player.x = player:getX()
     player.y = player:getY()
 
+    -- Atualiza o cooldown do dash
+    if not player:canDash() then
+        -- Ainda está em cooldown, adicionar som ou algo do tipo
+    end
 end
 
 function player:dash()
-    local dirX = 0
-    local dirY = 0
+    if not player:canDash() then
+        return -- Ainda está em cooldown
+    end
 
-    if love.keyboard.isDown('d') or love.keyboard.isDown('right') then
-        dirX = 1
-    end
-    if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
-        dirX = -1
-    end
-    if love.keyboard.isDown('s') or love.keyboard.isDown('down') then
-        dirY = 1
-    end
-    if love.keyboard.isDown('w') or love.keyboard.isDown('up') then
-        dirY = -1
-    end
+    local dirX, dirY = 0, 0
+
+    if love.keyboard.isDown('d', 'right') then dirX = 1
+    elseif love.keyboard.isDown('a', 'left') then dirX = -1 end
+
+    if love.keyboard.isDown('s', 'down') then dirY = 1
+    elseif love.keyboard.isDown('w', 'up') then dirY = -1 end
 
     if dirX == 0 and dirY == 0 then return end
-    local dirVec = vector(dirX, dirY):normalized() * 4000
+
+    local dashForce = 40000
+    local dirVec = vector(dirX, dirY):normalized() * dashForce
     player:setLinearVelocity(dirVec.x, dirVec.y)
+    
+    player.lastDashTime = love.timer.getTime()
+end
+
+function player:canDash()
+    return love.timer.getTime() - player.lastDashTime >= player.dashCooldown
 end
