@@ -1,30 +1,33 @@
 camera = require('libraries/hump/camera')
 cam = camera()
+cam.smoother = camera.smooth.damped(8)
 
 function cam:update(dt)
-    cam:lookAt(player.x, player.y)
-
+    local camX, camY = player:getPosition()
+    
     local w = love.graphics.getWidth()
     local h = love.graphics.getHeight()
-
+    
     local mapW = gameMap.width * gameMap.tilewidth
     local mapH = gameMap.height * gameMap.tileheight
-
+    
     -- Left
-    if cam.x < w/2 then
-        cam.x = w/2
+    if camX < w/2 then
+        camX = w/2
     end
     -- Up
-    if cam.y < h/2 then
-        cam.y = h/2
+    if camY < h/2 then
+        camY = h/2
     end
     -- Right
-    if cam.x > (mapW - w/2) then
-        cam.x = (mapW - w/2)
+    if camX > (mapW - w/2) then
+        camX = (mapW - w/2)
     end
     -- Down
-    if cam.y > (mapH - h/2) then
-        cam.y = (mapH - h/2)
+    if camY > (mapH - h/2) then
+        camY = (mapH - h/2)
     end
-
+    
+    cam:lockPosition(camX, camY)
+    
 end

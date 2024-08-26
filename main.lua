@@ -9,9 +9,12 @@ end
 
 function love.draw()
     cam:attach()
-
-    drawInCamera()
-    world:draw()
-    
+        drawInCamera()
     cam:detach()
+end
+
+function love.keypressed(key)
+    if key == 'lshift' then
+        player:dash()
+    end
 end
