@@ -8,7 +8,7 @@ enemy:setFixedRotation(true)
 enemy:setLinearDamping(12)
 
 
-enemy.spritesheet = love.graphics.newImage('sprites/playerSheet.png') -- Alterar para o spritesheet do inimigo
+enemy.spritesheet = love.graphics.newImage('sprites/enemySheet.png') -- Alterar para o spritesheet do inimigo
 enemy.grid = anim8.newGrid(12, 18, enemy.spritesheet:getWidth(), enemy.spritesheet:getHeight())
 
 enemy.animations = {}
