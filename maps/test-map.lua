@@ -9,8 +9,8 @@ return {
   height = 30,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 5,
-  nextobjectid = 33,
+  nextlayerid = 6,
+  nextobjectid = 34,
   properties = {},
   tilesets = {
     {
@@ -192,6 +192,35 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "interactibles",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 33,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 384,
+          y = 448,
+          width = 64,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
       }
     },
     {
