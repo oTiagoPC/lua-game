@@ -10,7 +10,8 @@ function loadAll()
     -- Initializes world
     local windfield = require('libraries/windfield')
     world = windfield.newWorld(0, 0, false)
-
+    world:addCollisionClass('Player')
+    world:addCollisionClass('Enemy')
     -- Other requirements
     require('src/utils/update')
     require('src/utils/draw')
@@ -18,7 +19,8 @@ function loadAll()
     require('src/cam')
     require('src/player')
     require('src/enemy')
-
+    require('src/utils/collisionClasses')
     -- Functions
     loadMap()
+    
 end

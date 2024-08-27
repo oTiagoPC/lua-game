@@ -2,11 +2,12 @@ player = world:newBSGRectangleCollider(400, 250, 55, 90, 10)
 player.x = 0
 player.y = 0
 player.speed = 300
+player.health = 100
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
 
---player.setCollisionClass('Player')
+player:setCollisionClass('Player')
 player:setFixedRotation(true)
 player:setLinearDamping(12)
 
@@ -23,6 +24,12 @@ player.anim = player.animations.down
 
 function player:update(dt)
     local vectorX, vectorY = 0, 0
+
+    if enemy then
+        if player:enter('Enemy') then
+            player.health = player.health - 10
+        end
+    end
 
     if love.keyboard.isDown('d', 'right') then
         vectorX = 1

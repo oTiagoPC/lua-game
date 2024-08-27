@@ -3,7 +3,7 @@ enemy.x = 0
 enemy.y = 0
 enemy.speed = player.speed * 0.5
 
---enemy.setCollisionClass('Enemy')
+enemy:setCollisionClass('Enemy')
 enemy:setFixedRotation(true)
 enemy:setLinearDamping(12)
 
