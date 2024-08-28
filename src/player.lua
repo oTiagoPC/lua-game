@@ -1,8 +1,10 @@
-player = world:newBSGRectangleCollider(400, 250, 55, 90, 10)
+player = world:newBSGRectangleCollider(234, 184, 12, 12, 3)
 player.x = 0
 player.y = 0
+player.dirX = 1
+player.dirY = 1
 player.speed = 300
-player.health = 100
+player.health = 4
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
@@ -11,57 +13,81 @@ player:setCollisionClass('Player')
 player:setFixedRotation(true)
 player:setLinearDamping(12)
 
-player.spritesheet = love.graphics.newImage('sprites/playerSheet.png')
-player.grid = anim8.newGrid(12, 18, player.spritesheet:getWidth(), player.spritesheet:getHeight())
+player.spritesheet = love.graphics.newImage('sprites/charSheet.png')
+player.grid = anim8.newGrid(19, 21, player.spritesheet:getWidth(), player.spritesheet:getHeight())
 
 player.animations = {}
-player.animations.right = anim8.newAnimation(player.grid('1-4', 1), 0.2)
-player.animations.left = anim8.newAnimation(player.grid('1-4', 2), 0.2)
-player.animations.down = anim8.newAnimation(player.grid('1-4', 3), 0.2)
-player.animations.up = anim8.newAnimation(player.grid('1-4', 4), 0.2)
+player.animations.downRight = anim8.newAnimation(player.grid('1-2', 1), 0.2)
+player.animations.downLeft = anim8.newAnimation(player.grid('1-2', 1), 0.2)
+player.animations.upRight = anim8.newAnimation(player.grid('1-2', 2), 0.2)
+player.animations.upLeft = anim8.newAnimation(player.grid('1-2', 2), 0.2)
 
-player.anim = player.animations.down
+player.anim = player.animations.downRight
 
 function player:update(dt)
-    local vectorX, vectorY = 0, 0
+    player:setLinearDamping(12)
+
+    local dirX, dirY = 0, 0
 
     if enemy then
         if player:enter('Enemy') then
-            player.health = player.health - 10
+            player.health = player.health - 1
         end
     end
 
     if love.keyboard.isDown('d', 'right') then
-        vectorX = 1
-        player.anim = player.animations.right
-    elseif love.keyboard.isDown('a', 'left') then
-        vectorX = -1
-        player.anim = player.animations.left
+        dirX = 1
+        player.dirX = 1
+    end
+
+    if love.keyboard.isDown('a', 'left') then
+        dirX = -1
+        player.dirX = -1
     end
 
     if love.keyboard.isDown('s', 'down') then
-        vectorY = 1
-        player.anim = player.animations.down
-    elseif love.keyboard.isDown('w', 'up') then
-        vectorY = -1
-        player.anim = player.animations.up
+        dirY = 1
+        player.dirY = 1
     end
 
-    local vec = vector(vectorX, vectorY):normalized() * player.speed
-    if vec.x ~= 0 or vec.y ~= 0 then
-        player:setLinearVelocity(vec.x, vec.y)
+    if love.keyboard.isDown('w', 'up') then
+        dirY = -1
+        player.dirY = -1
     end
-    
-    if vectorX == 0 and vectorY == 0 then
-        player.walking = false
-        player.anim:gotoFrame(2)
-    else
-        player.walking = true
+
+    if dirY == 0 and dirX ~= 0 then
+        player.dirY = 1
     end
     
     if player.walking then
-        player.anim:update(dt)
+        if player.dirX == 1 then
+            if player.dirY == 1 then
+                player.anim = player.animations.downRight
+            else
+                player.anim = player.animations.upRight
+            end
+        else
+            if player.dirY == 1 then
+                player.anim = player.animations.downLeft
+            else
+                player.anim = player.animations.upLeft
+            end
+        end
     end
+    
+    local vec = vector(dirX, dirY):normalized() * player.speed
+    if vec.x ~= 0 or vec.y ~= 0 then
+        player:setLinearVelocity(vec.x, vec.y)
+    end
+
+    if dirX == 0 and dirY == 0 then
+        player.walking = false
+        player.anim:gotoFrame(1)
+    else
+        player.walking = true
+    end
+
+    player.anim:update(dt)
 
     player.x = player:getX()
     player.y = player:getY()

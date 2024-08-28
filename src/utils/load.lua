@@ -14,11 +14,11 @@ function loadAll()
     -- Other requirements
     require('src/utils/collisionClasses')
     createCollisionClasses()
+    require('src/player')
     require('src/utils/update')
     require('src/utils/draw')
     require('src/map')
     require('src/cam')
-    require('src/player')
     require('src/enemy')
     
     -- Functions

@@ -10,7 +10,6 @@ end
 function love.draw()
     cam:attach()
         drawInCamera()
-        world:draw()
     cam:detach()
 
     -- Adicione isso para desenhar a interface do usuário fora da câmera
