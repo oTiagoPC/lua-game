@@ -4,7 +4,7 @@ player.y = 0
 player.dirX = 1
 player.dirY = 1
 player.speed = 300
-player.health = 4
+player.health = 5
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
@@ -32,6 +32,7 @@ function player:update(dt)
     if enemy then
         if player:enter('Enemy') then
             player.health = player.health - 1
+            knockback("player")
         end
     end
 
@@ -122,4 +123,20 @@ end
 
 function player:canDash()
     return love.timer.getTime() - player.lastDashTime >= player.dashCooldown
+end
+
+function knockback(obj)
+    local playerPosition = vector(player.x, player.y)
+    local enemyPosition = vector(enemy.x, enemy.y)
+    local knockbackX = 0 
+    local knockbackY = 0 
+    local knockbackValue = 20 
+
+    if obj == "player" then
+        knockbackX = playerPosition.x - enemyPosition.x 
+        knockbackY = playerPosition.y - enemyPosition.y
+        local knockbackVec = vector(knockbackX, knockbackY) * knockbackValue
+        player:setLinearVelocity(knockbackVec.x, knockbackVec.y) 
+    end 
+
 end
