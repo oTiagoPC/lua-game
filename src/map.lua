@@ -1,5 +1,5 @@
 function loadMap()
-    gameMap = sti('maps/test-map.lua')
+    gameMap = sti('maps/testMap.lua')
 
     walls = {}
 

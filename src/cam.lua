@@ -1,12 +1,13 @@
 camera = require('libraries/hump/camera')
-cam = camera()
+cam = camera(0, 0, scale)
 cam.smoother = camera.smooth.damped(8)
 
 function cam:update(dt)
     local camX, camY = player:getPosition()
     
-    local w = love.graphics.getWidth()
-    local h = love.graphics.getHeight()
+    local w = love.graphics.getWidth() / scale  
+    local h = love.graphics.getHeight() /scale
+
     
     local mapW = gameMap.width * gameMap.tilewidth
     local mapH = gameMap.height * gameMap.tileheight
