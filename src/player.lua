@@ -130,11 +130,11 @@ function knockback(obj)
     local enemyPosition = vector(enemy.x, enemy.y)
     local knockbackX = 0 
     local knockbackY = 0 
-    local knockbackValue = 20 
+    local knockbackValue = 2 
 
     if obj == "player" then
-        knockbackX = playerPosition.x - enemyPosition.x 
-        knockbackY = playerPosition.y - enemyPosition.y
+        knockbackX = enemyPosition.x * -1 
+        knockbackY = enemyPosition.y * -1 
         local knockbackVec = vector(knockbackX, knockbackY) * knockbackValue
         player:setLinearVelocity(knockbackVec.x, knockbackVec.y) 
     end 
