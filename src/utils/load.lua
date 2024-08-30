@@ -19,6 +19,7 @@ function loadAll()
     require('src/utils/collisionClasses')
     createCollisionClasses()
     require('src/player')
+    require('src/bullet')
     require('src/utils/update')
     require('src/utils/draw')
     require('src/map')
@@ -27,5 +28,4 @@ function loadAll()
     
     -- Functions
     loadMap()
-    
 end

@@ -1,3 +1,4 @@
+local Bullet = require('src.bullet')
 player = world:newBSGRectangleCollider(234, 184, 12, 12, 3)
 player.x = 0
 player.y = 0
@@ -8,6 +9,10 @@ player.health = 5
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
+
+player.bullets = {}
+player.shootCooldown = 0.5  -- segundos
+player.lastShootTime = 0
 
 player:setCollisionClass('Player')
 player:setFixedRotation(true)
@@ -33,6 +38,25 @@ function player:update(dt)
         if player:enter('Enemy') then
             player.health = player.health - 1
             knockback("player")
+        end
+    end
+
+    if #self.bullets > 0 then
+        for i = #self.bullets, 1, -1 do
+            local bullet = self.bullets[i]
+            bullet:update(dt)
+
+            -- Verifica colisão com inimigos
+            local colliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Enemy', "Wall"})
+            if #colliders > 0 then
+                -- Colisão detectada, remove a bala
+                table.remove(self.bullets, i)
+                -- adicionar lógica para dano ao inimigo
+                -- Por exemplo: colliders[1]:takeDamage(bullet.damage)
+            elseif bullet:isOffScreen() then
+                -- Remove a bala se estiver fora da tela
+                table.remove(self.bullets, i)
+            end
         end
     end
 
@@ -97,6 +121,12 @@ function player:update(dt)
     if not player:canDash() then
         -- Ainda está em cooldown, adicionar som ou algo do tipo
     end
+
+    -- atira por clique esquerdo do mouse tambem
+    if love.mouse.isDown(1) and love.timer.getTime() - player.lastShootTime >= player.shootCooldown then
+        player:shoot()
+    end
+
 end
 
 function player:dash()
@@ -140,3 +170,19 @@ function knockback(obj)
     end 
 
 end
+
+function player:shoot()
+    -- pega a posição do mouse em coordenadas do mundo
+    local mouseX, mouseY = cam:mousePosition()
+    local mousePos = vector(mouseX, mouseY)
+    
+    -- pega a posição do jogador em coordenadas do mundo
+    local playerPos = vector(player.x, player.y)
+    local direction = (mousePos - playerPos):normalized()
+    
+    -- cria e adiciona uma nova bala à lista de balas do jogador
+    local bullet = Bullet.new(player.x, player.y, direction.x, direction.y)
+    table.insert(player.bullets, bullet)
+    player.lastShootTime = love.timer.getTime()
+end
+
