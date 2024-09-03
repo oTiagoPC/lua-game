@@ -27,6 +27,9 @@ function drawHud()
             love.graphics.draw(brokenHeart, vx, 10, nil, 4)
         end
         vx = vx + 40
+        if playerHealth == 0 then 
+            love.event.quit()
+        end
     end
 
     if #world.enemies > 0 then
