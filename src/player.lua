@@ -6,6 +6,7 @@ player.dirX = 1
 player.dirY = 1
 player.speed = 90
 player.health = 5
+player.maxHealth = 5
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash

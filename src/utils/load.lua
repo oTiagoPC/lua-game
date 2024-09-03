@@ -28,6 +28,7 @@ function loadAll()
     require('src/map')
     require('src/cam')
     require('src/enemy')
+    require('src/hud')
     
     -- Functions
     loadMap()

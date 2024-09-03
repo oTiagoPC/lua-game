@@ -18,7 +18,7 @@ function love.draw()
     cam:detach()
 
     -- Adicione isso para desenhar a interface do usuário fora da câmera
-    drawUI()
+    drawHud()
 end
 
 function love.keypressed(key)
