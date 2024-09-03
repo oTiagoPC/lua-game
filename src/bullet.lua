@@ -1,5 +1,7 @@
 local Bullet = {}
-Bullet.__index = Bullet
+Bullet.__index = Bullet -- descobrir que porra eh essa
+
+local bulletSprite = love.graphics.newImage('sprites/bullet.png')
 
 function Bullet.new(x, y, dirX, dirY)
     local self = setmetatable({}, Bullet)
@@ -25,13 +27,12 @@ function Bullet:update(dt)
 end
 
 function Bullet:draw()
-    love.graphics.setColor(0, 0, 0)
+    
     love.graphics.push()
     love.graphics.translate(self.x, self.y)
     love.graphics.rotate(math.atan2(self.direction.y, self.direction.x))
-    love.graphics.rectangle("fill", -self.width/2, -self.height/2, self.width, self.height)
+    love.graphics.draw(bulletSprite, -self.width/2, -self.height/2, nil, 0.4)
     love.graphics.pop()
-    love.graphics.setColor(1, 1, 1)
 end
 
 function Bullet:isOffScreen()

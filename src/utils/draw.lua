@@ -14,6 +14,7 @@ function drawInCamera()
 end
 
 function drawUI()
+    love.graphics.setFont(font)
     -- Draw the dash cooldown bar
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Dash Cooldown:", 10, 10)
