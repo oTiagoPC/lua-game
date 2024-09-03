@@ -32,7 +32,6 @@ player.anim = player.animations.downRight
 
 function player:update(dt)
     player:setLinearDamping(12)
-
     local dirX, dirY = 0, 0
 
     if player:enter('Enemy') then
@@ -41,27 +40,36 @@ function player:update(dt)
         knockback("player", enemyInstance)
     end
 
+    local bulletsToRemove = {}
+
     if #self.bullets > 0 then
-        for i = #self.bullets, 1, -1 do
-            local bullet = self.bullets[i]
-            bullet:update(dt)
-        
-            -- Verifica colisão com inimigos
-            local enemyColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Enemy'})
-            local mapColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Wall'})
-            
-            if #enemyColliders > 0 or #mapColliders > 0 then
-                for _, enemyCollider in ipairs(enemyColliders) do
-                    local enemy = enemyCollider:getObject()
-                    if enemy and enemy.takeDamage then
-                        enemy:takeDamage(bullet.damage)
+        for i, bullet in ipairs(self.bullets) do
+            if bullet:enter('Enemy') then
+                local collisionData = bullet.collider:getEnterCollisionData('Enemy')
+                if collisionData then
+                    local enemyInstance = collisionData.collider:getObject()
+                    if enemyInstance then
+                        enemyInstance:takeDamage(bullet.damage)
+                        knockback("enemy", enemyInstance)
+                        bullet:destroy()
+                        table.remove(self.bullets, i)
                     end
                 end
-                table.remove(self.bullets, i)
-            elseif bullet:isOffScreen() then
-                table.remove(self.bullets, i)
+            end
+
+            if bullet:enter('Wall') then
+                local collisionData = bullet.collider:getEnterCollisionData('Wall')
+                if collisionData then
+                    -- apenas removo a bala, mas poderia fazer algo mais interessante
+                    bullet:destroy()
+                    table.remove(self.bullets, i)
+                end
             end
         end
+    end
+
+    for i = #bulletsToRemove, 1, -1 do
+        table.remove(self.bullets, bulletsToRemove[i])
     end
 
     if love.keyboard.isDown('d', 'right') then
