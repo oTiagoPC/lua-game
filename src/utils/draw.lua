@@ -8,7 +8,5 @@ function drawInCamera()
             enemy.anim:draw(enemy.spritesheet, enemy.x, enemy.y, nil, 6, nil, 6, 9)
         end
     end
-    for _, bullet in ipairs(player.bullets) do
-        bullet:draw()
-    end
+    Bullet:draw()
 end

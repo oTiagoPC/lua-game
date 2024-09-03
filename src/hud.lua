@@ -1,5 +1,5 @@
 hud = {}
-function drawHud()
+function drawAfterCamera()
     -- Draw the dash cooldown bar
     love.graphics.setFont(font)
     love.graphics.setColor(1, 1, 1)
