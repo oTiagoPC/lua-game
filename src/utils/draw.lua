@@ -20,8 +20,10 @@ function drawUI()
     love.graphics.rectangle("line", 10, 30, 100, 20)
     
     love.graphics.print("Health: " .. player.health, 10, 100)
-    if enemy then
-        love.graphics.print("Enemy Health: " .. enemy.health, 10, 300)
+    if #world.enemies > 0 then
+        for i, enemy in ipairs(world.enemies) do
+            love.graphics.print("Enemy " .. i .. " Health: " .. enemy.health, 10, 120 + 20 * i)
+        end
     end
     local cooldownProgress = math.min(1, (love.timer.getTime() - player.lastDashTime) / player.dashCooldown)
     love.graphics.rectangle("fill", 10, 30, 100 * cooldownProgress, 20)

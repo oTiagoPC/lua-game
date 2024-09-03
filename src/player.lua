@@ -10,6 +10,7 @@ player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
 
+
 player.bullets = {}
 player.shootCooldown = 0.5  -- segundos
 player.lastShootTime = 0
@@ -34,28 +35,30 @@ function player:update(dt)
 
     local dirX, dirY = 0, 0
 
-    if enemy then
-        if player:enter('Enemy') then
-            player.health = player.health - 1
-            knockback("player")
-        end
+    if player:enter('Enemy') then
+        local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
+        player.health = player.health - 1
+        knockback("player", enemyInstance)
     end
 
     if #self.bullets > 0 then
         for i = #self.bullets, 1, -1 do
             local bullet = self.bullets[i]
             bullet:update(dt)
-
+        
             -- Verifica colisão com inimigos
             local enemyColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Enemy'})
             local mapColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Wall'})
             
-            if #enemyColliders + #mapColliders > 0 then table.remove(self.bullets, i)
-            elseif bullet:isOffScreen() then table.remove(self.bullets, i) end
-
-            for _, enemyCollider in ipairs(enemyColliders) do
-                local enemy = enemyCollider:getObject()
-                enemy:takeDamage(bullet.damage)
+            if #enemyColliders > 0 or #mapColliders > 0 then
+                for _, enemyCollider in ipairs(enemyColliders) do
+                    local enemy = enemyCollider:getObject()
+                    if enemy and enemy.takeDamage then
+                        enemy:takeDamage(bullet.damage)
+                    end
+                end
+                table.remove(self.bullets, i)
+            elseif bullet:isOffScreen() then
                 table.remove(self.bullets, i)
             end
         end
@@ -156,9 +159,9 @@ function player:canDash()
     return love.timer.getTime() - player.lastDashTime >= player.dashCooldown
 end
 
-function knockback(obj)
+function knockback(obj, enemyInstance)
     local playerPosition = vector(player.x, player.y)
-    local enemyPosition = vector(enemy.x, enemy.y)
+    local enemyPosition = vector(enemyInstance.x, enemyInstance.y)
     local knockbackX = 0 
     local knockbackY = 0 
     local knockbackValue = 20 
@@ -169,6 +172,13 @@ function knockback(obj)
         local knockbackVec = vector(knockbackX, knockbackY) * knockbackValue
         player:setLinearVelocity(knockbackVec.x, knockbackVec.y) 
     end 
+
+    if obj == "enemy" then
+        knockbackX = enemyPosition.x - playerPosition.x 
+        knockbackY = enemyPosition.y - playerPosition.y 
+        local knockbackVec = vector(knockbackX, knockbackY) * knockbackValue
+        enemyInstance.collider:setLinearVelocity(knockbackVec.x, knockbackVec.y) 
+    end
 
 end
 

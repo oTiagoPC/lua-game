@@ -28,4 +28,7 @@ function love.keypressed(key)
     if key == 'q' then
         colliderToggle = not colliderToggle
     end
+    if key == "l" then
+        table.insert(world.enemies, createEnemy(math.random(0, 800), math.random(0, 800)))
+    end
 end

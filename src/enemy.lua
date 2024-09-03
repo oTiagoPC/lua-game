@@ -5,12 +5,13 @@ function createEnemy(x, y)
     enemy.y = y
     enemy.speed = player.speed * 0.5
     enemy.health = 5
+    enemy.damage = 1
 
     enemy.collider:setCollisionClass('Enemy')
     enemy.collider:setFixedRotation(true)
     enemy.collider:setLinearDamping(12)
 
-    enemy.spritesheet = love.graphics.newImage('sprites/enemySheet.png')
+    enemy.spritesheet = love.graphics.newImage('sprites/playerSheet.png')
     enemy.grid = anim8.newGrid(12, 18, enemy.spritesheet:getWidth(), enemy.spritesheet:getHeight())
 
     enemy.animations = {}
@@ -25,11 +26,21 @@ function createEnemy(x, y)
         enemy.health = enemy.health - damage
     end
 
+    function enemy:getObject()
+        return enemy
+    end
+
+    enemy.collider:setObject(enemy) -- Adicionando o objeto ao collider para ser acessado posteriormente nas colisões
 
     function enemy:update(dt)
         if enemy.health <= 0 then
             enemy.collider:destroy()
-            enemy = nil
+            for i, e in ipairs(world.enemies) do
+                if e == enemy then
+                    table.remove(world.enemies, i)
+                    break
+                end
+            end
             return
         end
 
@@ -70,5 +81,6 @@ end
 local enemy1 = createEnemy(400, 250)
 local enemy2 = createEnemy(600, 300)
 local enemy3 = createEnemy(800, 350)
-
+local enemy4 = createEnemy(100, 400)
 world.enemies = {enemy1, enemy2, enemy3}
+table.insert(world.enemies, enemy4)
