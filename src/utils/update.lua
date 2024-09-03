@@ -1,10 +1,12 @@
 function updateAll(dt)
     world:update(dt)
     player:update(dt)
-    enemy:update(dt)
+    if #world.enemies > 0 then    
+        for i, enemy in ipairs(world.enemies) do
+            enemy:update(dt)
+        end 
+    end
     cam:update(dt)
-    
-    -- Update bullets
     for i = #player.bullets, 1, -1 do
         local bullet = player.bullets[i]
         bullet:update(dt)

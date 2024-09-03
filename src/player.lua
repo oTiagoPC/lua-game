@@ -47,14 +47,15 @@ function player:update(dt)
             bullet:update(dt)
 
             -- Verifica colisão com inimigos
-            local colliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Enemy', "Wall"})
-            if #colliders > 0 then
-                -- Colisão detectada, remove a bala
-                table.remove(self.bullets, i)
-                -- adicionar lógica para dano ao inimigo
-                -- Por exemplo: colliders[1]:takeDamage(bullet.damage)
-            elseif bullet:isOffScreen() then
-                -- Remove a bala se estiver fora da tela
+            local enemyColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Enemy'})
+            local mapColliders = world:queryCircleArea(bullet.x, bullet.y, bullet.width / 2, {'Wall'})
+            
+            if #enemyColliders + #mapColliders > 0 then table.remove(self.bullets, i)
+            elseif bullet:isOffScreen() then table.remove(self.bullets, i) end
+
+            for _, enemyCollider in ipairs(enemyColliders) do
+                local enemy = enemyCollider:getObject()
+                enemy:takeDamage(bullet.damage)
                 table.remove(self.bullets, i)
             end
         end
