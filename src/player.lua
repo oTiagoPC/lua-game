@@ -8,6 +8,7 @@ player.speed = 90
 player.health = 5
 player.maxHealth = 5
 player.walking = false
+player.dashForce = 10000
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
 
@@ -157,8 +158,7 @@ function player:dash()
 
     if dirX == 0 and dirY == 0 then return end
 
-    local dashForce = 40000
-    local dirVec = vector(dirX, dirY):normalized() * dashForce
+    local dirVec = vector(dirX, dirY):normalized() * player.dashForce
     player:setLinearVelocity(dirVec.x, dirVec.y)
     
     player.lastDashTime = love.timer.getTime()

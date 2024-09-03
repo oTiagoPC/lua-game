@@ -3,8 +3,6 @@ function drawHud()
     -- Draw the dash cooldown bar
     love.graphics.setFont(font)
     love.graphics.setColor(1, 1, 1)
-    --  love.graphics.print("Dash Cooldown:", 10, 10)
-    -- love.graphics.rectangle("line", 10, 30, 100, 20)
 
     berriFace = love.graphics.newImage("sprites/berriFace.png")
     love.graphics.draw(berriFace, 15, 15, nil, 4)
@@ -38,6 +36,7 @@ function drawHud()
         end
     end
     local cooldownProgress = math.min(1, (love.timer.getTime() - player.lastDashTime) / player.dashCooldown)
-    -- love.graphics.rectangle("fill", 10, 30, 100 * cooldownProgress, 20)
-
+    if not player.canDash() then
+        love.graphics.rectangle("fill", 10, love.graphics.getHeight() - 10, 20 , 100 * -cooldownProgress)
+    end
 end
