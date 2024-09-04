@@ -29,6 +29,7 @@ function loadAll()
     require('src/cam')
     require('src/enemy')
     require('src/hud')
+    require('src/coin')
     
     -- Functions
     loadMap()

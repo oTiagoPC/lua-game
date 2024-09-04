@@ -34,6 +34,12 @@ function createEnemy(x, y)
 
     function enemy:update(dt)
         if enemy.health <= 0 then
+
+            -- Cria uma moeda aonde o inimigo morreu 
+            local coin = createCoin(enemy.x, enemy.y)
+            table.insert(world.coins, coin)
+
+            -- Destroi o inimigo
             enemy.collider:destroy()
             for i, e in ipairs(world.enemies) do
                 if e == enemy then

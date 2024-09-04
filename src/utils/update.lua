@@ -6,6 +6,11 @@ function updateAll(dt)
             enemy:update(dt)
         end 
     end
+    if #world.coins > 0 then
+        for i, coin in ipairs(world.coins) do
+            coin:update(dt)
+        end 
+    end 
     cam:update(dt)
     for i = #player.bullets, 1, -1 do
         local bullet = player.bullets[i]

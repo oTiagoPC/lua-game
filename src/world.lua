@@ -1,1 +1,2 @@
 world.enemies = {}
+world.coins = {}

@@ -11,4 +11,10 @@ function drawInCamera()
     for _, bullet in ipairs(player.bullets) do
         bullet:draw()
     end
+
+    if #world.coins > 0 then
+        for i, coin in ipairs(world.coins) do
+            coin:draw()
+        end
+    end
 end

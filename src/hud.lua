@@ -8,16 +8,19 @@ function drawHud()
 
     berriFace = love.graphics.newImage("sprites/berriFace.png")
     love.graphics.draw(berriFace, 15, 15, nil, 4)
-
-    heart = love.graphics.newImage("sprites/heart.png")
-    brokenHeart = love.graphics.newImage("sprites/brokenHeart.png")
-
+    
     hamburgue = love.graphics.newImage("sprites/hamburguer.png")
     love.graphics.draw(hamburgue, 200, 50, nil, 4)
+    love.graphics.print("X" .. player.healing, 262, 70)
+    
     moeda = love.graphics.newImage("sprites/littleCoin.png")
     love.graphics.draw(moeda, 93, 50, nil, 4)
+    love.graphics.print("X" .. player.coins, 147, 70)
+    
+    -- Variaveis para o loop da vida
+    heart = love.graphics.newImage("sprites/heart.png")
+    brokenHeart = love.graphics.newImage("sprites/brokenHeart.png")
     playerHealth = player.health
-
     local vx = 90
 
     for i = 1, player.maxHealth do

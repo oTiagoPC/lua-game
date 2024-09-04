@@ -7,6 +7,8 @@ player.dirY = 1
 player.speed = 90
 player.health = 5
 player.maxHealth = 5
+player.coins = 0
+player.healing = 0
 player.walking = false
 player.dashCooldown = 2 -- Tempo de cooldown em segundos
 player.lastDashTime = 0 -- Tempo do último dash
@@ -39,6 +41,17 @@ function player:update(dt)
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
         player.health = player.health - 1
         knockback("player", enemyInstance)
+    end
+
+    if player:enter("Coin") then
+        local collisionData = player:getEnterCollisionData("Coin")
+        if collisionData then  -- Verificar se o dado de colisão existe
+            local coin = collisionData.collider:getObject()
+            if coin then
+                player.coins = player.coins + 1
+            end
+
+        end
     end
 
     local bulletsToRemove = {}
