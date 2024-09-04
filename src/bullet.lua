@@ -1,51 +1,52 @@
-local Bullet = {}
+Bullet = {}
 Bullet.__index = Bullet -- descobrir que porra eh essa
 
 local bulletSprite = love.graphics.newImage('sprites/bullet.png')
 
 function Bullet.new(x, y, dirX, dirY)
     local self = setmetatable({}, Bullet)
-    self.x = x
-    self.y = y
-    self.width = 10
-    self.height = 2
-    self.speed = 500
-    self.direction = vector(dirX, dirY):normalized()
-    self.damage = 1
+    Bullet.x = x
+    Bullet.y = y
+    Bullet.width = 10
+    Bullet.height = 2
+    Bullet.speed = 500
+    Bullet.direction = vector(dirX, dirY):normalized()
+    Bullet.damage = 1
 
-    self.collider = world:newRectangleCollider(self.x, self.y, self.width, self.height)
-    self.collider:setCollisionClass('Bullet')
-    self.collider:setObject(self)
-    return self
+    Bullet.collider = world:newRectangleCollider(Bullet.x, Bullet.y, Bullet.width, Bullet.height)
+    Bullet.collider:setCollisionClass('Bullet')
+    Bullet.collider:setObject(Bullet)
+    return Bullet
 end
 
 function Bullet:update(dt)
-    self.x = self.x + self.direction.x * self.speed * dt
-    self.y = self.y + self.direction.y * self.speed * dt
+    Bullet.x = Bullet.x + Bullet.direction.x * Bullet.speed * dt
+    Bullet.y = Bullet.y + Bullet.direction.y * Bullet.speed * dt
     
-    self.collider:setPosition(self.x, self.y)
+    Bullet.collider:setPosition(Bullet.x, Bullet.y)
 end
 
 function Bullet:draw()
-    
-    love.graphics.push()
-    love.graphics.translate(self.x, self.y)
-    love.graphics.rotate(math.atan2(self.direction.y, self.direction.x))
-    love.graphics.draw(bulletSprite, -self.width/2, -self.height/2, nil, 0.4)
-    love.graphics.pop()
+    for _, bullet in ipairs(player.bullets) do
+        love.graphics.push()
+        love.graphics.translate(Bullet.x, Bullet.y)
+        love.graphics.rotate(math.atan2(Bullet.direction.y, Bullet.direction.x))
+        love.graphics.draw(bulletSprite, -Bullet.width/2, -Bullet.height/2, nil, 0.4)
+        love.graphics.pop()
+    end
 end
 
 function Bullet:isOffScreen()
-    return self.x < 0 or self.x > love.graphics.getWidth() or
-           self.y < 0 or self.y > love.graphics.getHeight()
+    return Bullet.x < 0 or Bullet.x > love.graphics.getWidth() or
+           Bullet.y < 0 or Bullet.y > love.graphics.getHeight()
 end
 
 function Bullet:destroy()
-    self.collider:destroy()
+    Bullet.collider:destroy()
 end
 
 function Bullet:enter(collisionClass)
-    return self.collider:enter(collisionClass)
+    return Bullet.collider:enter(collisionClass)
 end
 
 return Bullet
