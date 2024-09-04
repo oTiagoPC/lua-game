@@ -29,7 +29,8 @@ function drawAfterCamera()
         end
         vx = vx + 40
         if playerHealth == 0 then 
-            love.event.quit()
+            --love.event.quit()
+            a=2
         end
     end
 
@@ -38,6 +39,7 @@ function drawAfterCamera()
             love.graphics.print("Enemy " .. i .. " Health: " .. enemy.health, 10, 120 + 20 * i)
         end
     end
+    love.graphics.print("Player Bullet Count: " .. #player.bullets, 10, 100)
     local cooldownProgress = math.min(1, (love.timer.getTime() - player.lastDashTime) / player.dashCooldown)
     if not player.canDash() then
         love.graphics.rectangle("fill", 10, love.graphics.getHeight() - 10, 20 , 100 * -cooldownProgress)

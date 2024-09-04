@@ -1,4 +1,3 @@
-local Bullet = require('src.bullet')
 player = world:newBSGRectangleCollider(234, 184, 12, 12, 3)
 player.x = 0
 player.y = 0
@@ -214,7 +213,7 @@ function player:shoot()
     local direction = (mousePos - playerPos):normalized()
     
     -- cria e adiciona uma nova bala à lista de balas do jogador
-    local bullet = Bullet.new(player.x, player.y, direction.x, direction.y)
+    local bullet = createBullet(player.x, player.y, direction.x, direction.y)
     table.insert(player.bullets, bullet)
     player.lastShootTime = love.timer.getTime()
 end

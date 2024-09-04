@@ -14,5 +14,7 @@ function drawInCamera()
             coin:draw()
         end
     end
-    Bullet:draw()
+    for _, bullet in ipairs(player.bullets) do
+        bullet:draw()
+    end
 end

@@ -6,7 +6,7 @@ function cam:update(dt)
     local camX, camY = player:getPosition()
     
     local w = love.graphics.getWidth() / scale  
-    local h = love.graphics.getHeight() /scale
+    local h = love.graphics.getHeight() / scale
 
     
     local mapW = gameMap.width * gameMap.tilewidth

@@ -1,52 +1,59 @@
-Bullet = {}
-Bullet.__index = Bullet -- descobrir que porra eh essa
+function createBullet(x, y, dirX, dirY)
+    local bullet = {}
+    bullet.x = x
+    bullet.y = y
+    bullet.width = 10
+    bullet.height = 2
+    bullet.speed = 500
+    bullet.damage = 1
+    bullet.direction = vector(dirX, dirY):normalized()
 
-local bulletSprite = love.graphics.newImage('sprites/bullet.png')
+    bullet.collider = world:newRectangleCollider(bullet.x, bullet.y, bullet.width, bullet.height)
+    bullet.collider:setCollisionClass('Bullet')
+    bullet.collider:setObject(bullet)
 
-function Bullet.new(x, y, dirX, dirY)
-    local self = setmetatable({}, Bullet)
-    Bullet.x = x
-    Bullet.y = y
-    Bullet.width = 10
-    Bullet.height = 2
-    Bullet.speed = 500
-    Bullet.direction = vector(dirX, dirY):normalized()
-    Bullet.damage = 1
+    local bulletSprite = love.graphics.newImage('sprites/bullet.png')
 
-    Bullet.collider = world:newRectangleCollider(Bullet.x, Bullet.y, Bullet.width, Bullet.height)
-    Bullet.collider:setCollisionClass('Bullet')
-    Bullet.collider:setObject(Bullet)
-    return Bullet
-end
+    function bullet:update(dt)
+        bullet.x = bullet.x + bullet.direction.x * bullet.speed * dt
+        bullet.y = bullet.y + bullet.direction.y * bullet.speed * dt
+        
+        if bullet.x ~= nil and bullet.y ~= nil then
+            bullet.collider:setPosition(bullet.x, bullet.y)
+        end
 
-function Bullet:update(dt)
-    Bullet.x = Bullet.x + Bullet.direction.x * Bullet.speed * dt
-    Bullet.y = Bullet.y + Bullet.direction.y * Bullet.speed * dt
-    
-    Bullet.collider:setPosition(Bullet.x, Bullet.y)
-end
+        -- Destroi o projétil se ele sair da tela
+        if bullet:isOffScreen() then
+            bullet:destroy()
+        end
+    end
 
-function Bullet:draw()
-    for _, bullet in ipairs(player.bullets) do
+    function bullet:draw()
         love.graphics.push()
-        love.graphics.translate(Bullet.x, Bullet.y)
-        love.graphics.rotate(math.atan2(Bullet.direction.y, Bullet.direction.x))
-        love.graphics.draw(bulletSprite, -Bullet.width/2, -Bullet.height/2, nil, 0.4)
+        love.graphics.translate(bullet.x, bullet.y)
+        love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
+        love.graphics.draw(bulletSprite, -bullet.width / 2, -bullet.height / 2, nil, 0.4)
         love.graphics.pop()
     end
-end
 
-function Bullet:isOffScreen()
-    return Bullet.x < 0 or Bullet.x > love.graphics.getWidth() or
-           Bullet.y < 0 or Bullet.y > love.graphics.getHeight()
-end
+    function bullet:isOffScreen()
+        return bullet.x < 0 or bullet.x > gameMap.width * gameMap.tilewidth or
+               bullet.y < 0 or bullet.y > gameMap.height * gameMap.tileheight
+    end
 
-function Bullet:destroy()
-    Bullet.collider:destroy()
-end
+    function bullet:destroy()
+        bullet.collider:destroy()
+        for i, b in ipairs(player.bullets) do
+            if b == bullet then
+                table.remove(player.bullets, i)
+                break
+            end
+        end
+    end
 
-function Bullet:enter(collisionClass)
-    return Bullet.collider:enter(collisionClass)
-end
+    function bullet:enter(collisionClass)
+        return bullet.collider:enter(collisionClass)
+    end
 
-return Bullet
+    return bullet
+end
