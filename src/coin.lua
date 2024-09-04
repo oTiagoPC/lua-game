@@ -2,21 +2,21 @@ function createCoin(x, y)
     local coin = {}
     coin.x = x
     coin.y = y
-    coin.collider = world:newBSGRectangleCollider(coin.x, coin.y, 9, 9, 2)
+    coin.collider = world:newCircleCollider(coin.x, coin.y, 4)
     coin.collider:setCollisionClass('Coin')
     coin.collider:setFixedRotation(true)
     coin.collider:setType("static")
     coin.collider:setObject("Coin")
 
 
-    coin.spritesheet = love.graphics.newImage('sprites/FURG_Coins.png')
+    coin.spritesheet = love.graphics.newImage('sprites/furgCoin.png')
     coin.grid = anim8.newGrid(16, 16, coin.spritesheet:getWidth(), coin.spritesheet:getHeight())
     coin.animation = anim8.newAnimation(coin.grid('1-8', 1), 0.1)
     coin.collected = false
 
     function coin:draw()
         if not coin.collected then
-            coin.animation:draw(coin.spritesheet, coin.x, coin.y, nil, 0.6)
+            coin.animation:draw(coin.spritesheet, coin.x-5, coin.y-5, nil, 0.6)
         end
     end
     function coin:getObject()
@@ -41,5 +41,4 @@ function createCoin(x, y)
     return coin
 end
 
-local coin1 = createCoin(-1,-1)
-world.coins = {coin1}
+world.coins = {}
