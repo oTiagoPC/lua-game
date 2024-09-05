@@ -22,8 +22,7 @@ player:setCollisionClass('Player')
 player:setFixedRotation(true)
 player:setLinearDamping(12)
 
-player.spritesheet = love.graphics.newImage('sprites/charSheet.png')
-player.grid = anim8.newGrid(19, 21, player.spritesheet:getWidth(), player.spritesheet:getHeight())
+player.grid = anim8.newGrid(19, 21, sprites.playerSheet:getWidth(), sprites.playerSheet:getHeight())
 
 player.animations = {}
 player.animations.downRight = anim8.newAnimation(player.grid('1-2', 1), 0.2)
@@ -153,6 +152,10 @@ function player:update(dt)
         player:shoot()
     end
 
+end
+
+function player:draw()
+    player.anim:draw(sprites.playerSheet, player.x, player.y-2, nil, player.dirX, 1, 11, 10.5)
 end
 
 function player:dash()
