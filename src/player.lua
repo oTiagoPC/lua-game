@@ -49,8 +49,8 @@ function player:update(dt)
             local coin = collisionData.collider:getObject()
             if coin then
                 player.coins = player.coins + 1
+                if coin ~= nil then coin:collect() end
             end
-
         end
     end
 

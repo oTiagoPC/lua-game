@@ -6,8 +6,7 @@ function createCoin(x, y)
     coin.collider:setCollisionClass('Coin')
     coin.collider:setFixedRotation(true)
     coin.collider:setType("static")
-    coin.collider:setObject("Coin")
-
+    coin.collider:setObject(coin)
 
     coin.spritesheet = love.graphics.newImage('sprites/furgCoin.png')
     coin.grid = anim8.newGrid(16, 16, coin.spritesheet:getWidth(), coin.spritesheet:getHeight())
@@ -19,8 +18,13 @@ function createCoin(x, y)
             coin.animation:draw(coin.spritesheet, coin.x-5, coin.y-5, nil, 0.6)
         end
     end
+    
     function coin:getObject()
         return coin
+    end
+
+    function coin:collect()
+        coin.collected = true
     end
 
     function coin:update(dt)
