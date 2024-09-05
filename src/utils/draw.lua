@@ -18,3 +18,7 @@ function drawInCamera()
         bullet:draw()
     end
 end
+
+function drawAfterCamera()
+    drawHUD()
+end

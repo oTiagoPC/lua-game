@@ -17,16 +17,18 @@ function love.draw()
         end
     cam:detach()
 
-    -- Adicione isso para desenhar a interface do usuário fora da câmera
     drawAfterCamera()
 end
 
 function love.keypressed(key)
-    if key == 'lshift' then
-        player:dash()
-    end
     if key == 'q' then
         colliderToggle = not colliderToggle
+    end
+    if key == 'escape' then
+        love.event.quit()
+    end
+    if key == 'lshift' then
+        player:dash()
     end
     if key == "l" then
         table.insert(world.enemies, createEnemy(math.random(0, 800), math.random(0, 800)))
