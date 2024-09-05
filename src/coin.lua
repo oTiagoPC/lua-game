@@ -8,14 +8,13 @@ function createCoin(x, y)
     coin.collider:setType("static")
     coin.collider:setObject(coin)
 
-    coin.spritesheet = love.graphics.newImage('sprites/furgCoin.png')
-    coin.grid = anim8.newGrid(16, 16, coin.spritesheet:getWidth(), coin.spritesheet:getHeight())
+    coin.grid = anim8.newGrid(16, 16, sprites.coinSheet:getWidth(), sprites.coinSheet:getHeight())
     coin.animation = anim8.newAnimation(coin.grid('1-8', 1), 0.1)
     coin.collected = false
 
     function coin:draw()
         if not coin.collected then
-            coin.animation:draw(coin.spritesheet, coin.x-5, coin.y-5, nil, 0.6)
+            coin.animation:draw(sprites.coinSheet, coin.x-5, coin.y-5, nil, 0.6)
         end
     end
     

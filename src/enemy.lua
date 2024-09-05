@@ -11,8 +11,7 @@ function createEnemy(x, y)
     enemy.collider:setFixedRotation(true)
     enemy.collider:setLinearDamping(12)
 
-    enemy.spritesheet = love.graphics.newImage('sprites/playerSheet.png')
-    enemy.grid = anim8.newGrid(12, 18, enemy.spritesheet:getWidth(), enemy.spritesheet:getHeight())
+    enemy.grid = anim8.newGrid(12, 18, sprites.enemySheet:getWidth(), sprites.enemySheet:getHeight())
 
     enemy.animations = {}
     enemy.animations.right = anim8.newAnimation(enemy.grid('1-4', 1), 0.2)

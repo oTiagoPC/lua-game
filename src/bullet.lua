@@ -12,8 +12,6 @@ function createBullet(x, y, dirX, dirY)
     bullet.collider:setCollisionClass('Bullet')
     bullet.collider:setObject(bullet)
 
-    local bulletSprite = love.graphics.newImage('sprites/bullet.png')
-
     function bullet:update(dt)
         bullet.x = bullet.x + bullet.direction.x * bullet.speed * dt
         bullet.y = bullet.y + bullet.direction.y * bullet.speed * dt
@@ -32,7 +30,7 @@ function createBullet(x, y, dirX, dirY)
         love.graphics.push()
         love.graphics.translate(bullet.x, bullet.y)
         love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
-        love.graphics.draw(bulletSprite, -bullet.width / 2, -bullet.height / 2, nil, 0.4)
+        love.graphics.draw(sprites.misc.bullet, -bullet.width / 2, -bullet.height / 2, nil, 0.4)
         love.graphics.pop()
     end
 
