@@ -18,6 +18,7 @@ function loadAll()
     -- Other requirements
     require('src/utils/collisionClasses')
     createCollisionClasses()
+    require('src/world')
     require('src/resources')
     require('src/player')
     require('src/bullet')

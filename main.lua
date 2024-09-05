@@ -31,6 +31,6 @@ function love.keypressed(key)
         player:dash()
     end
     if key == "l" then
-        table.insert(world.enemies, createEnemy(math.random(0, 800), math.random(0, 800)))
+        table.insert(world.enemies, createEnemy(math.random(0, world.mapWidth), math.random(0, world.mapHeight)))
     end
 end

@@ -83,9 +83,5 @@ function createEnemy(x, y)
 end
 
 -- Criando novos inimigos
-local enemy1 = createEnemy(400, 250)
-local enemy2 = createEnemy(600, 300)
-local enemy3 = createEnemy(800, 350)
 local enemy4 = createEnemy(100, 400)
-world.enemies = {enemy1, enemy2, enemy3}
 table.insert(world.enemies, enemy4)
