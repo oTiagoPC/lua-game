@@ -13,3 +13,7 @@ sprites.hud.berriFace = love.graphics.newImage('sprites/ui/berriFace.png')
 sprites.hud.coinIcon = love.graphics.newImage('sprites/ui/coinIcon.png')
 sprites.hud.hamburguer = love.graphics.newImage('sprites/ui/hamburguer.png')
 
+fonts = {}
+fonts.default = love.graphics.newFont('fonts/pixel-font.ttf', 20)
+
+sounds = {}

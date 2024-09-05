@@ -1,3 +1,5 @@
+love.graphics.setFont(fonts.default)
+
 function drawHUD()
     drawChar()
     drawHearts()
@@ -23,13 +25,11 @@ end
 
 function drawCoins()
     love.graphics.draw(sprites.hud.coinIcon, 93, 50, nil, 4)
-    love.graphics.setFont(font)
     love.graphics.print("X" .. player.coins, 147, 70)
 end
 
 function drawHamburguer()
     love.graphics.draw(sprites.hud.hamburguer, 200, 50, nil, 4)
-    love.graphics.setFont(font)
     love.graphics.print("X" .. player.healing, 262, 70)
 end
 
@@ -46,5 +46,4 @@ function drawDebug()
             love.graphics.print("Enemy " .. i .. " Health: " .. enemy.health, 10, 120 + 20 * i)
         end
     end
-    love.graphics.print("Player Bullet Count: " .. #player.bullets, 10, 100)
 end
