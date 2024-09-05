@@ -7,7 +7,8 @@ function cam:update(dt)
     
     local w = love.graphics.getWidth() / scale  
     local h = love.graphics.getHeight() / scale
-
+    world.mapWidth = gameMap.width * gameMap.tilewidth
+    world.mapHeight = gameMap.height * gameMap.tileheight
     
     local mapW = gameMap.width * gameMap.tilewidth
     local mapH = gameMap.height * gameMap.tileheight

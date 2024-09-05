@@ -37,8 +37,8 @@ function createBullet(x, y, dirX, dirY)
     end
 
     function bullet:isOffScreen()
-        return bullet.x < 0 or bullet.x > gameMap.width * gameMap.tilewidth or
-               bullet.y < 0 or bullet.y > gameMap.height * gameMap.tileheight
+        return bullet.x < 0 or bullet.x > world.mapWidth or
+               bullet.y < 0 or bullet.y > world.mapHeight
     end
 
     function bullet:destroy()
