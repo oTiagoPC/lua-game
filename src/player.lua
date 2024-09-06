@@ -53,6 +53,24 @@ function player:update(dt)
         end
     end
 
+    if player:enter("Food") then
+        local collisionData = player:getEnterCollisionData("Food")
+        if collisionData then 
+            local food = collisionData.collider:getObject()
+            if food then 
+                player.healing = player.healing + 1 
+                if food ~= nil then food:collect() end
+            end
+        end
+    end
+
+    if love.keyboard.isDown("j") then
+        if player.health < player.maxHealth and player.healing > 0 then
+            player.health = player.health + 1
+            player.healing = player.healing - 1
+        end
+    end
+
     local bulletsToRemove = {}
 
     if #self.bullets > 0 then

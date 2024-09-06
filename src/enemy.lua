@@ -33,20 +33,40 @@ function createEnemy(x, y)
 
     function enemy:update(dt)
         if enemy.health <= 0 then
+            local num = math.random(1,10)
 
-            -- Cria uma moeda aonde o inimigo morreu 
-            local coin = createCoin(enemy.x, enemy.y)
-            table.insert(world.coins, coin)
+            if num > 6 then
 
-            -- Destroi o inimigo
-            enemy.collider:destroy()
-            for i, e in ipairs(world.enemies) do
-                if e == enemy then
-                    table.remove(world.enemies, i)
-                    break
+                -- Cria uma moeda aonde o inimigo morreu 
+                local coin = createCoin(enemy.x, enemy.y)
+                table.insert(world.coins, coin)
+
+                -- Destroi o inimigo
+                enemy.collider:destroy()
+                for i, e in ipairs(world.enemies) do
+                    if e == enemy then
+                        table.remove(world.enemies, i)
+                        break
+                    end
                 end
+                return
+            
+
+            else
+                -- Cria uma moeda aonde o inimigo morreu 
+                local burger = createBurger(enemy.x, enemy.y)
+                table.insert(world.food, burger)
+
+                -- Destroi o inimigo
+                enemy.collider:destroy()
+                for i, e in ipairs(world.enemies) do
+                    if e == enemy then
+                        table.remove(world.enemies, i)
+                        break
+                    end
+                end
+                return
             end
-            return
         end
 
         local playerPosition = vector(player.x, player.y)

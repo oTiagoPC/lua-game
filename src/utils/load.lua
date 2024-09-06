@@ -29,6 +29,7 @@ function loadAll()
     require('src/enemy')
     require('src/hud')
     require('src/coin')
+    require('src/healing')
     
     -- Functions
     loadMap()

@@ -19,6 +19,12 @@ function drawInCamera()
     for _, bullet in ipairs(player.bullets) do
         bullet:draw()
     end
+
+    if #world.food > 0 then
+        for i, food in ipairs(world.food) do
+            food:draw()
+        end
+    end
 end
 
 function drawAfterCamera()

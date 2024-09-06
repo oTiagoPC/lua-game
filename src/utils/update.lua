@@ -11,6 +11,11 @@ function updateAll(dt)
             coin:update(dt)
         end 
     end 
+    if #world.food > 0 then
+        for i, food in ipairs(world.food) do 
+            food:update(dt)
+        end
+    end
     cam:update(dt)
     for i = #player.bullets, 1, -1 do
         local bullet = player.bullets[i]
