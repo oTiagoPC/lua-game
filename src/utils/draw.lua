@@ -2,7 +2,14 @@ function drawInCamera()
     gameMap:drawLayer(gameMap.layers["ground"])
     gameMap:drawLayer(gameMap.layers["objects"])
 
+    if #world.NPCs > 0 then 
+        for i, npc in ipairs(world.NPCs) do
+            npc.anim:draw(sprites.vagnerSheet, npc.x, npc.y, nil, nil, 1, 2, 4)
+        end
+    end
+    
     player:draw()
+    dialogo:draw()
     
     if #world.coins > 0 then
         for i, coin in ipairs(world.coins) do

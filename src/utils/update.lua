@@ -16,6 +16,11 @@ function updateAll(dt)
             food:update(dt)
         end
     end
+    if #world.NPCs > 0 then
+        for i, npc in ipairs(world.NPCs) do 
+            npc:update(dt)
+        end
+    end
     cam:update(dt)
     for i = #player.bullets, 1, -1 do
         local bullet = player.bullets[i]

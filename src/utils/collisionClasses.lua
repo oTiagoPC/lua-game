@@ -5,4 +5,5 @@ function createCollisionClasses()
     world:addCollisionClass('Wall')
     world:addCollisionClass('Coin', {ignores = {'Enemy'}})
     world:addCollisionClass('Food', {ignores = {'Enemy'}})
+    world:addCollisionClass('Npc')
 end

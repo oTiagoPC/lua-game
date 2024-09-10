@@ -30,7 +30,11 @@ function loadAll()
     require('src/hud')
     require('src/coin')
     require('src/healing')
-    
+    require('src/npc')
+
+    -- Dialogues 
+    require('src/utils/dialogos')
+    require('src/playText')
     -- Functions
     loadMap()
 end

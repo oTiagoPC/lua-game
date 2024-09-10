@@ -33,6 +33,7 @@ function createEnemy(x, y)
 
     function enemy:update(dt)
         if enemy.health <= 0 then
+            playDialogo()
             local num = math.random(1,10)
 
             if num > 6 then
