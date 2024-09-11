@@ -70,7 +70,7 @@ roteiro = {
             {speaker = "Artificialis Intellectus", text = "Então venha, Berri. Mostre-me do que é capaz. Vamos ver se você pode parar o inevitável."},
             {speaker = "Berri", text = "Tá beleza."}
 
-        }
+        },
         dialogo3 = {
             {speaker = "Artificialis Intellectus", text = "Você... conseguiu, Berri... Mas... isso... não... é... o... fim..."},
             {speaker = "Berri", text = "Acabou, 'Artificialis Intellectus'. Eu nunca quis que isso acontecesse, mas não podia deixar você continuar."},
