@@ -67,8 +67,8 @@ end
 
 function dialog:draw()
     if world.dialog then
-        love.graphics.draw(textBox, world.mapWidth /2, world.mapHeight /2, nil, 5)
-        love.graphics.print(dialog.text, world.mapWidth /2 + 300, world.mapHeight /2 + 50)
+        love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
+        love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 61)
     end
 end
 
