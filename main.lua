@@ -24,6 +24,15 @@ function love.keypressed(key)
     if key == 'q' then
         colliderToggle = not colliderToggle
     end
+    if key == "x" then 
+        world.dialogo = not world.dialogo
+    end
+    if world.dialogo then 
+        if key == "space" then 
+            dialogoAtual.atualiza = true
+        end
+    end
+
     if key == 'escape' then
         love.event.quit()
     end

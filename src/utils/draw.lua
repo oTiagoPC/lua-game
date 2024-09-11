@@ -11,9 +11,7 @@ function drawInCamera()
     end
     
     player:draw()
-    texto = roteiro.c3.dialogo1[1].text
-    --love.graphics.print(texto,100, 100)
-    
+        
     if #world.coins > 0 then
         for i, coin in ipairs(world.coins) do
             coin:draw()
@@ -39,5 +37,7 @@ end
 
 function drawAfterCamera()
     drawHUD()
-    c3Dialogo1()
+    if world.dialogo then
+        dialogoAtual = c3Dialogo1()
+    end
 end
