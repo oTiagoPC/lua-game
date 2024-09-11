@@ -1,6 +1,9 @@
 function updateAll(dt)
     world:update(dt)
     player:update(dt)
+    if world.dialogo then 
+        dialogo:update(dt)
+    end 
     if #world.enemies > 0 then    
         for i, enemy in ipairs(world.enemies) do
             enemy:update(dt)

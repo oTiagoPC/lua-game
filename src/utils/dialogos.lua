@@ -1,7 +1,7 @@
 roteiro = {
     c3 = {
         dialogo1 = {
-            {speaker = "Vagner", text = "Berri as suas IAs desenvolveram consciência própria, precisamos fazer algo para detê-las, ou então será o fim da FURG."},
+            {speaker = "Vagner", text = "Berri as suas IAs desenvolveram consciência \nprópria, precisamos fazer algo para\ndetê-las, ou então será o fim da FURG."},
             {speaker = "Berri", text = "Então quer dizer que as minhas IAs desenvolveram consciência própria? Isso é interessante."},
             {speaker = "Vagner", text = "Sim Berri, é exatamente isso. O que vamos fazer a respeito? O destino da FURG está nas suas mãos, você precisa fazer algo."},
             {speaker = "Berri", text = "Você tem razão, essa é minha missão, que bom que eu já estava preparado para uma ocasião como essa."},
