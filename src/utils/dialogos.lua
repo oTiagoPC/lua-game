@@ -47,7 +47,7 @@ roteiro = {
             {speaker = "Berri", text = "Aparentemente o Vagner tinha razão. Aquele livro realmente pode me ajudar. Você sabe sobre o livro 'OpenCV' moça?"},
             {speaker = "Moça da Portaria", text = "Já ouvi falar desse livro, ele está na seção de tecnologia, imagino que o lugar esteja abarrotado de máquinas então só posso te desejar boa sorte!"},
             {speaker = "Berri", text = "Fica sossegada, eu cuido disso!"}
-        }
+        },
         dialogo2 = {
             {speaker = "Berri", text = "Boa, era disso que eu precisava! Agora posso voltar para o C3 para acabar com isso tudo!"},
             {speaker = "Vagner", text = "Aquela moça na entrada estava realmente estressada, hein."},
