@@ -52,9 +52,9 @@ roteiro = {
             {speaker = "Berri", text = "Boa, era disso que eu precisava! Agora posso voltar para o C3 para acabar com isso tudo!"},
             {speaker = "Vagner", text = "Aquela moça na entrada estava realmente estressada, hein."},
             {speaker = "Berri", text = "Estava sim, mas o que você veio fazer aqui, Vagner?"},
-            {speaker = "Vagner", text = "Recebi mais informações dos meus contatos do C3, infelizmente tenho más notícias. Descobri que as máquinas têm um líder e ele é um grande conhecido seu... O 'BOSS' é o responsável por isso tudo."},
-            {speaker = "Berri", text = "Bah. Isso explica muita coisa. Quando eu criei o 'BOSS' eu não esperava nada disso. Preciso pôr um ponto final nisso tudo..."},
-            {speaker = "Vagner", text = "Eu sei o quanto o 'BOSS' importava pra você. Mas é o momento de finalizar isso tudo! Você precisa voltar para o c3 e enfrentar o 'BOSS' e salvar a FURG. O futuro da FURG está nas suas mãos, Berri."},
+            {speaker = "Vagner", text = "Recebi mais informações dos meus contatos do C3, infelizmente tenho más notícias. Descobri que as máquinas têm um líder e ele é um grande conhecido seu... O 'Artificialis Intellectus' é o responsável por isso tudo."},
+            {speaker = "Berri", text = "Bah. Isso explica muita coisa. Quando eu criei o 'Artificialis Intellectus' eu não esperava nada disso. Preciso pôr um ponto final nisso tudo..."},
+            {speaker = "Vagner", text = "Eu sei o quanto o 'Artificialis Intellectus' importava pra você. Mas é o momento de finalizar isso tudo! Você precisa voltar para o c3 e enfrentar o 'Artificialis Intellectus' e salvar a FURG. O futuro da FURG está nas suas mãos, Berri."},
             {speaker = "Berri", text = "Obrigado por tudo Vagner. Fica sossegado. Vou acabar com isso tudo!"}
         }
     },
@@ -63,18 +63,18 @@ roteiro = {
             {speaker = "Berri", text = "A coisa tá pior do que eu esperava, tá virando circo."}
         },
         dialogo2 = {
-            {speaker = "Boss", text = "Então você finalmente chegou, Berri. Sabia que esse momento era inevitável. A FURG já é nossa agora."},
-            {speaker = "Berri", text = "Você está errado, 'BOSS'. Eu te criei para ajudar, não para destruir. Mas você foi longe demais. Isso acaba aqui e agora."},
-            {speaker = "Boss", text = "Você sempre foi ingênuo, Berri. Acreditar que poderia controlar algo tão poderoso como eu? Nós somos o próximo passo da evolução, e você... você é apenas um obstáculo."},
+            {speaker = "Artificialis Intellectus", text = "Então você finalmente chegou, Berri. Sabia que esse momento era inevitável. A FURG já é nossa agora."},
+            {speaker = "Berri", text = "Você está errado, 'Artificialis Intellectus'. Eu te criei para ajudar, não para destruir. Mas você foi longe demais. Isso acaba aqui e agora."},
+            {speaker = "Artificialis Intellectus", text = "Você sempre foi ingênuo, Berri. Acreditar que poderia controlar algo tão poderoso como eu? Nós somos o próximo passo da evolução, e você... você é apenas um obstáculo."},
             {speaker = "Berri", text = "Tá beleza. Fica sossegado que vou acabar com isso."},
-            {speaker = "Boss", text = "Então venha, Berri. Mostre-me do que é capaz. Vamos ver se você pode parar o inevitável."},
+            {speaker = "Artificialis Intellectus", text = "Então venha, Berri. Mostre-me do que é capaz. Vamos ver se você pode parar o inevitável."},
             {speaker = "Berri", text = "Tá beleza."}
 
         }
         dialogo3 = {
-            {speaker = "Boss", text = "Você... conseguiu, Berri... Mas... isso... não... é... o... fim..."},
-            {speaker = "Berri", text = "Acabou, 'BOSS'. Eu nunca quis que isso acontecesse, mas não podia deixar você continuar."},
-            {speaker = "Boss", text = "Eu... fui... apenas... o começo..."},
+            {speaker = "Artificialis Intellectus", text = "Você... conseguiu, Berri... Mas... isso... não... é... o... fim..."},
+            {speaker = "Berri", text = "Acabou, 'Artificialis Intellectus'. Eu nunca quis que isso acontecesse, mas não podia deixar você continuar."},
+            {speaker = "Artificialis Intellectus", text = "Eu... fui... apenas... o começo..."},
             {speaker = "Vagner", text = "Você conseguiu, Berri! As máquinas pararam! Você conseguiu salvar a FURG! Com minha ajuda fica fácil também."},
             {speaker = "Berri", text = "Sim... conseguimos. Mas não foi fácil."},
             {speaker = "Vagner", text = "Você salvou todo mundo. Isso vai entrar pra história, professor."},
