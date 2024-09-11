@@ -8,7 +8,7 @@ function createBurger(x, y)
     food.collider:setType("static")
     food.collider:setObject(food)
 
-    food.grid = anim8.newGrid(14, 18, sprites.burgerSheet:getWidth(), sprites.burgerSheet:getHeight())
+    food.grid = anim8.newGrid(20, 19, sprites.burgerSheet:getWidth(), sprites.burgerSheet:getHeight())
     food.animation = anim8.newAnimation(food.grid('1-7', 1), 0.1)
     food.collected = false
 
