@@ -20,7 +20,7 @@ function drawInCamera()
 
     if #world.enemies > 0 then
         for i, enemy in ipairs(world.enemies) do
-            enemy.anim:draw(sprites.enemySheet, enemy.x, enemy.y, nil, 6, nil, 6, 9)
+            enemy.anim:draw(sprites.enemySheet, enemy.x, enemy.y-2, nil, enemy.dirX, 1, 11, 10.5)
         end
     end
 

@@ -291,6 +291,5 @@
   <object id="107" x="480" y="128" width="96" height="64"/>
   <object id="108" x="320" y="576" width="32" height="16"/>
   <object id="109" x="640" y="192" width="16" height="48"/>
-  <object id="110" x="272" y="576" width="16" height="16"/>
  </objectgroup>
 </map>
