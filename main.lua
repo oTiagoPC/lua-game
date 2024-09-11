@@ -6,7 +6,11 @@ function love.load()
 end
 
 function love.update(dt)
-    updateAll(dt)
+    if world.dialog then
+        dialog:update(dt)
+    else
+        updateAll(dt)
+    end
 end
 
 function love.draw()
