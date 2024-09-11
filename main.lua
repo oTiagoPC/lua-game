@@ -25,14 +25,13 @@ function love.keypressed(key)
         colliderToggle = not colliderToggle
     end
     if key == "x" then 
-        world.dialogo = not world.dialogo
+        dialog:start()
     end
-    if world.dialogo then 
-        if key == "space" then 
-            dialogoAtual.atualiza = true
+    if key == "space" then 
+        if world.dialog then
+            dialog:next()
         end
     end
-
     if key == 'escape' then
         love.event.quit()
     end

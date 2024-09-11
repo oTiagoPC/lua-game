@@ -33,7 +33,7 @@ roteiro = {
         {speaker = "Vagner", text = "Não posso revelar as informações dos meus contatos, não é assim que funciona."},
         {speaker = "Berri", text = "Tá bem então, e o que você acha que eu devo fazer?"},
         {speaker = "Vagner", text = "Vai para a biblioteca, o livro 'LIVRO' vai poder te ajudar. Com as equações de aprendizado de máquina que tem lá pode ser possível destruir o dispositivo da reitoria."},
-        {speaker = "Berri", text = "Perfeito! Vou para lá agora."}
+        {speaker = "Berri", text = "Beleza! Vou para lá agora."}
     },
 
     biblioteca = {

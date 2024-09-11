@@ -37,7 +37,7 @@ end
 
 function drawAfterCamera()
     drawHUD()
-    if world.dialogo then
-        dialogoAtual = c3Dialogo1()
+    if world.dialog then
+        dialog:draw()
     end
 end
