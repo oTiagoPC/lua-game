@@ -1,4 +1,13 @@
 textBox = love.graphics.newImage('sprites/TextBox.png')
+berriFace = love.graphics.newImage('sprites/portraits/berri-portrait.png')
+vagnerFace = love.graphics.newImage('sprites/portraits/vagner-portrait.png')
+vicenzoFace = love.graphics.newImage('sprites/portraits/vicenzo-portrait.png')
+caioFace = love.graphics.newImage('sprites/portraits/caio-portrait.png')
+tiagoFace = love.graphics.newImage('sprites/portraits/tiago.png')
+tiaguinFace = love.graphics.newImage('sprites/portraits/tiaguin.png')
+henriqueFace = love.graphics.newImage('sprites/portraits/henrique-portrait.png')
+bibliotecariaFace = love.graphics.newImage('sprites/portraits/blibiotecaria.png')
+
 dialog = {}
 
 function wrapText(text, limit)
@@ -67,6 +76,32 @@ end
 
 function dialog:draw()
     if world.dialog then
+
+        if dialog.character == "Berri" then 
+            love.graphics.draw(berriFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Vagner" then 
+            love.graphics.draw(vagnerFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Henrique Gabigol" then 
+            love.graphics.draw(henriqueFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Fofinho" then 
+            love.graphics.draw(vicenzoFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Tiago R.A." then 
+            love.graphics.draw(tiagoFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Tiago P.C." then 
+            love.graphics.draw(tiaguinFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Caio BB" then 
+            love.graphics.draw(caioFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+        if dialog.character == "Moça da Portaria" then 
+            love.graphics.draw(bibliotecariaFace, world.mapWidth/2+ 17, world.mapHeight/2 + 20, nil, 4)
+        end
+
         love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
         love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 61)
     end

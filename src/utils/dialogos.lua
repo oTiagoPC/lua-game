@@ -30,7 +30,9 @@ roteiro = {
             {speaker = "Tiago P.C.", text = "Tamo junto, Berri! Aí namoral vou até fazer um joguin sobre isso."},
             {speaker = "Caio BB", text = "Jogou muito professor, melhor que isso só a virada do Gabigol em cima do River Plate em 2019."},
             {speaker = "Berri", text = "Fiquem sossegados pessoal, já cuidei de tudo."},
-            {speaker = "Berri", text = "Preciso arrumar uma forma de acabar com isso, minhas IAs devem ter feito base em algum lugar, mas aonde?"},
+            {speaker = "Berri", text = "Preciso arrumar uma forma de acabar com isso, minhas IAs devem ter feito base em algum lugar, mas aonde?"}
+        },
+        dialogo3 = {
             {speaker = "Vagner", text = "Finalmente consegui te alcançar. Meus contatos no C3 disseram que as máquinas invadiram o lugar e fizeram uma base lá mesmo."},
             {speaker = "Berri", text = "Como foi que você conseguiu tantas informações assim?"},
             {speaker = "Vagner", text = "Não posso revelar as informações dos meus contatos, não é assim que funciona."},
