@@ -33,4 +33,7 @@ function love.keypressed(key)
     if key == "l" then
         table.insert(world.enemies, createEnemy(math.random(0, world.mapWidth), math.random(0, world.mapHeight)))
     end
+    if key == "j" then
+        player:heal()
+    end
 end

@@ -35,7 +35,7 @@ function createEnemy(x, y)
         if enemy.health <= 0 then
             local num = math.random(1,10)
 
-            if num > 6 then
+            if num > 9 then
 
                 -- Cria uma moeda aonde o inimigo morreu 
                 local coin = createCoin(enemy.x, enemy.y)
