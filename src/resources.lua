@@ -4,9 +4,7 @@ sprites.enemySheet = love.graphics.newImage('sprites/sheets/enemySheet.png')
 sprites.vagnerSheet = love.graphics.newImage('sprites/sheets/vagnerSheet.png')
 sprites.coinSheet = love.graphics.newImage('sprites/sheets/coinSheet.png')
 sprites.burgerSheet = love.graphics.newImage('sprites/sheets/burgerSheet.png')
-
-sprites.misc = {}
-sprites.misc.bullet = love.graphics.newImage('sprites/misc/bullet.png')
+sprites.bulletSheet = love.graphics.newImage('sprites/sheets/bulletSheet.png')
 
 sprites.hud = {}
 sprites.hud.fullHeart = love.graphics.newImage('sprites/ui/fullHeart.png')

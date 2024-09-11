@@ -4,9 +4,12 @@ function createBullet(x, y, dirX, dirY)
     bullet.y = y
     bullet.width = 10
     bullet.height = 2
-    bullet.speed = 500
+    bullet.speed = 300
     bullet.damage = 1
     bullet.direction = vector(dirX, dirY):normalized()
+
+    bullet.grid = anim8.newGrid(16, 16, sprites.bulletSheet:getWidth(), sprites.bulletSheet:getHeight())
+    bullet.animation = anim8.newAnimation(bullet.grid('1-5', 1), 0.1)
 
     bullet.collider = world:newRectangleCollider(bullet.x, bullet.y, bullet.width, bullet.height)
     bullet.collider:setCollisionClass('Bullet')
@@ -20,6 +23,8 @@ function createBullet(x, y, dirX, dirY)
             bullet.collider:setPosition(bullet.x, bullet.y)
         end
 
+        bullet.animation:update(dt)
+
         -- Destroi o projétil se ele sair da tela
         if bullet:isOffScreen() then
             bullet:destroy()
@@ -30,7 +35,11 @@ function createBullet(x, y, dirX, dirY)
         love.graphics.push()
         love.graphics.translate(bullet.x, bullet.y)
         love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
-        love.graphics.draw(sprites.misc.bullet, -bullet.width / 2, -bullet.height / 2, nil, 0.4)
+
+        local scaleX = bullet.direction.x < 0 and -0.6 or 0.6
+        local scaleY = bullet.direction.x < 0 and -0.6 or 0.6
+
+        bullet.animation:draw(sprites.bulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scaleX, scaleY)
         love.graphics.pop()
     end
 
