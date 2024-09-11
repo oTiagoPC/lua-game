@@ -15,6 +15,10 @@ function loadAll()
     windowHeight = love.graphics.getHeight()
     scale = (7.3 / 1200) * windowHeight
 
+    -- Dialogues 
+    require('src/utils/dialogos')
+    require('src/playText')
+    
     -- Other requirements
     require('src/utils/collisionClasses')
     createCollisionClasses()
@@ -32,9 +36,6 @@ function loadAll()
     require('src/healing')
     require('src/npc')
 
-    -- Dialogues 
-    require('src/utils/dialogos')
-    require('src/playText')
     -- Functions
     loadMap()
 end

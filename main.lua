@@ -44,4 +44,10 @@ function love.keypressed(key)
     if key == "j" then
         player:heal()
     end
+    if key == "1" then 
+        world.dialogoAtual = roteiro.c3.dialogo1
+    end 
+    if key == "2" then 
+        world.dialogoAtual = roteiro.c3.dialogo2
+    end 
 end

@@ -35,8 +35,8 @@ function dialog:start()
     world.dialog = true
     dialog.currentText = 1
     -- Verifica se o roteiro e a cena existem antes de definir LenDialog
-    if roteiro.c3 and roteiro.c3.dialogo1 then
-        dialog.LenDialog = #roteiro.c3.dialogo1  -- Define o número total de diálogos
+    if world.dialogoAtual then
+        dialog.LenDialog = #world.dialogoAtual  -- Define o número total de diálogos
     else
         dialog.LenDialog = 0  -- Caso o diálogo não exista, evita erro de comparação
     end
@@ -54,11 +54,11 @@ end
 
 function dialog:setText()
     -- Garante que o texto e o personagem sejam atualizados corretamente
-    if roteiro.c3.dialogo1[dialog.currentText] then
-        local fullText = roteiro.c3.dialogo1[dialog.currentText].text
+    if world.dialogoAtual[dialog.currentText] then
+        local fullText = world.dialogoAtual[dialog.currentText].text
         local wrappedText = wrapText(fullText, 42)
         dialog.text = table.concat(wrappedText, "\n")  -- Junta as linhas com quebras
-        dialog.character = roteiro.c3.dialogo1[dialog.currentText].speaker
+        dialog.character = world.dialogoAtual[dialog.currentText].speaker
     else
         dialog.text = ""
         dialog.character = ""
@@ -67,8 +67,8 @@ end
 
 function dialog:draw()
     if world.dialog then
-        love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
-        love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 61)
+        love.graphics.draw(textBox, world.mapWidth /2, world.mapHeight /2, nil, 5)
+        love.graphics.print(dialog.text, world.mapWidth /2 + 300, world.mapHeight /2 + 50)
     end
 end
 

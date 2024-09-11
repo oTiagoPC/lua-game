@@ -18,7 +18,7 @@ roteiro = {
             {speaker = "Vagner", text = "Vai lá Rafael, acaba com essas máquinas desgraçadas."}
         }
     },
-    Pav3 = {
+    pav3 = {
         dialogo1 = {
             {speaker = "Berri", text = "A coisa está mais feia do que eu esperava, espero que meus alunos estejam bem, preciso correr!"}
         },
