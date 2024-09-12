@@ -55,6 +55,7 @@ function love.keypressed(key)
         world.dialogoAtual = roteiro.c3.dialogo2
     end 
     if key == "5" then 
+        player:spawn(540, 500)
         world.currentMap = "maps/biblioMap.lua"
     end
 end

@@ -222,5 +222,5 @@ function createEnemy(x, y)
 end
 
 -- Criando novos inimigos
-local enemy4 = createEnemy(100, 400)
+-- local enemy4 = createEnemy(100, 400)
 table.insert(world.enemies, enemy4)

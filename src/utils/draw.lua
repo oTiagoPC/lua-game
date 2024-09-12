@@ -17,10 +17,10 @@ function drawInCamera()
     if gameMap.layers["barriers"] then
         gameMap:drawLayer(gameMap.layers["barriers"])
     end
-
+    
     if #world.NPCs > 0 then 
         for i, npc in ipairs(world.NPCs) do
-           -- npc.anim:draw(sprites.vagnerSheet, npc.x, npc.y, nil, nil, 1, 2, 4)
+           npc.anim:draw(sprites.vagnerSheet, npc.x-2, npc.y, nil, npc.dirX, 1, 11, 10.5)
         end
     end
     
@@ -54,4 +54,8 @@ function drawAfterCamera()
     if world.dialog then
         dialog:draw()
     end
+    
+    love.graphics.printf("Posiçao do mouse: " .. player.x .. " " .. player.y, 0, 0, 800, 'left')
+    
+
 end

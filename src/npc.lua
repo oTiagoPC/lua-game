@@ -4,6 +4,8 @@ function createNpc(x, y)
     npc.x = x
     npc.y = y
     npc.speed = player.speed 
+    npc.dirX = 1
+    npc.dirY = 1
 
     npc.collider:setCollisionClass('Npc')
     npc.collider:setFixedRotation(true)
@@ -13,26 +15,12 @@ function createNpc(x, y)
     npc.grid = anim8.newGrid(15, 17, sprites.vagnerSheet:getWidth(), sprites.vagnerSheet:getHeight())
 
     npc.animations = {}
-    npc.animations.right = anim8.newAnimation(npc.grid('1-4', 1), 0.2)
-    npc.animations.left = anim8.newAnimation(npc.grid('1-4', 2), 0.2)
-    npc.animations.down = anim8.newAnimation(npc.grid('1-4', 3), 0.2)
-    npc.animations.up = anim8.newAnimation(npc.grid('1-4', 4), 0.2)
+    npc.animations.downRight = anim8.newAnimation(npc.grid('1-2', 1), 0.2)
+    npc.animations.downLeft = anim8.newAnimation(npc.grid('1-2', 1), 0.2)
+    npc.animations.upRight = anim8.newAnimation(npc.grid('1-2', 2), 0.2)
+    npc.animations.upLeft = anim8.newAnimation(npc.grid('1-2', 2), 0.2)
 
-    npc.anim = npc.animations.down
-
-    function npc:cena1()
-        local finalX = 234
-        local finalY = 184
-
-        if npc.x > player.x then 
-            npc.x = npc.x - 2
-            npc.anim = npc.animations.left
-        end
-        if npc.y > player.y then 
-            npc.y = npc.y - 2
-            npc.anim = npc.animations.right
-        end
-    end
+    npc.anim = npc.animations.downRight
 
     function npc:getObject()
         return npc
@@ -41,12 +29,34 @@ function createNpc(x, y)
     npc.collider:setObject(npc) -- Adicionando o objeto ao collider para ser acessado posteriormente nas colisões
 
     function npc:update(dt)
-        npc:cena1()
+        npc.anim:update(dt)
+        npc.x, npc.y = npc.collider:getPosition()
+        
+        if player.x > npc.x then
+            npc.dirX = 1
+            if player.y > npc.y then 
+                npc.anim = npc.animations.downRight
+                npc.dirY = 1
+            else
+                npc.anim = npc.animations.upRight
+                npc.dirY = -1
+            end
+        else
+            npc.dirX = -1
+            if player.y > npc.y then 
+                npc.anim = npc.animations.downLeft
+                npc.dirY = 1
+            else
+                npc.anim = npc.animations.upLeft
+                npc.dirY = -1
+            end
+        end
+        
     end
 
     return npc
 end
 
 -- Criando novos inimigos
-local vagner = createNpc(300, 200)
+local vagner = createNpc(160+10, 280+10)
 table.insert(world.NPCs, vagner)
