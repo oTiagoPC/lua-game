@@ -37,7 +37,9 @@ function createEnemy(x, y)
     enemy.collider:setObject(enemy)
 
     function enemy:checkCollision()
-        local colliders = world:queryRectangleArea(self.x - 15, self.y - 15, 30, 30, {'Wall'})
+        -- Aumentar o raio da área de verificação de colisão para suavizar reações
+        local colliders = world:queryRectangleArea(self.x - 20, self.y - 20, 40, 40, {'Wall'})
+        
         if #colliders > 0 then
             local avoidX, avoidY = 0, 0
             for _, collider in ipairs(colliders) do
@@ -45,19 +47,28 @@ function createEnemy(x, y)
                 avoidX = avoidX + (self.x - cx)
                 avoidY = avoidY + (self.y - cy)
             end
+    
             local len = math.sqrt(avoidX^2 + avoidY^2)
             if len > 0 then
-                self.avoidanceDirection.x = avoidX / len
-                self.avoidanceDirection.y = avoidY / len
+                -- Suavizar a mudança de direção usando interpolação linear
+                local smoothFactor = 0.025  -- Quanto menor, mais suave a mudança de direção
+                self.avoidanceDirection.x = self.avoidanceDirection.x * (1 - smoothFactor) + (avoidX / len) * smoothFactor
+                self.avoidanceDirection.y = self.avoidanceDirection.y * (1 - smoothFactor) + (avoidY / len) * smoothFactor
             end
-            self.avoidanceTimer = 0.5
+    
+            -- Prolongar o tempo de desvio para evitar mudanças bruscas
+            self.avoidanceTimer = 4.0
         elseif self.avoidanceTimer > 0 then
-            self.avoidanceTimer = self.avoidanceTimer - 1/60  -- Assumindo 60 FPS
+            -- Diminuir o timer suavemente
+            self.avoidanceTimer = self.avoidanceTimer - 1 / 60 -- Supondo 60 FPS
         else
-            self.avoidanceDirection.x = 0
-            self.avoidanceDirection.y = 0
+            -- Resetar a direção de desvio lentamente
+            local resetFactor = 0.05  -- Mais lento que a mudança de direção
+            self.avoidanceDirection.x = self.avoidanceDirection.x * (1 - resetFactor)
+            self.avoidanceDirection.y = self.avoidanceDirection.y * (1 - resetFactor)
         end
     end
+    
 
     function enemy:update(dt)
         if self.health <= 0 then
