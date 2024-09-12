@@ -37,16 +37,16 @@ function createNpc(x, y)
         
         if npc.distanceToPlayer < 15 and npc.canMove then
             dialog:start()
-            -- table.insert(world.enemies, createEnemy(140, 460))
-            --table.insert(world.enemies, createEnemy(155, 460))
-            --table.insert(world.enemies, createEnemy(170, 460))
-            -- table.insert(world.enemies, createEnemy(225, 365))
-            -- table.insert(world.enemies, createEnemy(225, 300))
-            -- table.insert(world.enemies, createEnemy(325, 300))
-            -- table.insert(world.enemies, createEnemy(700, 380))
-            -- table.insert(world.enemies, createEnemy(700, 330))
-            -- table.insert(world.enemies, createEnemy(700, 260))
-            -- table.insert(world.enemies, createEnemy(66, 300))
+            table.insert(world.enemies, createEnemy(140, 460))
+            table.insert(world.enemies, createEnemy(155, 460))
+            table.insert(world.enemies, createEnemy(170, 460))
+            table.insert(world.enemies, createEnemy(225, 365))
+            table.insert(world.enemies, createEnemy(225, 300))
+            table.insert(world.enemies, createEnemy(325, 300))
+            table.insert(world.enemies, createEnemy(700, 380))
+            table.insert(world.enemies, createEnemy(700, 330))
+            table.insert(world.enemies, createEnemy(700, 260))
+            table.insert(world.enemies, createEnemy(66, 300))
             if enemy then enemy.attackRange = 250 end
             npc.canMove = false
             npc.collider:setLinearVelocity(0, 0)
@@ -102,5 +102,5 @@ end
 
 
 local vagner = createNpc(223, 185)
--- table.insert(world.NPCs, vagner)
+table.insert(world.NPCs, vagner)
 
