@@ -70,7 +70,7 @@ function createEnemy(x, y)
         local currentX, currentY = enemy.collider:getPosition()
         local distance = math.sqrt((currentX - enemy.lastPosition.x)^2 + (currentY - enemy.lastPosition.y)^2)
         
-        if distance < 0.1 then -- Se o inimigo se moveu menos que 0.1 unidade
+        if distance < 0.2 then -- Se o inimigo se moveu menos que 0.1 unidade
             enemy.stuckTimer = enemy.stuckTimer + dt
         else
             enemy.stuckTimer = 0
