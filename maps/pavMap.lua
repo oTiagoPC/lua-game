@@ -171,7 +171,7 @@ return {
       width = 40,
       height = 20,
       id = 4,
-      name = "objects 2",
+      name = "objects2",
       class = "",
       visible = true,
       opacity = 1,
