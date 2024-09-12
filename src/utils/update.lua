@@ -2,10 +2,7 @@ function updateAll(dt)
     world:update(dt)
     player:update(dt)
     dialog:update(dt)
-    
-    if map.mudou then 
-        map:update(dt)
-    end
+    map:update(dt)
 
     if #world.enemies > 0 then    
         for i, enemy in ipairs(world.enemies) do

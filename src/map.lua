@@ -1,8 +1,10 @@
 map = {}
-map.mudou = false
+map.renderizedMap = "maps/mainMap.lua"
+world.currentMap = "maps/mainMap.lua"
+
 
 function map:loadMap()
-    gameMap = sti(world.mapaAtual)
+    gameMap = sti(map.renderizedMap)
 
     walls = {}
 
@@ -14,12 +16,14 @@ function map:loadMap()
             table.insert(walls, wall)
         end
     end
-    map.mudou = false
 end
 
 function map:update(dt)
-    for i, obj in pairs(walls) do 
-        obj:destroy()
+    if map.renderizedMap ~= world.currentMap then
+        map.renderizedMap = world.currentMap
+        for i, wall in ipairs(walls) do
+            wall:destroy()
+        end
+        map:loadMap()
     end
-    map:loadMap()
 end
