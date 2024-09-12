@@ -37,6 +37,8 @@ function loadAll()
     require('src/npc')
     require('src/utils/functions')
     require("src/c3Map")
+    
+    require("src/mainMap")
 
     -- Functions
     map:loadMap()

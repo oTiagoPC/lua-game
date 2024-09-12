@@ -41,6 +41,15 @@ function player:update(dt)
         player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
     end
 
+
+
+
+
+    if player:enter("PavDoor") then 
+        world.currentMap = mainMap.goingPav
+        player:spawn(mainMap.pavSpawnPosition.x, mainMap.pavSpawnPosition.y)
+    end
+    
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
         player.health = player.health - 1
