@@ -47,6 +47,12 @@ function player:update(dt)
         biblio.insideDoorCollider:destroy()
     end
 
+
+    if player:enter("PavDoor") then 
+        world.currentMap = mainMap.goingPav
+        player:spawn(mainMap.pavSpawnPosition.x, mainMap.pavSpawnPosition.y)
+    end
+    
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
         player.health = player.health - 1
