@@ -56,5 +56,6 @@ function love.keypressed(key)
     end 
     if key == "5" then 
         world.mapaAtual = "maps/biblioMap.lua"
+        map.mudou = true
     end
 end
