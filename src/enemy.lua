@@ -41,6 +41,7 @@ function createEnemy(x, y)
 
     function enemy:takeDamage(damage)
         enemy.health = enemy.health - damage
+        -- enemy.attackRange = 200 -- ideia de aumentar a visão do inimigo ao ser atacado 
     end
 
     function enemy:getObject()
