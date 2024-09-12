@@ -7,6 +7,7 @@ tiagoFace = love.graphics.newImage('sprites/portraits/tiago.png')
 tiaguinFace = love.graphics.newImage('sprites/portraits/tiaguin.png')
 henriqueFace = love.graphics.newImage('sprites/portraits/henrique-portrait.png')
 bibliotecariaFace = love.graphics.newImage('sprites/portraits/blibiotecaria.png')
+blueBg = love.graphics.newImage('sprites/blueBackground.png')
 
 dialog = {}
 
@@ -77,34 +78,41 @@ end
 function dialog:draw()
     if world.dialog then
 
+        love.graphics.draw(blueBg, world.mapWidth - 55, world.mapHeight + 104, nil, 5)
+
         if dialog.character == "Berri" then 
-            love.graphics.draw(berriFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(berriFace)
         end
         if dialog.character == "Vagner" then 
-            love.graphics.draw(vagnerFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(vagnerFace)
         end
         if dialog.character == "Henrique Gabigol" then 
-            love.graphics.draw(henriqueFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(henriqueFace)
         end
         if dialog.character == "Fofinho" then 
-            love.graphics.draw(vicenzoFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(vicenzoFace)
         end
         if dialog.character == "Tiago R.A." then 
-            love.graphics.draw(tiagoFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(tiagoFace)
         end
         if dialog.character == "Tiago P.C." then 
-            love.graphics.draw(tiaguinFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(tiaguinFace)
         end
         if dialog.character == "Caio BB" then 
-            love.graphics.draw(caioFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(caioFace)
         end
         if dialog.character == "Moça da Portaria" then 
-            love.graphics.draw(bibliotecariaFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
+            drawPortrait(bibliotecariaFace)
         end
 
         love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
-        love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 61)
+        love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 124)
     end
 end
+
+function drawPortrait(portrait)
+    love.graphics.draw(portrait, world.mapWidth - 80, world.mapHeight + 95, nil, 4)
+end
+
 
 return dialog

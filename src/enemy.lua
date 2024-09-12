@@ -3,15 +3,26 @@ function createEnemy(x, y)
     enemy.collider = world:newBSGRectangleCollider(x, y, 12, 12, 3)
     enemy.x = x
     enemy.y = y
+    enemy.originX = x
+    enemy.originY = y
     enemy.speed = player.speed * 0.5
+    enemy.patrollingSpeed = enemy.speed * 0.3  -- Nova velocidade para patrulha
     enemy.health = 5
     enemy.damage = 1
     enemy.walking = false
     enemy.avoidanceTimer = 0
     enemy.avoidanceDirection = {x = 0, y = 0}
-    enemy.atackRange = 120
+    enemy.attackRange = 100
     enemy.stuckTimer = 0
     enemy.lastPosition = {x = x, y = y}
+    enemy.directionChangeTimer = 0
+    enemy.currentDirection = "downRight"
+    
+    -- Variáveis renomeadas para patrulha aleatória
+    enemy.patrolTimer = 0
+    enemy.patrolDirection = {x = 0, y = 0}
+    enemy.patrolDuration = 0
+    enemy.returningToOrigin = false
 
     enemy.collider:setCollisionClass('Enemy')
     enemy.collider:setFixedRotation(true)
@@ -70,7 +81,7 @@ function createEnemy(x, y)
         local currentX, currentY = enemy.collider:getPosition()
         local distance = math.sqrt((currentX - enemy.lastPosition.x)^2 + (currentY - enemy.lastPosition.y)^2)
         
-        if distance < 0.2 then -- Se o inimigo se moveu menos que 0.1 unidade
+        if distance < 0.1 then
             enemy.stuckTimer = enemy.stuckTimer + dt
         else
             enemy.stuckTimer = 0
@@ -79,7 +90,65 @@ function createEnemy(x, y)
         enemy.lastPosition.x = currentX
         enemy.lastPosition.y = currentY
         
-        return enemy.stuckTimer > 1 -- Consideramos preso se não se mover por mais de 1 segundo
+        return enemy.stuckTimer > 1
+    end
+
+    function enemy:updateDirection(moveX, moveY)
+        enemy.directionChangeTimer = enemy.directionChangeTimer - 1 / 60
+        if enemy.directionChangeTimer <= 0 then
+            local newDirection
+            if moveX > 0 then
+                newDirection = moveY > 0 and "downRight" or "upRight"
+            else
+                newDirection = moveY > 0 and "downLeft" or "upLeft"
+            end
+            
+            if newDirection ~= enemy.currentDirection then
+                enemy.currentDirection = newDirection
+                enemy.anim = enemy.animations[enemy.currentDirection]
+                enemy.directionChangeTimer = 0.5
+            end
+        end
+    end
+
+    function enemy:randomPatrol(dt)
+        enemy.patrolTimer = enemy.patrolTimer - dt
+        
+        if enemy.patrolTimer <= 0 then
+            if enemy.returningToOrigin then
+                local dx = enemy.originX - enemy.x
+                local dy = enemy.originY - enemy.y
+                local distance = math.sqrt(dx^2 + dy^2)
+                
+                if distance < 5 then
+                    enemy.returningToOrigin = false
+                    enemy.patrolTimer = math.random(1, 3)
+                else
+                    enemy.patrolDirection.x = dx / distance
+                    enemy.patrolDirection.y = dy / distance
+                end
+            else
+                local angle = math.random() * 2 * math.pi
+                enemy.patrolDirection.x = math.cos(angle)
+                enemy.patrolDirection.y = math.sin(angle)
+                enemy.patrolDuration = math.random(2, 4)
+                enemy.patrolTimer = enemy.patrolDuration
+            end
+        end
+        
+        
+        if not enemy.returningToOrigin and enemy.patrolTimer <= 0 then
+            enemy.returningToOrigin = true
+            enemy.patrolTimer = math.huge  -- Será resetado na próxima iteração
+        end
+        
+        if enemy.collider:enter('Wall') then
+            enemy.patrolTimer = 0
+        end
+        
+        enemy.collider:setLinearVelocity(enemy.patrolDirection.x * enemy.patrollingSpeed, enemy.patrolDirection.y * enemy.patrollingSpeed)
+        enemy:updateDirection(enemy.patrolDirection.x, enemy.patrolDirection.y)
+        enemy.walking = true
     end
 
     function enemy:update(dt)
@@ -92,11 +161,11 @@ function createEnemy(x, y)
 
         local dx = player.x - enemy.x
         local dy = player.y - enemy.y
-        local distance = math.sqrt(dx^2 + dy^2)
+        local distanceToPlayer = math.sqrt(dx^2 + dy^2)
 
-        if distance < enemy.atackRange then
-            local moveX = dx / distance
-            local moveY = dy / distance
+        if distanceToPlayer < enemy.attackRange then
+            local moveX = dx / distanceToPlayer
+            local moveY = dy / distanceToPlayer
 
             if enemy.avoidanceTimer > 0 then
                 moveX = moveX + enemy.avoidanceDirection.x
@@ -108,19 +177,11 @@ function createEnemy(x, y)
                 end
             end
 
-            local speed = enemy.speed
-
-            enemy.collider:setLinearVelocity(moveX * speed, moveY * speed)
+            enemy.collider:setLinearVelocity(moveX * enemy.speed, moveY * enemy.speed)
             enemy.walking = true
-
-            if moveX > 0 then
-                enemy.anim = moveY > 0 and enemy.animations.downRight or enemy.animations.upRight
-            else
-                enemy.anim = moveY > 0 and enemy.animations.downLeft or enemy.animations.upLeft
-            end
+            enemy:updateDirection(moveX, moveY)
         else
-            enemy.walking = false
-            enemy.collider:setLinearVelocity(0, 0)
+            enemy:randomPatrol(dt)
         end
 
         local isStuck = enemy:checkIfStuck(dt)

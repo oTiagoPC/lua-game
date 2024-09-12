@@ -1,4 +1,4 @@
-player = world:newBSGRectangleCollider(140, 200, 12, 12, 3)
+player = world:newBSGRectangleCollider(160, 280, 12, 12, 3)
 player.x = 0
 player.y = 0
 player.dirX = 1
