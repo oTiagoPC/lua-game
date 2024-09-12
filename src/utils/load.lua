@@ -37,7 +37,8 @@ function loadAll()
     require('src/npc')
     require('src/utils/functions')
     require("src/c3Map")
-
+    require("src/biblioMap")
+    
     -- Functions
     map:loadMap()
 end

@@ -100,4 +100,4 @@ end
 
 -- Criando novos inimigos
 local vagner = createNpc(223, 185)
-table.insert(world.NPCs, vagner)
+-- table.insert(world.NPCs, vagner)
