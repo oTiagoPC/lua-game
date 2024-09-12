@@ -77,41 +77,49 @@ end
 
 function dialog:draw()
     if world.dialog then
+        local windowWidth = love.graphics.getWidth()
+        local windowHeight = love.graphics.getHeight()
 
-        love.graphics.draw(blueBg, world.mapWidth - 55, world.mapHeight + 104, nil, 5)
+        local textBoxWidth = textBox:getWidth() * 5
+        local textBoxHeight = textBox:getHeight() * 5
+
+        local textBoxX = (windowWidth - textBoxWidth) / 2
+        local textBoxY = windowHeight - textBoxHeight - 50
+
+        love.graphics.draw(blueBg, textBoxX, textBoxY, nil, 5)
+
+        local portraitX = textBoxX - 10
+        local portraitY = textBoxY + 10
 
         if dialog.character == "Berri" then 
-            drawPortrait(berriFace)
-        end
-        if dialog.character == "Vagner" then 
-            drawPortrait(vagnerFace)
-        end
-        if dialog.character == "Henrique Gabigol" then 
-            drawPortrait(henriqueFace)
-        end
-        if dialog.character == "Fofinho" then 
-            drawPortrait(vicenzoFace)
-        end
-        if dialog.character == "Tiago R.A." then 
-            drawPortrait(tiagoFace)
-        end
-        if dialog.character == "Tiago P.C." then 
-            drawPortrait(tiaguinFace)
-        end
-        if dialog.character == "Caio BB" then 
-            drawPortrait(caioFace)
-        end
-        if dialog.character == "Moça da Portaria" then 
-            drawPortrait(bibliotecariaFace)
+            drawPortrait(berriFace, portraitX, portraitY)
+        elseif dialog.character == "Vagner" then 
+            drawPortrait(vagnerFace, portraitX, portraitY)
+        elseif dialog.character == "Henrique Gabigol" then 
+            drawPortrait(henriqueFace, portraitX, portraitY)
+        elseif dialog.character == "Fofinho" then 
+            drawPortrait(vicenzoFace, portraitX, portraitY)
+        elseif dialog.character == "Tiago R.A." then 
+            drawPortrait(tiagoFace, portraitX, portraitY)
+        elseif dialog.character == "Tiago P.C." then 
+            drawPortrait(tiaguinFace, portraitX, portraitY)
+        elseif dialog.character == "Caio BB" then 
+            drawPortrait(caioFace, portraitX, portraitY)
+        elseif dialog.character == "Moça da Portaria" then 
+            drawPortrait(bibliotecariaFace, portraitX, portraitY)
         end
 
-        love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
-        love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 124)
+        love.graphics.draw(textBox, textBoxX, textBoxY, nil, 5)
+
+        -- Centralizar o texto dentro da caixa de diálogo
+        local textX = textBoxX + 280 -- Um pouco de margem à esquerda
+        local textY = textBoxY + 40 -- Um pouco de margem no topo
+        love.graphics.print(dialog.text, textX, textY)
     end
 end
 
-function drawPortrait(portrait)
-    love.graphics.draw(portrait, world.mapWidth - 80, world.mapHeight + 95, nil, 4)
+function drawPortrait(portrait, x, y)
+    love.graphics.draw(portrait, x, y, nil, 4)
 end
 
 

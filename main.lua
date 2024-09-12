@@ -15,11 +15,10 @@ function love.update(dt)
     end
 end
 
-function love.draw()
+function love.draw() 
     if gameState == "menu" then
-      
-        love.graphics.print("Berri: Age of AI's\nPressione 'espaço' para começar", 300, 300)
-
+        love.graphics.draw(sprites.hud.title, love.graphics.getWidth() / 2, love.graphics.getHeight() / 3, 0, 8, 8, sprites.hud.title:getWidth() / 2, sprites.hud.title:getHeight() / 2)
+        love.graphics.draw(sprites.hud.startingText, love.graphics.getWidth() / 2, love.graphics.getHeight() / 1.2, 0, 8, 8, sprites.hud.startingText:getWidth() / 2, sprites.hud.startingText:getHeight() / 2)
     else
         cam:attach()
         drawInCamera()
