@@ -47,6 +47,14 @@ function drawInCamera()
             food:draw()
         end
     end
+
+    if #world.sommelier > 0 then 
+        local y = 130
+        for i, person in ipairs(world.sommelier) do 
+            sommelier:draw(person, 95, y)
+            y = y + 15
+        end
+    end
 end
 
 function drawAfterCamera()

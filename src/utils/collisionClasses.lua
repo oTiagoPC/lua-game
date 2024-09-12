@@ -13,4 +13,5 @@ function createCollisionClasses()
     world:addCollisionClass('PavInsideDoor')
     world:addCollisionClass('BiblioDoor')
     world:addCollisionClass('BiblioInsideDoor')
+    world:addCollisionClass("Sommelier")
 end
