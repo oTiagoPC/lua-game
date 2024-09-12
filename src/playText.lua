@@ -76,6 +76,8 @@ end
 
 function dialog:draw()
     if world.dialog then
+        
+        love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
 
         if dialog.character == "Berri" then 
             love.graphics.draw(berriFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
@@ -102,7 +104,7 @@ function dialog:draw()
             love.graphics.draw(bibliotecariaFace, world.mapWidth - 75, world.mapHeight + 40, nil, 4)
         end
 
-        love.graphics.draw(textBox, world.mapWidth - 90, world.mapHeight + 9, nil, 5)
+        
         love.graphics.print(dialog.text, world.mapWidth + 200, world.mapHeight + 61)
     end
 end
