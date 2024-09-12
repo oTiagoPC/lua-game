@@ -55,7 +55,7 @@ end
 
 function dialog:next()
     dialog.currentText = dialog.currentText + 1
-    if dialog.currentText <= dialog.LenDialog then
+    if dialog.currentText < dialog.LenDialog then
         dialog:setText()  -- Atualiza o texto e o personagem
     else
         world.dialog = false
