@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="121">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="122">
  <editorsettings>
   <export target="biblioMap.lua" format="lua"/>
  </editorsettings>
@@ -198,7 +198,6 @@
   <object id="33" x="16" y="0" width="800" height="64"/>
   <object id="34" x="224" y="64" width="256" height="16"/>
   <object id="35" x="224" y="112" width="256" height="32"/>
-  <object id="36" x="224" y="176" width="240" height="32"/>
   <object id="37" x="224" y="240" width="256" height="32"/>
   <object id="38" x="480" y="256" width="16" height="16"/>
   <object id="39" x="176" y="240" width="16" height="48"/>
@@ -267,5 +266,6 @@
   <object id="118" x="768" y="48" width="16" height="112"/>
   <object id="119" x="720" y="48" width="16" height="112"/>
   <object id="120" x="800" y="64" width="16" height="16"/>
+  <object id="121" x="224" y="176" width="256" height="32"/>
  </objectgroup>
 </map>
