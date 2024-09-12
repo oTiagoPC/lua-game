@@ -17,6 +17,8 @@ function sommelier:draw(personagem,x,y)
     love.graphics.draw(personagem, x , y)
 end
 
-sommelier.collider = world:newBSGRectangleCollider(146, 214, 40, 70, 3)
-sommelier.collider:setCollisionClass("Sommelier")
-sommelier.collider:setType("static")
+function sommelier:create()
+    sommelier.collider = world:newBSGRectangleCollider(146, 214, 40, 70, 3)
+    sommelier.collider:setCollisionClass("Sommelier")
+    sommelier.collider:setType("static")
+end

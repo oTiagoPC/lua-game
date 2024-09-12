@@ -5,3 +5,10 @@ world.NPCs = {}
 world.dialog = false 
 world.dialogoAtual = roteiro.pav3.dialogo2
 world.sommelier = {}
+function world.clear()
+    world.enemies = {}
+    world.coins = {}
+    world.food = {}
+    world.NPCs = {}
+end 
+

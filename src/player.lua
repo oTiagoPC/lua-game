@@ -41,6 +41,7 @@ function player:update(dt)
         player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
         c3.insideDoorCollider:destroy()
         mainMap:pavCreate()
+        world.clear()
     end
 
     if player:enter('C3Door') then
@@ -53,6 +54,7 @@ function player:update(dt)
         player:spawn(biblio.spawnPosition.x, biblio.spawnPosition.y)
         biblio.insideDoorCollider:destroy()
         mainMap:c3Create()
+        world.clear()
     end
 
     if player:enter("PavDoor") then 
@@ -60,6 +62,12 @@ function player:update(dt)
         player:spawn(mainMap.pavSpawnPosition.x, mainMap.pavSpawnPosition.y)
         mainMap.pavDoorCollider:destroy()
         pavMap:create()
+        sommelier:create()
+        table.insert(world.enemies, createEnemy(500, 100))
+        table.insert(world.enemies, createEnemy(580, 100))
+        table.insert(world.enemies, createEnemy(532, 157))
+        table.insert(world.enemies, createEnemy(532, 200))
+        dialog:start()
     end
 
     if player:enter("PavInsideDoor") then 
@@ -67,6 +75,7 @@ function player:update(dt)
         player:spawn(pavMap.spawnPosition.x, pavMap.spawnPosition.y)
         pavMap.insideDoorCollider:destroy()
         mainMap.biblioCreate()
+        world.clear()
     end
 
     if player:enter("BiblioDoor") then 
@@ -75,7 +84,13 @@ function player:update(dt)
         mainMap.biblioDoorCollider:destroy()
         biblio:createInsideDoor()
     end
-    
+
+
+    if player:enter("Sommelier") then 
+        world.dialogoAtual = roteiro.pav3.dialogo2
+        dialog:start()
+        sommelier.collider:destroy()
+    end
     
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
