@@ -14,6 +14,7 @@ sprites.hud.coinIcon = love.graphics.newImage('sprites/ui/coinIcon.png')
 sprites.hud.hamburguer = love.graphics.newImage('sprites/ui/hamburguer.png')
 sprites.hud.title = love.graphics.newImage('sprites/ui/title.png')
 sprites.hud.startingText = love.graphics.newImage('sprites/ui/startingText.png')
+sprites.hud.titleBackground = love.graphics.newImage('sprites/ui/titleBackground.png')
 
 fonts = {}
 fonts.default = love.graphics.newFont('fonts/pixel-font.ttf', 20)
