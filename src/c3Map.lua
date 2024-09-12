@@ -7,6 +7,3 @@ c3.insideDoorCollider = world:newBSGRectangleCollider(560, 572, 100, 20, 3) -- x
 c3.insideDoorCollider:setCollisionClass('C3InsideDoor')
 c3.insideDoorCollider:setType('static')
 
-
-
-

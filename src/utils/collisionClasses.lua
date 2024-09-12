@@ -10,6 +10,7 @@ function createCollisionClasses()
     world:addCollisionClass('C3Door')
     world:addCollisionClass('C3InsideDoor')
     world:addCollisionClass('PavDoor')
+    world:addCollisionClass('PavInsideDoor')
     world:addCollisionClass('BiblioDoor')
     world:addCollisionClass('BiblioInsideDoor')
 end

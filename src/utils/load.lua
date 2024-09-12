@@ -39,6 +39,7 @@ function loadAll()
     require("src/c3Map")
     require("src/mainMap")
     require("src/biblioMap")
+    require("src/pavMap")
     -- Functions
     map:loadMap()
 end

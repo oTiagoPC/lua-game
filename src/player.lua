@@ -39,19 +39,43 @@ function player:update(dt)
     if player:enter('C3InsideDoor') then
         world.currentMap = c3.goingMapPath
         player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
+        c3.insideDoorCollider:destroy()
+        mainMap:pavCreate()
+    end
+
+    if player:enter('C3Door') then
+        world.currentMap = mainMap.goingC3
+        player:spawn(mainMap.c3SpawnPosition.x, mainMap.c3SpawnPosition.y)
     end
 
     if player:enter("BiblioInsideDoor") then
         world.currentMap = biblio.goingMapPath
         player:spawn(biblio.spawnPosition.x, biblio.spawnPosition.y)
         biblio.insideDoorCollider:destroy()
+        mainMap:c3Create()
     end
-
 
     if player:enter("PavDoor") then 
         world.currentMap = mainMap.goingPav
         player:spawn(mainMap.pavSpawnPosition.x, mainMap.pavSpawnPosition.y)
+        mainMap.pavDoorCollider:destroy()
+        pavMap:create()
     end
+
+    if player:enter("PavInsideDoor") then 
+        world.currentMap = "maps/mainMap.lua"
+        player:spawn(pavMap.spawnPosition.x, pavMap.spawnPosition.y)
+        pavMap.insideDoorCollider:destroy()
+        mainMap.biblioCreate()
+    end
+
+    if player:enter("BiblioDoor") then 
+        world.currentMap = mainMap.goingBiblio
+        player:spawn(mainMap.biblioSpawnPosition.x, mainMap.biblioSpawnPosition.y)
+        mainMap.biblioDoorCollider:destroy()
+        biblio:createInsideDoor()
+    end
+    
     
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
