@@ -41,8 +41,11 @@ function player:update(dt)
         player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
     end
 
-
-
+    if player:enter("BiblioInsideDoor") then
+        world.currentMap = biblio.goingMapPath
+        player:spawn(biblio.spawnPosition.x, biblio.spawnPosition.y)
+        biblio.insideDoorCollider:destroy()
+    end
 
 
     if player:enter("PavDoor") then 
