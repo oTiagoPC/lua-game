@@ -36,6 +36,7 @@ function loadAll()
     require('src/healing')
     require('src/npc')
     require('src/utils/functions')
+    require("src/c3Map")
 
     -- Functions
     map:loadMap()

@@ -1,6 +1,6 @@
 map = {}
-map.renderizedMap = "maps/mainMap.lua"
-world.currentMap = "maps/mainMap.lua"
+map.renderizedMap = "maps/c3Map.lua"
+world.currentMap = "maps/c3Map.lua"
 
 
 function map:loadMap()

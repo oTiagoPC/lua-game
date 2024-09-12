@@ -17,7 +17,9 @@ end
 
 function love.draw()
     if gameState == "menu" then
-        love.graphics.print("Pressione 'W' para começar", 300, 300)
+      
+        love.graphics.print("Berri: Age of AI's\nPressione 'espaço' para começar", 300, 300)
+
     else
         cam:attach()
         drawInCamera()
@@ -31,7 +33,7 @@ function love.draw()
 end
 
 function love.keypressed(key)
-    if key == 'w' then
+    if key == 'space' then
         gameState = "game"
     end
     if gameState == "game" then      

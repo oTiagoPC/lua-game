@@ -55,6 +55,6 @@ function drawAfterCamera()
         dialog:draw()
     end
     
-    love.graphics.printf("Posiçao do mouse: " .. math.floor(player.x) .. " " .. math.floor(player.y), 0, 0, 800, 'left')
+    love.graphics.printf("Posiçao do player: " .. math.floor(player.x) .. " " .. math.floor(player.y), 0, 0, 800, 'left')
     
 end

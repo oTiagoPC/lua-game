@@ -5,14 +5,14 @@ function createEnemy(x, y)
     enemy.y = y
     enemy.originX = x
     enemy.originY = y
-    enemy.speed = player.speed * 0.5
+    enemy.speed = player.speed * 0.6
     enemy.patrollingSpeed = enemy.speed * 0.3  -- Nova velocidade para patrulha
     enemy.health = 5
     enemy.damage = 1
     enemy.walking = false
     enemy.avoidanceTimer = 0
     enemy.avoidanceDirection = {x = 0, y = 0}
-    enemy.attackRange = 100
+    enemy.attackRange = 125
     enemy.stuckTimer = 0
     enemy.lastPosition = {x = x, y = y}
     enemy.directionChangeTimer = 0
@@ -41,7 +41,8 @@ function createEnemy(x, y)
 
     function enemy:takeDamage(damage)
         enemy.health = enemy.health - damage
-        -- enemy.attackRange = 200 -- ideia de aumentar a visão do inimigo ao ser atacado 
+        enemy.attackRange = 300 -- ideia de aumentar a visão do inimigo ao ser atacado 
+        enemy.speed = player.speed * 0.8 -- ideia de aumentar a velocidade do inimigo ao ser atacado
     end
 
     function enemy:getObject()
@@ -221,6 +222,3 @@ function createEnemy(x, y)
     return enemy
 end
 
--- Criando novos inimigos
--- local enemy4 = createEnemy(100, 400)
-table.insert(world.enemies, enemy4)

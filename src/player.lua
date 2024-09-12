@@ -1,4 +1,4 @@
-player = world:newBSGRectangleCollider(160, 280, 12, 12, 3)
+player = world:newBSGRectangleCollider(326, 134, 12, 12, 3)
 player.x = 0
 player.y = 0
 player.dirX = 1
@@ -29,11 +29,17 @@ player.animations.downLeft = anim8.newAnimation(player.grid('1-2', 1), 0.2)
 player.animations.upRight = anim8.newAnimation(player.grid('1-2', 2), 0.2)
 player.animations.upLeft = anim8.newAnimation(player.grid('1-2', 2), 0.2)
 
-player.anim = player.animations.downRight
+player.anim = player.animations.downLeft
 
 function player:update(dt)
     player:setLinearDamping(12)
     local dirX, dirY = 0, 0
+
+    -- Door verifications
+    if player:enter('C3InsideDoor') then
+        world.currentMap = c3.goingMapPath
+        player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
+    end
 
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
