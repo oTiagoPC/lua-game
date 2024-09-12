@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="118">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="119">
  <editorsettings>
   <export target="c3Map.lua" format="lua"/>
  </editorsettings>
@@ -259,5 +259,6 @@
   <object id="114" x="480" y="160" width="16" height="32"/>
   <object id="115" x="560" y="160" width="96" height="32"/>
   <object id="117" x="656" y="128" width="16" height="48"/>
+  <object id="118" x="-16" y="256" width="16" height="96"/>
  </objectgroup>
 </map>
