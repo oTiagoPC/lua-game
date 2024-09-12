@@ -20,7 +20,7 @@ function drawInCamera()
     
     if #world.NPCs > 0 then 
         for i, npc in ipairs(world.NPCs) do
-           npc.anim:draw(sprites.vagnerSheet, npc.x-2, npc.y, nil, npc.dirX, 1, 11, 10.5)
+           npc.anim:draw(sprites.vagnerSheet, npc.x, npc.y, nil, npc.dirX, 1, 11, 10.5)
         end
     end
     
@@ -55,7 +55,6 @@ function drawAfterCamera()
         dialog:draw()
     end
     
-    love.graphics.printf("Posiçao do mouse: " .. player.x .. " " .. player.y, 0, 0, 800, 'left')
+    love.graphics.printf("Posiçao do mouse: " .. math.floor(player.x) .. " " .. math.floor(player.y), 0, 0, 800, 'left')
     
-
 end
