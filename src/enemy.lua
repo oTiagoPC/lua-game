@@ -77,25 +77,25 @@ function createEnemy(x, y)
         
         
         if distanceBetween(enemy.x, enemy.y, player:getX(), player:getY()) < 80 then
-        if playerPosition.x > enemyPosition.x then
-            enemy.dirX = 1
-            if playerPosition.y > enemyPosition.y then
-                enemy.anim = enemy.animations.downRight
-                enemy.dirY = 1
+            if playerPosition.x > enemyPosition.x then
+                enemy.dirX = 1
+                if playerPosition.y > enemyPosition.y then
+                    enemy.anim = enemy.animations.downRight
+                    enemy.dirY = 1
+                else
+                    enemy.anim = enemy.animations.upRight
+                    enemy.dirY = -1
+                end
             else
-                enemy.anim = enemy.animations.upRight
-                enemy.dirY = -1
+                enemy.dirX = -1
+                if playerPosition.y > enemyPosition.y then
+                    enemy.anim = enemy.animations.downLeft
+                    enemy.dirY = 1
+                else
+                    enemy.anim = enemy.animations.upLeft
+                    enemy.dirY = -1
+                end
             end
-        else
-            enemy.dirX = -1
-            if playerPosition.y > enemyPosition.y then
-                enemy.anim = enemy.animations.downLeft
-                enemy.dirY = 1
-            else
-                enemy.anim = enemy.animations.upLeft
-                enemy.dirY = -1
-            end
-        end
 
         local vec = (playerPosition - enemyPosition):normalized() * enemy.speed
         enemy.collider:setLinearVelocity(vec.x, vec.y)

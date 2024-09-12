@@ -1,8 +1,22 @@
 function drawInCamera()
-    gameMap:drawLayer(gameMap.layers["ground"])
-    gameMap:drawLayer(gameMap.layers["details"])
-    gameMap:drawLayer(gameMap.layers["buildings"])
-    gameMap:drawLayer(gameMap.layers["barriers"])
+    if gameMap.layers["ground"] then
+        gameMap:drawLayer(gameMap.layers["ground"])
+    end
+    if gameMap.layers["details"] then
+        gameMap:drawLayer(gameMap.layers["details"])
+    end
+    if gameMap.layers["buildings"] then
+        gameMap:drawLayer(gameMap.layers["buildings"])
+    end
+    if gameMap.layers["objects"] then
+        gameMap:drawLayer(gameMap.layers["objects"])
+    end
+    if gameMap.layers["objects2"] then
+        gameMap:drawLayer(gameMap.layers["objects2"])
+    end
+    if gameMap.layers["barriers"] then
+        gameMap:drawLayer(gameMap.layers["barriers"])
+    end
 
     if #world.NPCs > 0 then 
         for i, npc in ipairs(world.NPCs) do
