@@ -6,6 +6,14 @@ sprites.coinSheet = love.graphics.newImage('sprites/sheets/coinSheet.png')
 sprites.burgerSheet = love.graphics.newImage('sprites/sheets/burgerSheet.png')
 sprites.bulletSheet = love.graphics.newImage('sprites/sheets/bulletSheet.png')
 
+sprites.sommelier = {}
+sprites.sommelier.tiaguin = love.graphics.newImage('sprites/sommelier/tiaguin.png')
+sprites.sommelier.tiago = love.graphics.newImage('sprites/sommelier/tiago.png')
+sprites.sommelier.henrique = love.graphics.newImage('sprites/sommelier/henrique.png')
+sprites.sommelier.vicenzo = love.graphics.newImage('sprites/sommelier/vicenzo.png')
+sprites.sommelier.caio = love.graphics.newImage('sprites/sommelier/caio.png')
+
+
 sprites.hud = {}
 sprites.hud.fullHeart = love.graphics.newImage('sprites/ui/fullHeart.png')
 sprites.hud.emptyHeart = love.graphics.newImage('sprites/ui/emptyHeart.png')
