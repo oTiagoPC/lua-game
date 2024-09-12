@@ -38,5 +38,5 @@ function loadAll()
     require('src/utils/functions')
 
     -- Functions
-    loadMap()
+    map:loadMap()
 end

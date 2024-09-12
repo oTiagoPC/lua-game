@@ -54,4 +54,7 @@ function love.keypressed(key)
     if key == "2" then 
         world.dialogoAtual = roteiro.c3.dialogo2
     end 
+    if key == "5" then 
+        world.mapaAtual = "maps/biblioMap.lua"
+    end
 end
