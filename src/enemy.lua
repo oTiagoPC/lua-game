@@ -38,7 +38,7 @@ function createEnemy(x, y)
         if enemy.health <= 0 then
             local num = math.random(1,10)
 
-            if num > 9 then
+            if num > 6 then
 
                 -- Cria uma moeda aonde o inimigo morreu 
                 local coin = createCoin(enemy.x, enemy.y)
@@ -74,36 +74,50 @@ function createEnemy(x, y)
 
         local playerPosition = vector(player.x, player.y)
         local enemyPosition = vector(enemy.x, enemy.y)
-
-        if enemy.walking then
-            if playerPosition.x > enemyPosition.x then
-                enemy.dirX = 1
-                if playerPosition.y > enemyPosition.y then
-                    enemy.anim = enemy.animations.downRight
-                else
-                    enemy.anim = enemy.animations.upRight
-                end
+        
+        
+        if distanceBetween(enemy.x, enemy.y, player:getX(), player:getY()) < 80 then
+        if playerPosition.x > enemyPosition.x then
+            enemy.dirX = 1
+            if playerPosition.y > enemyPosition.y then
+                enemy.anim = enemy.animations.downRight
+                enemy.dirY = 1
             else
-                enemy.dirX = -1
-                if playerPosition.y > enemyPosition.y then
-                    enemy.anim = enemy.animations.downLeft
-                else
-                    enemy.anim = enemy.animations.upLeft
-                end
+                enemy.anim = enemy.animations.upRight
+                enemy.dirY = -1
+            end
+        else
+            enemy.dirX = -1
+            if playerPosition.y > enemyPosition.y then
+                enemy.anim = enemy.animations.downLeft
+                enemy.dirY = 1
+            else
+                enemy.anim = enemy.animations.upLeft
+                enemy.dirY = -1
             end
         end
 
         local vec = (playerPosition - enemyPosition):normalized() * enemy.speed
-        if vec.x ~= 0 or vec.y ~= 0 then
-            enemy.collider:setLinearVelocity(vec.x, vec.y)
-        end
+        enemy.collider:setLinearVelocity(vec.x, vec.y)
 
-        if enemy.dirX == 0 and enemy.dirY == 0 then
-            enemy.walking = false
-            enemy.anim:gotoFrame(1)
-        else
+        -- Verifique se o inimigo está se movendo
+        if vec.x ~= 0 or vec.y ~= 0 then
             enemy.walking = true
+        else
+            enemy.walking = false
         end
+    else
+        -- Se o jogador não estiver próximo, o inimigo para
+        enemy.walking = false
+        enemy.collider:setLinearVelocity(0, 0)
+    end
+
+    if enemy.walking then
+        enemy.anim:update(dt)
+    else
+        -- Pausa a animação no primeiro quadro
+        enemy.anim:gotoFrame(1)
+    end
 
         enemy.anim:update(dt)
 

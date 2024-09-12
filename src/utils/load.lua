@@ -35,6 +35,7 @@ function loadAll()
     require('src/coin')
     require('src/healing')
     require('src/npc')
+    require('src/utils/functions')
 
     -- Functions
     loadMap()
