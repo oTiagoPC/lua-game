@@ -10,6 +10,8 @@ function createEnemy(x, y)
     enemy.avoidanceTimer = 0
     enemy.avoidanceDirection = {x = 0, y = 0}
     enemy.atackRange = 120
+    enemy.stuckTimer = 0
+    enemy.lastPosition = {x = x, y = y}
 
     enemy.collider:setCollisionClass('Enemy')
     enemy.collider:setFixedRotation(true)
@@ -27,68 +29,78 @@ function createEnemy(x, y)
     enemy.anim = enemy.animations.downRight
 
     function enemy:takeDamage(damage)
-        self.health = self.health - damage
+        enemy.health = enemy.health - damage
     end
 
     function enemy:getObject()
-        return self
+        return enemy
     end
 
     enemy.collider:setObject(enemy)
 
     function enemy:checkCollision()
-        -- Aumentar o raio da área de verificação de colisão para suavizar reações
-        local colliders = world:queryRectangleArea(self.x - 20, self.y - 20, 40, 40, {'Wall'})
+        local colliders = world:queryRectangleArea(enemy.x - 20, enemy.y - 20, 40, 40, {'Wall'})
         
         if #colliders > 0 then
             local avoidX, avoidY = 0, 0
             for _, collider in ipairs(colliders) do
                 local cx, cy = collider:getPosition()
-                avoidX = avoidX + (self.x - cx)
-                avoidY = avoidY + (self.y - cy)
+                avoidX = avoidX + (enemy.x - cx)
+                avoidY = avoidY + (enemy.y - cy)
             end
     
             local len = math.sqrt(avoidX^2 + avoidY^2)
             if len > 0 then
-                -- Suavizar a mudança de direção usando interpolação linear
-                local smoothFactor = 0.025  -- Quanto menor, mais suave a mudança de direção
-                self.avoidanceDirection.x = self.avoidanceDirection.x * (1 - smoothFactor) + (avoidX / len) * smoothFactor
-                self.avoidanceDirection.y = self.avoidanceDirection.y * (1 - smoothFactor) + (avoidY / len) * smoothFactor
+                local smoothFactor = 0.025
+                enemy.avoidanceDirection.x = enemy.avoidanceDirection.x * (1 - smoothFactor) + (avoidX / len) * smoothFactor
+                enemy.avoidanceDirection.y = enemy.avoidanceDirection.y * (1 - smoothFactor) + (avoidY / len) * smoothFactor
             end
     
-            -- Prolongar o tempo de desvio para evitar mudanças bruscas
-            self.avoidanceTimer = 4.0
-        elseif self.avoidanceTimer > 0 then
-            -- Diminuir o timer suavemente
-            self.avoidanceTimer = self.avoidanceTimer - 1 / 60 -- Supondo 60 FPS
+            enemy.avoidanceTimer = 4.0
+        elseif enemy.avoidanceTimer > 0 then
+            enemy.avoidanceTimer = enemy.avoidanceTimer - 1 / 60
         else
-            -- Resetar a direção de desvio lentamente
-            local resetFactor = 0.05  -- Mais lento que a mudança de direção
-            self.avoidanceDirection.x = self.avoidanceDirection.x * (1 - resetFactor)
-            self.avoidanceDirection.y = self.avoidanceDirection.y * (1 - resetFactor)
+            local resetFactor = 0.05
+            enemy.avoidanceDirection.x = enemy.avoidanceDirection.x * (1 - resetFactor)
+            enemy.avoidanceDirection.y = enemy.avoidanceDirection.y * (1 - resetFactor)
         end
     end
     
+    function enemy:checkIfStuck(dt)
+        local currentX, currentY = enemy.collider:getPosition()
+        local distance = math.sqrt((currentX - enemy.lastPosition.x)^2 + (currentY - enemy.lastPosition.y)^2)
+        
+        if distance < 0.1 then -- Se o inimigo se moveu menos que 0.1 unidade
+            enemy.stuckTimer = enemy.stuckTimer + dt
+        else
+            enemy.stuckTimer = 0
+        end
+        
+        enemy.lastPosition.x = currentX
+        enemy.lastPosition.y = currentY
+        
+        return enemy.stuckTimer > 1 -- Consideramos preso se não se mover por mais de 1 segundo
+    end
 
     function enemy:update(dt)
-        if self.health <= 0 then
-            self:onDeath()
+        if enemy.health <= 0 then
+            enemy:onDeath()
             return
         end
 
-        self:checkCollision()
+        enemy:checkCollision()
 
-        local dx = player.x - self.x
-        local dy = player.y - self.y
+        local dx = player.x - enemy.x
+        local dy = player.y - enemy.y
         local distance = math.sqrt(dx^2 + dy^2)
 
         if distance < enemy.atackRange then
             local moveX = dx / distance
             local moveY = dy / distance
 
-            if self.avoidanceTimer > 0 then
-                moveX = moveX + self.avoidanceDirection.x
-                moveY = moveY + self.avoidanceDirection.y
+            if enemy.avoidanceTimer > 0 then
+                moveX = moveX + enemy.avoidanceDirection.x
+                moveY = moveY + enemy.avoidanceDirection.y
                 local len = math.sqrt(moveX^2 + moveY^2)
                 if len > 0 then
                     moveX = moveX / len
@@ -96,29 +108,31 @@ function createEnemy(x, y)
                 end
             end
 
-            local speed = self.speed
+            local speed = enemy.speed
 
-            self.collider:setLinearVelocity(moveX * speed, moveY * speed)
-            self.walking = true
+            enemy.collider:setLinearVelocity(moveX * speed, moveY * speed)
+            enemy.walking = true
 
             if moveX > 0 then
-                self.anim = moveY > 0 and self.animations.downRight or self.animations.upRight
+                enemy.anim = moveY > 0 and enemy.animations.downRight or enemy.animations.upRight
             else
-                self.anim = moveY > 0 and self.animations.downLeft or self.animations.upLeft
+                enemy.anim = moveY > 0 and enemy.animations.downLeft or enemy.animations.upLeft
             end
         else
-            self.walking = false
-            self.collider:setLinearVelocity(0, 0)
+            enemy.walking = false
+            enemy.collider:setLinearVelocity(0, 0)
         end
 
-        if self.walking then
-            self.anim:update(dt)
+        local isStuck = enemy:checkIfStuck(dt)
+        
+        if enemy.walking and not isStuck then
+            enemy.anim:update(dt)
         else
-            self.anim:gotoFrame(1)
+            enemy.anim:gotoFrame(1)
         end
 
-        self.x = self.collider:getX()
-        self.y = self.collider:getY()
+        enemy.x = enemy.collider:getX()
+        enemy.y = enemy.collider:getY()
     end
 
     function enemy:onDeath()
@@ -126,16 +140,16 @@ function createEnemy(x, y)
 
         local drop
         if dropChance > 6 then
-            drop = createCoin(self.x, self.y)
+            drop = createCoin(enemy.x, enemy.y)
             table.insert(world.coins, drop)
         else
-            drop = createBurger(self.x, self.y)
+            drop = createBurger(enemy.x, enemy.y)
             table.insert(world.food, drop)
         end
 
-        self.collider:destroy()
+        enemy.collider:destroy()
         for i, e in ipairs(world.enemies) do
-            if e == self then
+            if e == enemy then
                 table.remove(world.enemies, i)
                 break
             end
