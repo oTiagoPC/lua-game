@@ -40,7 +40,8 @@ function loadAll()
     require("src/mainMap")
     require("src/biblioMap")
     require("src/pavMap")
-    require("src.sommelier")
+    require("src/sommelier")
+    require("src/menu")
     -- Functions
     map:loadMap()
 end

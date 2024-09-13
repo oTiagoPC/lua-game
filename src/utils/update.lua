@@ -1,4 +1,12 @@
 function updateAll(dt)
+    if world.dialog then
+        dialog:update(dt)
+    else
+        updateGame(dt)
+    end
+end
+
+function updateGame(dt)
     world:update(dt)
     player:update(dt)
     dialog:update(dt)

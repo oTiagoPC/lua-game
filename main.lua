@@ -8,11 +8,7 @@ function love.load()
 end
 
 function love.update(dt)
-    if world.dialog then
-        dialog:update(dt)
-    else
-        updateAll(dt)
-    end
+    updateAll(dt)
 end
 
 function love.draw()
@@ -40,9 +36,6 @@ function love.keypressed(key)
         if key == 'q' then
             colliderToggle = not colliderToggle
         end
-        if key == "x" then
-            dialog:start()
-        end
         if key == "space" then
             if world.dialog then
                 dialog:next()
@@ -59,16 +52,6 @@ function love.keypressed(key)
         end
         if key == "j" then
             player:heal()
-        end
-        if key == "1" then
-            world.dialogoAtual = roteiro.c3.dialogo1
-        end
-        if key == "2" then
-            world.dialogoAtual = roteiro.c3.dialogo2
-        end
-        if key == "5" then
-            player:spawn(540, 500)
-            world.currentMap = "maps/biblioMap.lua"
         end
     end
 end

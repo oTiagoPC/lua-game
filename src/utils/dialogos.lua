@@ -70,12 +70,6 @@ roteiro = {
             {speaker = "Vagner", text = "Você salvou todo mundo. Isso vai entrar pra história, professor."},
             {speaker = "Berri", text = "Não fiz isso sozinho, Vagner. Ainda temos muito a aprender. O poder que criamos deve ser usado com sabedoria."},
             {speaker = "Vagner", text = "E eu sei que, com você, Berri, o futuro está em boas mãos."}
-        },
-        teste = {
-            {},
-            {}
-        }
-
-        
+        },      
     }
 }
