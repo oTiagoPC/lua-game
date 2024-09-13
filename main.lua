@@ -3,7 +3,7 @@ gameState = "menu"
 function love.load()
     colliderToggle = false
 
-    require('src/utils/load')
+    require('src/startup/load')
     loadAll()
 end
 
