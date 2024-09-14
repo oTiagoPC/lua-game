@@ -8,12 +8,15 @@ function requireAll()
     require('src/startup/resources')
 
     require('src/utils/cam')
+    require('src/utils/destroyAll')
     require('src/utils/functions')
 
     require('src/map')
     require('src/draw')
     require('src/player')
+    require('src/transition')
     require('src/update')
+    require('src/wall')
     require('src/world')
 
     require('src/entities/enemy')

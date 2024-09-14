@@ -18,7 +18,4 @@ function loadAll()
     -- Require all files
     require('src/startup/require')
     requireAll()
-
-    -- Functions
-    map:loadMap()
 end

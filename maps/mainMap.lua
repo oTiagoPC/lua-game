@@ -9,8 +9,8 @@ return {
   height = 40,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 9,
-  nextobjectid = 111,
+  nextlayerid = 10,
+  nextobjectid = 135,
   properties = {},
   tilesets = {
     {
@@ -914,6 +914,19 @@ return {
           properties = {}
         },
         {
+          id = 123,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 256,
+          y = 240,
+          width = 16,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 60,
           name = "",
           type = "",
@@ -1473,58 +1486,6 @@ return {
           properties = {}
         },
         {
-          id = 104,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 112,
-          y = 192,
-          width = 80,
-          height = 80,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 105,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 272,
-          y = 416,
-          width = 112,
-          height = 48,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 106,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 288,
-          y = 384,
-          width = 80,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 107,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 480,
-          y = 128,
-          width = 96,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 108,
           name = "",
           type = "",
@@ -1549,6 +1510,255 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 111,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 112,
+          y = 192,
+          width = 48,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 112,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 192,
+          width = 32,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 113,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 176,
+          y = 240,
+          width = 16,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 116,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 416,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 117,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 128,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 118,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 128,
+          width = 16,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 119,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 544,
+          y = 128,
+          width = 16,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 124,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 288,
+          y = 384,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 125,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 336,
+          y = 384,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 126,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 400,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 131,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 352,
+          y = 448,
+          width = 32,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 133,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 272,
+          y = 416,
+          width = 42.0222,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 134,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 341.966,
+          y = 416,
+          width = 42.0341,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "transitions",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 120,
+          name = "toBiblio",
+          type = "",
+          shape = "rectangle",
+          x = 544,
+          y = 160,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["destX"] = 540,
+            ["destY"] = 485
+          }
+        },
+        {
+          id = 121,
+          name = "toPav",
+          type = "",
+          shape = "rectangle",
+          x = 314.033,
+          y = 432,
+          width = 27.919,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["destX"] = 510,
+            ["destY"] = 310
+          }
+        },
+        {
+          id = 122,
+          name = "toC3",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 240,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["destX"] = 605,
+            ["destY"] = 550
+          }
+        },
+        {
+          id = 127,
+          name = "toPav",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 384,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["destX"] = 540,
+            ["destY"] = 60
+          }
         }
       }
     }

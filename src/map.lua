@@ -1,29 +1,20 @@
-map = {}
-map.renderizedMap = "maps/c3Map.lua"
-world.currentMap = "maps/c3Map.lua"
+function loadMap(mapName)
+    destroyAll()
 
-
-function map:loadMap()
-    gameMap = sti(map.renderizedMap)
+    loadedMap = mapName
+    gameMap = sti("maps/" .. mapName .. ".lua")
 
     walls = {}
 
     if gameMap.layers['walls'] then
         for i, obj in pairs(gameMap.layers['walls'].objects) do
-            local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
-            wall:setType('static')
-            wall:setCollisionClass('Wall')
-            table.insert(walls, wall)
+            spawnWall(obj.x, obj.y, obj.width, obj.height)
         end
     end
-end
 
-function map:update(dt)
-    if map.renderizedMap ~= world.currentMap then
-        map.renderizedMap = world.currentMap
-        for i, wall in ipairs(walls) do
-            wall:destroy()
+    if gameMap.layers['transitions'] then
+        for i, obj in pairs(gameMap.layers['transitions'].objects) do
+            spawnTransition(obj.x, obj.y, obj.width, obj.height, obj.name, obj.properties.destX, obj.properties.destY)
         end
-        map:loadMap()
     end
 end

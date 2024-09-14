@@ -5,6 +5,8 @@ function love.load()
 
     require('src/startup/load')
     loadAll()
+
+    loadMap('c3Map')
 end
 
 function love.update(dt)

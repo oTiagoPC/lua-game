@@ -9,8 +9,8 @@ return {
   height = 36,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 7,
-  nextobjectid = 122,
+  nextlayerid = 8,
+  nextobjectid = 123,
   properties = {},
   tilesets = {
     {
@@ -512,19 +512,6 @@ return {
           y = 432,
           width = 16,
           height = 48,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 23,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 496,
-          y = 480,
-          width = 16,
-          height = 32,
           rotation = 0,
           visible = true,
           properties = {}
@@ -1581,6 +1568,38 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "transitions",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 122,
+          name = "toMain",
+          type = "",
+          shape = "rectangle",
+          x = 512,
+          y = 480,
+          width = 16,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["destX"] = 550,
+            ["destY"] = 200
+          }
         }
       }
     }

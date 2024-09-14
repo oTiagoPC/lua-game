@@ -3,7 +3,7 @@ player.x = 0
 player.y = 0
 player.dirX = 1
 player.dirY = 1
-player.speed = 90
+player.speed = 180
 player.health = 5
 player.maxHealth = 5
 player.coins = 0
@@ -37,22 +37,21 @@ function player:update(dt)
 
     -- Door verifications
     if player:enter("C3Dialogo") then -- Dialogo do vagner no c3
-        world.clear() 
         world.dialogoAtual = roteiro.c3.dialogo2
         player.healing = player.healing + 1
         c3.chatCollider:destroy()
         dialog:start()
     end 
+
     if player:enter('C3InsideDoor') then -- Sair do c3 
         world.dialogoAtual = roteiro.pav3.dialogo1
         world.currentMap = c3.goingMapPath
         player:spawn(c3.spawnPosition.x, c3.spawnPosition.y)
         c3.insideDoorCollider:destroy()
-        mainMap:pavCreate()
-        world.clear()
+        destroyAll()
     end
 
-    if player:enter('C3Door') then
+   if player:enter('C3Door') then
         world.currentMap = mainMap.goingC3
         player:spawn(mainMap.c3SpawnPosition.x, mainMap.c3SpawnPosition.y)
         dialog:start()
@@ -74,7 +73,6 @@ function player:update(dt)
         if #world.enemies == 0 then 
            dialog:start()
             world.finalGame = false
-           
         end
     end
 
@@ -82,15 +80,13 @@ function player:update(dt)
         world.currentMap = biblio.goingMapPath
         player:spawn(biblio.spawnPosition.x, biblio.spawnPosition.y)
         biblio.insideDoorCollider:destroy()
-        mainMap:c3Create()
-        world.clear()
+        destroyAll()
     end
 
     if player:enter("PavDoor") then 
         world.currentMap = mainMap.goingPav
         player:spawn(mainMap.pavSpawnPosition.x, mainMap.pavSpawnPosition.y)
         mainMap.pavDoorCollider:destroy()
-        pavMap:create()
         sommelier:create()
         table.insert(world.enemies, createEnemy(500, 100))
         table.insert(world.enemies, createEnemy(580, 100))
@@ -103,10 +99,8 @@ function player:update(dt)
         world.currentMap = "maps/mainMap.lua"
         player:spawn(pavMap.spawnPosition.x, pavMap.spawnPosition.y)
         pavMap.insideDoorCollider:destroy()
-        mainMap.biblioCreate()
-        mainMap.c3Create()
         world.dialogoAtual = roteiro.c3Parte2.dialogo1
-        world.clear()
+        destroyAll()
     end
 
     if player:enter("BiblioDoor") then 
@@ -115,7 +109,6 @@ function player:update(dt)
         mainMap.biblioDoorCollider:destroy()
         biblio:createInsideDoor()
     end
-
 
     if player:enter("Sommelier") then 
         world.dialogoAtual = roteiro.pav3.dialogo2
@@ -128,6 +121,8 @@ function player:update(dt)
         dialog:start()
         pavMap.dialogoCollider:destroy()
     end
+
+
     if player:enter('Enemy') then
         local enemyInstance = player:getEnterCollisionData('Enemy').collider:getObject()
         player.health = player.health - 1
@@ -246,6 +241,8 @@ function player:update(dt)
 
     player.anim:update(dt)
 
+    player:checkTransition()
+
     player.x = player:getX()
     player.y = player:getY()
 
@@ -263,6 +260,13 @@ end
 
 function player:draw()
     player.anim:draw(sprites.playerSheet, player.x, player.y - 2, nil, player.dirX, 1, 11, 10.5)
+end
+
+function player:checkTransition()
+    if player:enter('Transitions') then
+        local data = player:getEnterCollisionData('Transitions')
+        enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+    end
 end
 
 function player:dash()
