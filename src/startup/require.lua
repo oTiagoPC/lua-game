@@ -35,5 +35,7 @@ function requireAll()
     require('src/ui/hud')
     require('src/ui/menu')
     require('src/ui/playText')
+    
+    require('src/utils/sounds')
 
 end
