@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="70">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="73">
  <editorsettings>
   <export target="pavMap.lua" format="lua"/>
  </editorsettings>
@@ -113,15 +113,12 @@
   <object id="12" x="16" y="96" width="272" height="16"/>
   <object id="13" x="288" y="96" width="16" height="128"/>
   <object id="14" x="304" y="192" width="128" height="16"/>
-  <object id="15" x="323" y="208" width="9.91304" height="12.9565"/>
   <object id="16" x="176.938" y="112" width="14.0625" height="95"/>
   <object id="22" x="48.9565" y="257.875" width="14.0657" height="46.125"/>
   <object id="23" x="16" y="112" width="15" height="192"/>
   <object id="28" x="240" y="144" width="16" height="48"/>
   <object id="29" x="256.956" y="162" width="14.0464" height="13"/>
-  <object id="30" x="272" y="112" width="16" height="16"/>
-  <object id="31" x="464" y="64" width="16" height="16"/>
-  <object id="32" x="592" y="64" width="16" height="16"/>
+  <object id="30" x="272" y="108.063" width="16" height="19.9375"/>
   <object id="34" x="512" y="112" width="48" height="16"/>
   <object id="35" x="482.031" y="123" width="12" height="35"/>
   <object id="38" x="610" y="212.938" width="14" height="24.0625"/>
@@ -147,6 +144,9 @@
   <object id="67" x="112.957" y="257.875" width="14.0657" height="46.125"/>
   <object id="68" x="144.957" y="257.875" width="14.0657" height="46.125"/>
   <object id="69" x="176.957" y="257.875" width="14.0657" height="46.125"/>
+  <object id="70" x="322.875" y="196.938" width="10.1875" height="24.125"/>
+  <object id="71" x="464" y="60.063" width="16" height="19.9375"/>
+  <object id="72" x="592" y="60.063" width="16" height="19.9375"/>
  </objectgroup>
  <objectgroup id="6" name="transitions">
   <object id="52" name="toMain" x="528" y="32" width="32" height="16">

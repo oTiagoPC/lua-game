@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 135,
+  nextobjectid = 137,
   properties = {},
   tilesets = {
     {
@@ -1551,19 +1551,6 @@ return {
           properties = {}
         },
         {
-          id = 116,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 320,
-          y = 416,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 117,
           name = "",
           type = "",
@@ -1581,10 +1568,10 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 560,
-          y = 128,
-          width = 16,
-          height = 64,
+          x = 564.025,
+          y = 160,
+          width = 11.975,
+          height = 32,
           rotation = 0,
           visible = true,
           properties = {}
@@ -1679,6 +1666,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 136,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 128,
+          width = 16,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -1703,7 +1703,7 @@ return {
           shape = "rectangle",
           x = 544,
           y = 160,
-          width = 16,
+          width = 20.0111,
           height = 16,
           rotation = 0,
           visible = true,
@@ -1718,9 +1718,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 314.033,
-          y = 432,
+          y = 416,
           width = 27.919,
-          height = 16,
+          height = 32,
           rotation = 0,
           visible = true,
           properties = {
@@ -1759,6 +1759,19 @@ return {
             ["destX"] = 540,
             ["destY"] = 60
           }
+        },
+        {
+          id = 135,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 256,
+          width = 2.0034,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
