@@ -29,6 +29,7 @@ function requireAll()
 
     require('src/ui/hud')
     require('src/ui/menu')
+    require('src/ui/credits')
     require('src/ui/playText')
     
     require('src/utils/sounds')
