@@ -152,7 +152,7 @@
   <object id="52" name="toMain" x="528" y="32" width="32" height="16">
    <properties>
     <property name="destX" type="int" value="325"/>
-    <property name="destY" type="int" value="375"/>
+    <property name="destY" type="int" value="355"/>
    </properties>
   </object>
   <object id="53" name="toMain" x="448" y="320" width="128" height="16">

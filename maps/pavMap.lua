@@ -819,7 +819,7 @@ return {
           visible = true,
           properties = {
             ["destX"] = 325,
-            ["destY"] = 375
+            ["destY"] = 355
           }
         },
         {

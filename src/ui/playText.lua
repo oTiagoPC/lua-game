@@ -95,15 +95,15 @@ function dialog:draw()
             drawPortrait(berriFace, portraitX, portraitY)
         elseif dialog.character == "Vagner" then 
             drawPortrait(vagnerFace, portraitX, portraitY)
-        elseif dialog.character == "Henrique Gabigol" then 
+        elseif dialog.character == "Henrique Bertochi" then 
             drawPortrait(henriqueFace, portraitX, portraitY)
-        elseif dialog.character == "Fofinho" then 
+        elseif dialog.character == "Vicenzo Copetti" then 
             drawPortrait(vicenzoFace, portraitX, portraitY)
-        elseif dialog.character == "Tiago R.A." then 
+        elseif dialog.character == "Tiago Azevedo" then 
             drawPortrait(tiagoFace, portraitX, portraitY)
-        elseif dialog.character == "Tiago P.C." then 
+        elseif dialog.character == "Tiago Corpes" then 
             drawPortrait(tiaguinFace, portraitX, portraitY)
-        elseif dialog.character == "Caio BB" then 
+        elseif dialog.character == "Caio Barcelos" then 
             drawPortrait(caioFace, portraitX, portraitY)
         elseif dialog.character == "Moça da Portaria" then 
             drawPortrait(bibliotecariaFace, portraitX, portraitY)
@@ -115,6 +115,10 @@ function dialog:draw()
         local textX = textBoxX + 280 -- Um pouco de margem à esquerda
         local textY = textBoxY + 40 -- Um pouco de margem no topo
         love.graphics.print(dialog.text, textX, textY)
+
+        local charX = textBoxX + textBoxWidth - 40 - #dialog.character * 10
+        local charY = textBoxY + textBoxHeight - 60
+        love.graphics.print(dialog.character, charX, charY)
     end
 end
 
