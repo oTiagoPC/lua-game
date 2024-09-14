@@ -327,6 +327,5 @@
     <property name="destY" type="int" value="60"/>
    </properties>
   </object>
-  <object id="135" x="160" y="256" width="2.0034" height="16"/>
  </objectgroup>
 </map>

@@ -1759,19 +1759,6 @@ return {
             ["destX"] = 540,
             ["destY"] = 60
           }
-        },
-        {
-          id = 135,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 160,
-          y = 256,
-          width = 2.0034,
-          height = 16,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     }
