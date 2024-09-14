@@ -12,6 +12,12 @@ function loadMap(mapName)
         end
     end
 
+    if loadedMap == "pavMap" then 
+        sommelier:start()
+        sommelier:create()
+    end
+
+
     if gameMap.layers['transitions'] then
         for i, obj in pairs(gameMap.layers['transitions'].objects) do
             spawnTransition(obj.x, obj.y, obj.width, obj.height, obj.name, obj.properties.destX, obj.properties.destY)

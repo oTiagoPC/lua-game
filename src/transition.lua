@@ -20,8 +20,6 @@ function enterTransition(id, destX, destY)
         newMap = ('c3Map')
     elseif id == 'toPav' then
         newMap = ('pavMap')
-        sommelier:start()
-        sommelier:create()
     elseif id == 'toBiblio' then
         newMap = ('biblioMap')
     end
