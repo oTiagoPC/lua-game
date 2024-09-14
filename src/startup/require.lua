@@ -21,16 +21,11 @@ function requireAll()
 
     require('src/entities/enemy')
     require('src/entities/npc')
-    require('src/entities/sommelier')
+    require('src/entities/characters')
 
     require('src/features/bullet')
     require('src/features/coin')
     require('src/features/healing')
-
-    require('src/levels/biblioMap')
-    require('src/levels/c3Map')
-    require('src/levels/mainMap')
-    require('src/levels/pavMap')
 
     require('src/ui/hud')
     require('src/ui/menu')

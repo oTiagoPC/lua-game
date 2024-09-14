@@ -1,14 +1,3 @@
-textBox = love.graphics.newImage('sprites/TextBox.png')
-berriFace = love.graphics.newImage('sprites/portraits/berri-portrait.png')
-vagnerFace = love.graphics.newImage('sprites/portraits/vagner-portrait.png')
-vicenzoFace = love.graphics.newImage('sprites/portraits/vicenzo-portrait.png')
-caioFace = love.graphics.newImage('sprites/portraits/caio-portrait.png')
-tiagoFace = love.graphics.newImage('sprites/portraits/tiago.png')
-tiaguinFace = love.graphics.newImage('sprites/portraits/tiaguin.png')
-henriqueFace = love.graphics.newImage('sprites/portraits/henrique-portrait.png')
-bibliotecariaFace = love.graphics.newImage('sprites/portraits/blibiotecaria.png')
-blueBg = love.graphics.newImage('sprites/blueBackground.png')
-
 dialog = {}
 
 function wrapText(text, limit)
@@ -86,30 +75,30 @@ function dialog:draw()
         local textBoxX = (windowWidth - textBoxWidth) / 2
         local textBoxY = windowHeight - textBoxHeight - 50
 
-        love.graphics.draw(blueBg, textBoxX, textBoxY, nil, 5)
+        love.graphics.draw(sprites.hud.dialogBackground, textBoxX, textBoxY, nil, 5)
 
         local portraitX = textBoxX - 10
         local portraitY = textBoxY + 10
 
         if dialog.character == "Berri" then 
-            drawPortrait(berriFace, portraitX, portraitY)
+            drawPortrait(sprites.portraits.berri, portraitX, portraitY)
         elseif dialog.character == "Vagner" then 
-            drawPortrait(vagnerFace, portraitX, portraitY)
-        elseif dialog.character == "Henrique Bertochi" then 
-            drawPortrait(henriqueFace, portraitX, portraitY)
-        elseif dialog.character == "Vicenzo Copetti" then 
-            drawPortrait(vicenzoFace, portraitX, portraitY)
-        elseif dialog.character == "Tiago Azevedo" then 
-            drawPortrait(tiagoFace, portraitX, portraitY)
+            drawPortrait(sprites.portraits.vagner, portraitX, portraitY)
         elseif dialog.character == "Tiago Corpes" then 
-            drawPortrait(tiaguinFace, portraitX, portraitY)
+            drawPortrait(sprites.portraits.tiaguin, portraitX, portraitY)
+        elseif dialog.character == "Tiago Azevedo" then 
+            drawPortrait(sprites.portraits.tiago, portraitX, portraitY)
         elseif dialog.character == "Caio Barcelos" then 
-            drawPortrait(caioFace, portraitX, portraitY)
+            drawPortrait(sprites.portraits.caio, portraitX, portraitY)
+        elseif dialog.character == "Henrique Bertochi" then 
+            drawPortrait(sprites.portraits.henrique, portraitX, portraitY)
+        elseif dialog.character == "Vicenzo Copetti" then 
+            drawPortrait(sprites.portraits.vicenzo, portraitX, portraitY)
         elseif dialog.character == "Moça da Portaria" then 
-            drawPortrait(bibliotecariaFace, portraitX, portraitY)
+            drawPortrait(sprites.portraits.bibliotecaria, portraitX, portraitY)
         end
 
-        love.graphics.draw(textBox, textBoxX, textBoxY, nil, 5)
+        love.graphics.draw(sprites.hud.textBox, textBoxX, textBoxY, nil, 5)
 
         -- Centralizar o texto dentro da caixa de diálogo
         local textX = textBoxX + 280 -- Um pouco de margem à esquerda
