@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="186">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="189">
  <editorsettings>
   <export target="biblioMap.lua" format="lua"/>
  </editorsettings>
@@ -269,6 +269,9 @@
   <object id="183" x="16" y="197" width="14" height="24.0625"/>
   <object id="184" x="208" y="124" width="16" height="20"/>
   <object id="185" x="106.938" y="149.875" width="26.125" height="42.125"/>
+ </objectgroup>
+ <objectgroup id="8" name="dialogues">
+  <object id="187" name="biblio.dialog1" x="544" y="368" width="128" height="48"/>
  </objectgroup>
  <objectgroup id="7" name="transitions">
   <object id="122" name="toMain" x="512" y="480" width="16" height="32">

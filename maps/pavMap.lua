@@ -9,8 +9,8 @@ return {
   height = 20,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 7,
-  nextobjectid = 73,
+  nextlayerid = 8,
+  nextobjectid = 79,
   properties = {},
   tilesets = {
     {
@@ -837,6 +837,61 @@ return {
             ["destX"] = 325,
             ["destY"] = 470
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "dialogues",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 76,
+          name = "pav.dialog1",
+          type = "",
+          shape = "rectangle",
+          x = 448,
+          y = 256,
+          width = 128,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 77,
+          name = "pav.dialog2",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 208,
+          width = 48,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 78,
+          name = "pav.dialog3",
+          type = "",
+          shape = "rectangle",
+          x = 432,
+          y = 208,
+          width = 16,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

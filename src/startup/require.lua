@@ -3,20 +3,23 @@ function requireAll()
     require('src/startup/collisionClasses')
     createCollisionClasses()
     
-    require('src/startup/dialogs')
+    require('src/startup/script')
     require('src/startup/load')
     require('src/startup/resources')
 
     require('src/utils/cam')
     require('src/utils/destroyAll')
     require('src/utils/functions')
+    require('src/utils/sounds')
 
-    require('src/map')
+    require('src/levels/dialogues')
+    require('src/levels/map')
+    require('src/levels/transition')
+    require('src/levels/wall')
+
     require('src/draw')
     require('src/player')
-    require('src/transition')
     require('src/update')
-    require('src/wall')
     require('src/world')
 
     require('src/entities/enemy')
@@ -31,7 +34,5 @@ function requireAll()
     require('src/ui/menu')
     require('src/ui/credits')
     require('src/ui/playText')
-    
-    require('src/utils/sounds')
 
 end

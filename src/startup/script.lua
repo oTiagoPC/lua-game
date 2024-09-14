@@ -42,7 +42,7 @@ roteiro = {
         }
     },
 
-    biblioteca = {
+    biblio = {
         dialogo1 = {
             {speaker = "Berri", text = "Ei, o que houve com você, você está bem?"},
             {speaker = "Moça da Portaria", text = "Bem?? Eu pareço bem moço? As máquinas dominaram a biblioteca inteira, estou tão assustada que nem consegui sair daqui."},

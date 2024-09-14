@@ -9,8 +9,8 @@ return {
   height = 35,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 9,
-  nextobjectid = 152,
+  nextlayerid = 10,
+  nextobjectid = 154,
   properties = {},
   tilesets = {
     {
@@ -1622,6 +1622,35 @@ return {
             ["destX"] = 166,
             ["destY"] = 278
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "dialogues",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 152,
+          name = "c3.dialog2",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 480,
+          width = 96,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

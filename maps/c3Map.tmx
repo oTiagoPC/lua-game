@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="152">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="157">
  <editorsettings>
   <export target="c3Map.lua" format="lua"/>
  </editorsettings>
@@ -272,5 +272,8 @@
     <property name="destY" type="int" value="278"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="9" name="dialogues">
+  <object id="152" name="c3.dialog2" x="560" y="480" width="96" height="16"/>
  </objectgroup>
 </map>

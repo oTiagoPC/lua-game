@@ -9,8 +9,8 @@ return {
   height = 36,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 8,
-  nextobjectid = 186,
+  nextlayerid = 9,
+  nextobjectid = 189,
   properties = {},
   tilesets = {
     {
@@ -1604,6 +1604,35 @@ return {
           y = 149.875,
           width = 26.125,
           height = 42.125,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 8,
+      name = "dialogues",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 187,
+          name = "biblio.dialog1",
+          type = "",
+          shape = "rectangle",
+          x = 544,
+          y = 368,
+          width = 128,
+          height = 48,
           rotation = 0,
           visible = true,
           properties = {}
