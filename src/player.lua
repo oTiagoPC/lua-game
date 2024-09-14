@@ -114,8 +114,8 @@ function player:update(dt)
 
     if player:enter("Sommelier") then 
         world.dialogoAtual = roteiro.pav3.dialogo2
-        dialog:start()
         sommelier.collider:destroy()
+        dialog:start()
         pavMap:pavDialogo()
     end
     if player:enter("DialogoPav") then 
