@@ -39,6 +39,8 @@ function player:update(dt)
     if player:enter("C3Dialogo") then -- Dialogo do vagner no c3
         world.dialogoAtual = roteiro.c3.dialogo2
         player.healing = player.healing + 1
+        table.insert(world.enemies, createEnemy(140, 460))
+        table.insert(world.enemies, createEnemy(155, 460))
         c3.chatCollider:destroy()
         dialog:start()
     end 
@@ -241,11 +243,11 @@ function player:update(dt)
 
     player.anim:update(dt)
 
-    player:checkTransition()
-
+    
     player.x = player:getX()
     player.y = player:getY()
-
+    
+    player:checkTransition()
     -- Atualiza o cooldown do dash
     if not player:canDash() then
         -- Ainda está em cooldown, adicionar som ou algo do tipo
