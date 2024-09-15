@@ -163,8 +163,20 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="dialogues">
-  <object id="76" name="pav.dialog1" x="448" y="256" width="128" height="16"/>
-  <object id="77" name="pav.dialog2" x="80" y="208" width="48" height="48"/>
-  <object id="78" name="pav.dialog3" x="432" y="208" width="16" height="48"/>
+  <object id="76" name="roteiro.pav.dialogo1" x="448" y="256" width="128" height="16">
+   <properties>
+    <property name="req" value="roteiro.c3.dialogo2"/>
+   </properties>
+  </object>
+  <object id="77" name="roteiro.pav.dialogo2" x="80" y="208" width="48" height="48">
+   <properties>
+    <property name="req" value="roteiro.pav.dialogo1"/>
+   </properties>
+  </object>
+  <object id="78" name="roteiro.pav.dialogo3" x="432" y="208" width="16" height="48">
+   <properties>
+    <property name="req" value="roteiro.pav.dialogo2"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -10,7 +10,8 @@ roteiro = {
         },
         dialogo2 = {
             {speaker = "Berri", text = "As máquinas estão mais fortes do que eu pensava."},
-            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Strada, o cara é brabo também né? Caramba, aquele bicho conseguiu te machucar hein? Aqui, eu sempre ando com um hambúrguer de grão de bico caso você precise."},
+            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Strada, o cara é brabo também né?"},
+            {speaker = "Vagner", text = "Caramba, aquele bicho conseguiu te machucar hein? Aqui, eu sempre ando com um hambúrguer de grão de bico caso você precise."},
             {speaker = "Berri", text = "Obrigado Vagner."},
             {speaker = "Vagner", text = "Aproveita seu hamburguer mas se adianta porque eu recebi informações dos meus contatos do C3 e descobri que as máquinas estão indo para o Pav. 3!"},
             {speaker = "Berri", text = "Para o PAV 3?? Minha turma favorita de Linguagens de Programação deve estar em aula nesse momento. Eu preciso ir para lá imediatamente para salvá-los."},
@@ -18,7 +19,7 @@ roteiro = {
             {speaker = "Berri", text = "Beleza."}
         }
     },
-    pav3 = {
+    pav = {
         dialogo1 = {
             {speaker = "Berri", text = "A coisa está mais feia do que eu esperava, espero que meus alunos estejam bem, preciso correr!"}
         },

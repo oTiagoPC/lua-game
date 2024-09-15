@@ -856,7 +856,7 @@ return {
       objects = {
         {
           id = 76,
-          name = "pav.dialog1",
+          name = "roteiro.pav.dialogo1",
           type = "",
           shape = "rectangle",
           x = 448,
@@ -865,11 +865,13 @@ return {
           height = 16,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["req"] = "roteiro.c3.dialogo2"
+          }
         },
         {
           id = 77,
-          name = "pav.dialog2",
+          name = "roteiro.pav.dialogo2",
           type = "",
           shape = "rectangle",
           x = 80,
@@ -878,11 +880,13 @@ return {
           height = 48,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["req"] = "roteiro.pav.dialogo1"
+          }
         },
         {
           id = 78,
-          name = "pav.dialog3",
+          name = "roteiro.pav.dialogo3",
           type = "",
           shape = "rectangle",
           x = 432,
@@ -891,7 +895,9 @@ return {
           height = 48,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["req"] = "roteiro.pav.dialogo2"
+          }
         }
       }
     }

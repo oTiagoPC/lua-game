@@ -44,10 +44,10 @@ end
 
 function dialog:next()
     dialog.currentText = dialog.currentText + 1
-    if dialog.currentText < dialog.LenDialog then
+    if dialog.currentText <= dialog.LenDialog then
         dialog:setText()  -- Atualiza o texto e o personagem
     else
-        world.dialog = false
+        world.dialog = false  -- Encerra o diálogo quando ultrapassar o número total
     end
 end
 
@@ -69,8 +69,8 @@ function dialog:draw()
         local windowWidth = love.graphics.getWidth()
         local windowHeight = love.graphics.getHeight()
 
-        local textBoxWidth = textBox:getWidth() * 5
-        local textBoxHeight = textBox:getHeight() * 5
+        local textBoxWidth = sprites.hud.textBox:getWidth() * 5
+        local textBoxHeight = sprites.hud.textBox:getHeight() * 5
 
         local textBoxX = (windowWidth - textBoxWidth) / 2
         local textBoxY = windowHeight - textBoxHeight - 50

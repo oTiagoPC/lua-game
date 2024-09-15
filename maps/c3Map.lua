@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 154,
+  nextobjectid = 159,
   properties = {},
   tilesets = {
     {
@@ -536,7 +536,9 @@ return {
           height = 16,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["req"] = "teste"
+          }
         },
         {
           id = 26,
@@ -1641,13 +1643,28 @@ return {
       objects = {
         {
           id = 152,
-          name = "c3.dialog2",
+          name = "roteiro.c3.dialogo2",
           type = "",
           shape = "rectangle",
           x = 560,
           y = 480,
           width = 96,
           height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "roteiro.c3.dialogo1"
+          }
+        },
+        {
+          id = 157,
+          name = "roteiro.c3.dialogo1",
+          type = "",
+          shape = "rectangle",
+          x = 288,
+          y = 80,
+          width = 16,
+          height = 112,
           rotation = 0,
           visible = true,
           properties = {}

@@ -271,7 +271,11 @@
   <object id="185" x="106.938" y="149.875" width="26.125" height="42.125"/>
  </objectgroup>
  <objectgroup id="8" name="dialogues">
-  <object id="187" name="biblio.dialog1" x="544" y="368" width="128" height="48"/>
+  <object id="187" name="roteiro.biblio.dialogo1" x="544" y="368" width="128" height="48">
+   <properties>
+    <property name="req" value="roteiro.pav.dialogo3"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="transitions">
   <object id="122" name="toMain" x="512" y="480" width="16" height="32">

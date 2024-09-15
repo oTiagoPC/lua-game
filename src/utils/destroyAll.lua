@@ -1,22 +1,22 @@
 function destroyAll()
     clearColliderTable(walls)
     clearColliderTable(transitions)
+    clearColliderTable(dialogues)
 
-
+    clearTable(world.coins)
+    clearTable(world.food)
+    clearTable(world.NPCs)
+    clearTable(world.sommelier)
+    
     for i=#world.enemies, 1, -1 do
         if world.enemies[i] ~= nil then
             local enemyData = world.enemies[i]:getObject()
             if enemyData then 
                 enemyData.collider:destroy()
             end
+            table.remove(world.enemies, i)
         end
     end
-    clearTable(world.enemies)
-    clearTable(world.coins)
-    clearTable(world.food)
-    clearTable(world.NPCs)
-    clearTable(world.sommelier)
-
 end
 
 function clearColliderTable(tableList)

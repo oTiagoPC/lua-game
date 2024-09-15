@@ -3,6 +3,10 @@ function loadMap(mapName)
 
     loadedMap = mapName
     gameMap = sti("maps/" .. mapName .. ".lua")
+
+    if loadedMap == 'c3Map' then
+        table.insert(world.enemies, createEnemy(140, 460))
+    end
     
     if gameMap.layers['walls'] then
         for i, obj in pairs(gameMap.layers['walls'].objects) do
@@ -18,7 +22,7 @@ function loadMap(mapName)
 
     if gameMap.layers['dialogues'] then
         for i, obj in pairs(gameMap.layers['dialogues'].objects) do
-            spawnDialog(obj.x, obj.y, obj.width, obj.height)
+            spawnDialog(obj.x, obj.y, obj.width, obj.height, obj.name, obj.properties.req)
         end
     end
 end

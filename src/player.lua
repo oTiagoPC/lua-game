@@ -24,10 +24,10 @@ player:setLinearDamping(12)
 player.grid = anim8.newGrid(19, 21, sprites.playerSheet:getWidth(), sprites.playerSheet:getHeight())
 
 player.animations = {}
-player.animations.downRight = anim8.newAnimation(player.grid('1-2', 1), 0.2)
-player.animations.downLeft = anim8.newAnimation(player.grid('1-2', 1), 0.2)
-player.animations.upRight = anim8.newAnimation(player.grid('1-2', 2), 0.2)
-player.animations.upLeft = anim8.newAnimation(player.grid('1-2', 2), 0.2)
+player.animations.downRight = anim8.newAnimation(player.grid('1-2', 1), 0.18)
+player.animations.downLeft = anim8.newAnimation(player.grid('1-2', 1), 0.18)
+player.animations.upRight = anim8.newAnimation(player.grid('1-2', 2), 0.18)
+player.animations.upLeft = anim8.newAnimation(player.grid('1-2', 2), 0.18)
 
 player.anim = player.animations.downLeft
 
@@ -158,6 +158,8 @@ function player:update(dt)
     player.y = player:getY()
     
     player:checkTransition()
+    player:checkDialog()
+
     -- Atualiza o cooldown do dash
     if not player:canDash() then
         -- Ainda está em cooldown, adicionar som ou algo do tipo
@@ -178,6 +180,13 @@ function player:checkTransition()
     if player:enter('Transitions') then
         local data = player:getEnterCollisionData('Transitions')
         enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+    end
+end
+
+function player:checkDialog()
+    if player:enter('Dialogues') then
+        local data = player:getEnterCollisionData('Dialogues')
+        playDialog(data.collider.id)
     end
 end
 

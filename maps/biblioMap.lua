@@ -1626,7 +1626,7 @@ return {
       objects = {
         {
           id = 187,
-          name = "biblio.dialog1",
+          name = "roteiro.biblio.dialogo1",
           type = "",
           shape = "rectangle",
           x = 544,
@@ -1635,7 +1635,9 @@ return {
           height = 48,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["req"] = "roteiro.pav.dialogo3"
+          }
         }
       }
     },
