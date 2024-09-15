@@ -6,7 +6,6 @@ function destroyAll()
     clearTable(world.coins)
     clearTable(world.food)
     clearTable(world.NPCs)
-    clearTable(world.sommelier)
     
     for i=#world.enemies, 1, -1 do
         if world.enemies[i] ~= nil then

@@ -24,7 +24,6 @@ function requireAll()
 
     require('src/entities/enemy')
     require('src/entities/npc')
-    require('src/entities/characters')
 
     require('src/features/bullet')
     require('src/features/coin')

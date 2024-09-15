@@ -10,7 +10,7 @@ roteiro = {
         },
         dialogo2 = {
             {speaker = "Berri", text = "As máquinas estão mais fortes do que eu pensava."},
-            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Strada, o cara é brabo também né?"},
+            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Strada, o cara é brabo também."},
             {speaker = "Vagner", text = "Caramba, aquele bicho conseguiu te machucar hein? Aqui, eu sempre ando com um hambúrguer de grão de bico caso você precise."},
             {speaker = "Berri", text = "Obrigado Vagner."},
             {speaker = "Vagner", text = "Aproveita seu hamburguer mas se adianta porque eu recebi informações dos meus contatos do C3 e descobri que as máquinas estão indo para o Pav. 3!"},
@@ -34,7 +34,7 @@ roteiro = {
             {speaker = "Berri", text = "Preciso arrumar uma forma de acabar com isso, minhas IAs devem ter feito base em algum lugar, mas aonde?"}
         },
         dialogo3 = {
-            {speaker = "Vagner", text = "Que bom que você conseguiu me atender. Meus contatos no C3 disseram que as máquinas invadiram o lugar e fizeram uma base lá mesmo."},
+            {speaker = "Vagner", text = "Berri! Que bom que você conseguiu me atender. Meus contatos no C3 disseram que as máquinas invadiram o lugar e fizeram uma base lá mesmo."},
             {speaker = "Berri", text = "Como foi que você conseguiu tantas informações assim?"},
             {speaker = "Vagner", text = "Não posso revelar as informações dos meus contatos, não é assim que funciona."},
             {speaker = "Berri", text = "Tá bem então, e o que você acha que eu devo fazer?"},

@@ -160,14 +160,8 @@ function player:update(dt)
     player:checkTransition()
     player:checkDialog()
 
-    -- Atualiza o cooldown do dash
-    if not player:canDash() then
-        -- Ainda está em cooldown, adicionar som ou algo do tipo
-    end
-
     if love.mouse.isDown(1) and love.timer.getTime() - player.lastShootTime >= player.shootCooldown then
         player:shoot()
-        love.graphics.printf("Posiçao do mouse: " .. love.mouse.getX() .. " " .. love.mouse.getY(), 0, 0, 800, 'left')
     end
 
 end
