@@ -23,6 +23,10 @@ function drawInCamera()
            npc.anim:draw(sprites.vagnerSheet, npc.x, npc.y, nil, npc.dirX, 1, 11, 10.5)
         end
     end
+
+    if loadedMap == 'biblioMap' then
+        love.graphics.draw(sprites.characters.bibliotecaria, 600, 375)
+    end
     
     player:draw()
         

@@ -12,6 +12,8 @@ sprites.characters.tiago = love.graphics.newImage('sprites/characters/tiago.png'
 sprites.characters.henrique = love.graphics.newImage('sprites/characters/henrique.png')
 sprites.characters.vicenzo = love.graphics.newImage('sprites/characters/vicenzo.png')
 sprites.characters.caio = love.graphics.newImage('sprites/characters/caio.png')
+sprites.characters.bibliotecaria = love.graphics.newImage('sprites/characters/bibliotecaria.png')
+
 
 sprites.portraits = {}
 sprites.portraits.berri = love.graphics.newImage('sprites/portraits/berri-portrait.png')
