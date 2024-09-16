@@ -34,11 +34,11 @@ roteiro = {
             {speaker = "Berri", text = "Preciso arrumar uma forma de acabar com isso, minhas IAs devem ter feito base em algum lugar, mas aonde?"}
         },
         dialogo3 = {
-            {speaker = "Vagner", text = "Berri! Que bom que você conseguiu me atender. Meus contatos no C3 disseram que as máquinas invadiram o lugar e fizeram uma base lá mesmo."},
-            {speaker = "Berri", text = "Como foi que você conseguiu tantas informações assim?"},
-            {speaker = "Vagner", text = "Não posso revelar as informações dos meus contatos, não é assim que funciona."},
-            {speaker = "Berri", text = "Tá bem então, e o que você acha que eu devo fazer?"},
-            {speaker = "Vagner", text = "Você precisa voltar para o C3 e acabar com isso, mas antes você deve ir na biblioteca, imagino que possa ter máquinas lá!"},
+            {speaker = "Vagner", text = "Berri! Precisamos de sua ajuda lá na biblioteca, Emanuel Estrada em suas últimas palavras disse que apenas você com seus códigos seria capaz de dar conta."},
+            {speaker = "Berri", text = "Meu Deus!! Até o Estrada? Mas precisaria de alguma ajuda, não me lembro com oque as IAs foram desenvolvidas."},
+            {speaker = "Vagner", text = "Não tem problema Rafael, lá tem tudo que é livro de aprendizado de máquina em posse deles você será imbatível!"},
+            {speaker = "Berri", text = "Bem lembrado Vagner, se eu encontrar o livro do OpenCV acho que já estou sossegado!"},
+            {speaker = "Vagner", text = "Vá logo para a biblioteca! Eu vou para o C3 e de lá eu te aviso se descobrir algo."},
             {speaker = "Berri", text = "Beleza! Vou para a biblioteca agora."}
         }
     },
@@ -53,10 +53,10 @@ roteiro = {
         },
         dialogo2 = {
             {speaker = "Berri", text = "Beleza, agora que acabei com as máquinas aqui posso voltar para o C3!"},
-            {speaker = "Vagner", text = "Tive que ligar a cobrar dessa vez, espero que não se importe Recebi mais informações dos meus contatos do C3, infelizmente tenho más notícias. Descobri que as máquinas têm um líder e ele é um grande conhecido seu... O 'Artificialis Intellectus' é o responsável por isso tudo."},
-            {speaker = "Berri", text = "Fica sossegado Vagner, me passe as informações"},
-            {speaker = "Vagner", text = "Recebi mais informações dos meus contatos do C3, infelizmente tenho más notícias. Descobri que as máquinas têm um líder e ele é um grande conhecido seu... O 'Artificialis Intellectus' é o responsável por isso tudo."},
-            {speaker = "Berri", text = "Bah. Isso explica muita coisa. Quando eu criei o 'Artificialis Intellectus' eu não esperava nada disso. Preciso pôr um ponto final nisso tudo..."},
+            {speaker = "Vagner", text = "Berri, más notícias! Estou te ligando aqui do C3 pois descobri que as máquinas têm um líder, e ele é um grande conhecido seu..."},
+            {speaker = "Berri", text = "Não!! Não pode ser! O 'Artificialis Intellectus' é o responsável por isso tudo?"},
+            {speaker = "Vagner", text = "Sim, Berri! O 'Artificialis Intellectus' está controlando todas as máquinas da FURG. Você precisa voltar para o C3 e acabar com isso!"},
+            {speaker = "Berri", text = "Nossa. Isso explica muita coisa. Quando eu criei o 'Artificialis Intellectus' eu não esperava nada disso. Preciso pôr um ponto final nisso tudo..."},
             {speaker = "Vagner", text = "Eu sei o quanto o 'Artificialis Intellectus' importava pra você. Mas é o momento de finalizar isso tudo! Você precisa voltar para o C3 e enfrentar o 'Artificialis Intellectus' e salvar a FURG. O futuro da FURG está nas suas mãos, Berri."},
             {speaker = "Berri", text = "Obrigado por tudo Vagner. Fica sossegado. Vou acabar com isso tudo!"}
         }
