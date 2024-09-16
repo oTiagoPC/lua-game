@@ -1,13 +1,12 @@
+npc = {}
+
 function createNpc(x, y)
-    local npc = {}
-    npc.collider = world:newBSGRectangleCollider(x, y, 12, 12, 3) -- X, Y, Width, Height, Border-Radius
-    npc.x = x
-    npc.y = y
-    npc.speed = player.speed * 0.7
-    npc.dirX = 0
-    npc.dirY = 0
-    npc.distanceToPlayer = 0
-    npc.canMove = true
+    npc.collider = world:newBSGRectangleCollider(x, y, 12, 12, 3)
+    npc.speed = player.speed * 0.9
+    npc.targetX, npc.targetY = nil, nil
+    npc.walking = false
+    npc.ready = true
+    npc.destinationQueue = {}  -- Fila de destinos
 
     npc.collider:setCollisionClass('Npc')
     npc.collider:setFixedRotation(true)
@@ -16,91 +15,90 @@ function createNpc(x, y)
     npc.grid = anim8.newGrid(19, 20, sprites.vagnerSheet:getWidth(), sprites.vagnerSheet:getHeight())
 
     npc.animations = {}
-    npc.animations.downRight = anim8.newAnimation(npc.grid('1-2', 1), 0.2)
-    npc.animations.downLeft = anim8.newAnimation(npc.grid('1-2', 1), 0.2)
-    npc.animations.upRight = anim8.newAnimation(npc.grid('1-2', 2), 0.2)
-    npc.animations.upLeft = anim8.newAnimation(npc.grid('1-2', 2), 0.2)
+    npc.animations.downRight = anim8.newAnimation(npc.grid('1-2', 1), 0.18)
+    npc.animations.downLeft = anim8.newAnimation(npc.grid('1-2', 1), 0.18)
+    npc.animations.upRight = anim8.newAnimation(npc.grid('1-2', 2), 0.18)
+    npc.animations.upLeft = anim8.newAnimation(npc.grid('1-2', 2), 0.18)
 
     npc.anim = npc.animations.downRight
 
-    function npc:getObject()
-        return npc
-    end
-
-    npc.collider:setObject(npc) -- Adicionando o objeto ao collider para ser acessado posteriormente nas colisões
-
     function npc:update(dt)
-        npc.x, npc.y = npc.collider:getPosition()
-        npc.distanceToPlayer = distanceBetween(npc.x, npc.y, player.x, player.y)
-        local dirX = 0
-        local dirY = 0
-        
-        if npc.distanceToPlayer < 15 and npc.canMove then
-            dialog:start()
-            table.insert(world.enemies, createEnemy(140, 460))
-            table.insert(world.enemies, createEnemy(155, 460))
-            table.insert(world.enemies, createEnemy(170, 460))
-            table.insert(world.enemies, createEnemy(225, 365))
-            table.insert(world.enemies, createEnemy(225, 300))
-            table.insert(world.enemies, createEnemy(325, 300))
-            table.insert(world.enemies, createEnemy(700, 380))
-            table.insert(world.enemies, createEnemy(700, 330))
-            table.insert(world.enemies, createEnemy(700, 260))
-            table.insert(world.enemies, createEnemy(66, 300))
-            if enemy then enemy.attackRange = 250 end
-            npc.canMove = false
-            npc.collider:setLinearVelocity(0, 0)
-            npc.anim:gotoFrame(1)
-            npc.collider:setType("static")
+        -- Adiciona destinos
+        if dialogPosition == 1 and #world.enemies == 0 then
+            if npc.ready == true then
+                npcGoTo(vagner, 221, 170)
+                npcGoTo(vagner, 221, 301)
+                npcGoTo(vagner, 510, 300)
+                npcGoTo(vagner, 588, 473)
+                npc.ready = false
+            end
         end
 
+        -- Se não houver destino atual e a fila não estiver vazia, pegue o próximo
+        if not npc.targetX and not npc.targetY and #npc.destinationQueue > 0 then
+            local nextDestination = table.remove(npc.destinationQueue, 1)
+            npcGoTo(npc, nextDestination.x, nextDestination.y)
+        end
 
-        if npc.canMove then
-            npc.anim:update(dt)
-            if player.x > npc.x then
-                npc.dirX = 1
-                dirX = 1
-                if player.y > npc.y then 
-                    npc.anim = npc.animations.downRight
-                    npc.dirY = 1
-                    dirY = 1
+        npc.x, npc.y = npc.collider:getPosition()
+
+        -- Se o NPC tiver um destino, mova-o até lá
+        if npc.targetX and npc.targetY then
+            if npc.y > npc.targetY then
+                if npc.x > npc.targetX then
+                    npc.anim = npc.animations.upLeft
                 else
                     npc.anim = npc.animations.upRight
-                    npc.dirY = -1
-                    dirY = -1
                 end
-
             else
-                npc.dirX = -1
-                dirX = -1
-                if player.y > npc.y then 
+                if npc.x > npc.targetX then
                     npc.anim = npc.animations.downLeft
-                    npc.dirY = 1
-                    dirY = 1
                 else
-                    npc.anim = npc.animations.upLeft
-                    npc.dirY = -1
-                    dirY = -1
+                    npc.anim = npc.animations.downRight
                 end
             end
 
-            if dirY == 0 and dirX ~= 0 then
-                npc.dirY = 1
+            local dist = distanceBetween(npc.x, npc.y, npc.targetX, npc.targetY)
+
+            -- Ajuste na precisão da verificação de distância
+            if dist > 5 then  -- Aumente esse valor se o NPC ainda estiver travando
+                local dir = vector(npc.targetX - npc.x, npc.targetY - npc.y):normalized()
+                npc.collider:setLinearVelocity(dir.x * npc.speed, dir.y * npc.speed)
+                npc.walking = true
+            else
+                npc.collider:setLinearVelocity(0, 0)
+                npc.targetX, npc.targetY = nil, nil
+                npc.walking = false
+                if npc.anim == npc.animations.upLeft then
+                    npc.anim = npc.animations.downLeft
+                end
+                if npc.anim == npc.animations.upRight then
+                    npc.anim = npc.animations.downRight
+                end
+                npc.anim:gotoFrame(1)
             end
-            
-            local vec = vector(npc.dirX, npc.dirY):normalized() * npc.speed
-            if vec.x ~= 0 or vec.y ~= 0 then
-                npc.collider:setLinearVelocity(vec.x, vec.y)
-            end
+        end
+
+        if npc.walking then
+            npc.anim:update(dt)
         end
     end
 
     return npc
 end
 
--- Criando novos inimigos
+function npc:getObject()
+    return npc
+end
 
-
---local vagner = createNpc(223, 185)
---table.insert(world.NPCs, vagner)
-
+-- Modificação no método npcGoTo para adicionar destinos na fila
+function npcGoTo(npc, x, y)
+    -- Adiciona destino na fila se já houver um movimento em andamento
+    if npc.targetX and npc.targetY then
+        table.insert(npc.destinationQueue, {x = x, y = y})
+    else
+        -- Caso contrário, defina o novo destino e comece o movimento
+        npc.targetX = x
+        npc.targetY = y
+    end
+end

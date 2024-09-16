@@ -16,7 +16,9 @@ end
 function love.draw()
     if gameState == "menu" then
         menu:draw()
-        --credits:draw()
+        sounds.menuSong:play()
+    elseif gameState == 'credits' then
+        credits:draw()
         sounds.menuSong:play()
     else
         sounds.menuSong:stop()
@@ -52,6 +54,12 @@ function love.keypressed(key)
         end
         if key == "x" then
             player:heal()
+        end
+        if key == 'z' then
+            print(player.x, player.y)
+        end
+        if key == 'k' then
+            clearCollider(world.enemies)
         end
     end
 end

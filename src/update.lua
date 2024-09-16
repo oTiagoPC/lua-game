@@ -1,4 +1,5 @@
 function updateAll(dt)
+    credits:update(dt)
     if world.dialog then
         dialog:update(dt)
     else

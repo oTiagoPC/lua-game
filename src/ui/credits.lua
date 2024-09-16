@@ -1,7 +1,21 @@
-credits = {}
+credits = {}  
+credits.offsetY = love.graphics.getHeight()
+credits.speed = 65
+
+function credits:update(dt)
+    credits.offsetY = credits.offsetY - credits.speed * dt
+end
 
 function credits:draw()
-    love.graphics.draw(sprites.hud.titleBackground, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, 0, 1, 1, sprites.hud.titleBackground:getWidth() / 2, sprites.hud.titleBackground:getHeight() / 2)
-    love.graphics.print("Codigos", love.graphics.getWidth() / 2  -35 , love.graphics.getHeight() - 50)
+    local screenWidth = love.graphics.getWidth()
+    local screenHeight = love.graphics.getHeight()
+    local imageWidth = sprites.hud.credits:getWidth()
+    local imageHeight = sprites.hud.credits:getHeight()
+    
+    local scaleX = screenWidth / imageWidth
+    local scaleY = screenHeight / imageHeight
+    
+    local scale = math.max(scaleX, scaleY)
+    
+    love.graphics.draw(sprites.hud.credits, screenWidth / 2, credits.offsetY, 0, scale/2, scale/2, imageWidth / 2, 0)
 end
-love.graphics.draw(sprites.hud.title, love.graphics.getWidth() / 2, love.graphics.getHeight() / 3, 0, 8, 8, sprites.hud.title:getWidth() / 2, sprites.hud.title:getHeight() / 2)

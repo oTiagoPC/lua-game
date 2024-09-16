@@ -983,7 +983,7 @@ return {
           name = "roteiro.pav.dialogo3",
           type = "",
           shape = "rectangle",
-          x = 432,
+          x = 368,
           y = 208,
           width = 16,
           height = 48,

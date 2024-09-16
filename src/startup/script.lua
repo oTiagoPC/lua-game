@@ -29,7 +29,7 @@ roteiro = {
             {speaker = "Vicenzo Copetti", text = "Obrigado professor. Isso me lembra a revolta das máquinas agrícolas que ocorreu na minha cidade no ano de 2012. Eu fui o líder que salvou a cidade."},
             {speaker = "Tiago Azevedo", text = "Muito obrigado Rafael. Graças a você tenho mais uma coisa pra eu colocar no meu currículo hehehe."},
             {speaker = "Tiago Corpes", text = "Tamo junto, Berri! Aí namoral vou até fazer um jogo sobre isso."},
-            {speaker = "Caio Barcelos", text = "Jogou muito professor, melhor que isso só a virada do Gabigol em cima do River Plate em 2019."},
+            {speaker = "Caio Brito", text = "Jogou muito professor, melhor que isso só a virada do Gabigol em cima do River Plate em 2019."},
             {speaker = "Berri", text = "Fiquem sossegados pessoal, já cuidei de tudo."},
             {speaker = "Berri", text = "Preciso arrumar uma forma de acabar com isso, minhas IAs devem ter feito base em algum lugar, mas aonde?"}
         },

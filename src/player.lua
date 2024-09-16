@@ -171,8 +171,10 @@ end
 
 function player:checkTransition()
     if player:enter('Transitions') then
-        local data = player:getEnterCollisionData('Transitions')
-        enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+        if #world.enemies == 0 then
+            local data = player:getEnterCollisionData('Transitions')
+            enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+        end
     end
 end
 
@@ -249,13 +251,6 @@ function player:shoot()
     local bullet = createBullet(player.x, player.y, direction.x, direction.y)
     table.insert(player.bullets, bullet)
     player.lastShootTime = love.timer.getTime()
-end
-
-function player:spawn(x, y)
-    player.x = x
-    player.y = y
-    player:setPosition(x, y)
-    -- Transição de tela
 end
 
 function player:heal()

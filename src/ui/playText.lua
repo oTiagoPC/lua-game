@@ -19,7 +19,7 @@ end
 function dialog:update(dt)
     if world.dialog then
         dialog.textTimer = dialog.textTimer + dt
-        local speed = 0.05
+        local speed = 0.02
 
         if dialog.textTimer >= speed then
             dialog.textTimer = 0
@@ -86,7 +86,7 @@ function dialog:draw()
         portrait = sprites.portraits.tiaguin
     elseif dialog.character == "Tiago Azevedo" then
         portrait = sprites.portraits.tiago
-    elseif dialog.character == "Caio Barcelos" then
+    elseif dialog.character == "Caio Brito" then
         portrait = sprites.portraits.caio
     elseif dialog.character == "Henrique Bertochi" then
         portrait = sprites.portraits.henrique

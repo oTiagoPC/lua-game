@@ -1,4 +1,4 @@
-function drawInCamera()
+function drawInCamera()  
     if gameMap.layers["ground"] then
         gameMap:drawLayer(gameMap.layers["ground"])
     end
@@ -17,7 +17,7 @@ function drawInCamera()
     if gameMap.layers["barriers"] then
         gameMap:drawLayer(gameMap.layers["barriers"])
     end
-    
+        
     if #world.NPCs > 0 then 
         for i, npc in ipairs(world.NPCs) do
            npc.anim:draw(sprites.vagnerSheet, npc.x, npc.y, nil, npc.dirX, 1, 11, 10.5)

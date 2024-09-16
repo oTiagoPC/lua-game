@@ -41,6 +41,7 @@ function createEnemy(x, y)
 
     function enemy:takeDamage(damage)
         enemy.health = enemy.health - damage
+        knockback("enemy", enemy)
         enemy.attackRange = 300 -- ideia de aumentar a visão do inimigo ao ser atacado 
         enemy.speed = player.speed * 0.8 -- ideia de aumentar a velocidade do inimigo ao ser atacado
     end

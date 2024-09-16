@@ -181,7 +181,7 @@
     <property name="req" value="roteiro.pav.dialogo1"/>
    </properties>
   </object>
-  <object id="78" name="roteiro.pav.dialogo3" x="432" y="208" width="16" height="48">
+  <object id="78" name="roteiro.pav.dialogo3" x="368" y="208" width="16" height="48">
    <properties>
     <property name="req" value="roteiro.pav.dialogo2"/>
    </properties>
