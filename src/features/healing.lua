@@ -27,7 +27,25 @@ function createBurger(x, y)
     end
 
     function food:update(dt)
-        -- Atualizar a animação
+        if distanceBetween(food.x, food.y, player.x, player.y) < 30 then
+            local speed = 100
+
+            local dirX = player.x - food.x
+            local dirY = player.y - food.y
+            local length = math.sqrt(dirX^2 + dirY^2)
+
+
+            dirX = dirX / length
+            dirY = dirY / length
+
+
+            food.x = food.x + dirX * speed * dt
+            food.y = food.y + dirY * speed * dt
+
+
+            food.collider:setPosition(food.x, food.y)
+        end
+
         if not self.collected then
             food.animation:update(dt)
         else

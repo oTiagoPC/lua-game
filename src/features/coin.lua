@@ -27,19 +27,40 @@ function createCoin(x, y)
     end
 
     function coin:update(dt)
-        -- Atualizar a animação
+        if distanceBetween(coin.x, coin.y, player.x, player.y) < 30 then
+            local speed = 100
+
+            local dirX = player.x - coin.x
+            local dirY = player.y - coin.y
+            local length = math.sqrt(dirX^2 + dirY^2)
+
+
+            dirX = dirX / length
+            dirY = dirY / length
+
+
+            coin.x = coin.x + dirX * speed * dt
+            coin.y = coin.y + dirY * speed * dt
+
+
+            coin.collider:setPosition(coin.x, coin.y)
+        end
+
         if not self.collected then
             coin.animation:update(dt)
         else
-            coin.collider:destroy()
-            for i, e in ipairs(world.coins) do
-                if e == coin then
-                    table.remove(world.coins, i)
-                    break
-                end
+
+        coin.collider:destroy()
+
+        for i, e in ipairs(world.coins) do
+            if e == coin then
+                table.remove(world.coins, i)
+                break
             end
         end
     end
+end
+
 
     return coin
 end

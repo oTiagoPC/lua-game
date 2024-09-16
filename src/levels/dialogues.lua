@@ -17,19 +17,22 @@ end
 
 function playDialog(id)
     if id == 'roteiro.c3.dialogo1' then
+        npcGoTo(vagner, 190, 86)
         world.dialogoAtual = roteiro.c3.dialogo1
     elseif id == 'roteiro.c3.dialogo2' then
-        clearNPCs()
-        vagnerr = createNpc(529, 339)
-        table.insert(world.NPCs, vagner)
-        npcGoTo(vagnerr, 559, 439)
         player.healing = player.healing + 1
         world.dialogoAtual = roteiro.c3.dialogo2
     elseif id == 'roteiro.pav.dialogo1' then
         world.dialogoAtual = roteiro.pav.dialogo1
     elseif id == 'roteiro.pav.dialogo2' then
+        vagner = createNpc(508, 306)
+        table.insert(world.NPCs, vagner)
+        npcGoTo(vagner, 497, 251)
+        npcGoTo(vagner, 390, 226)
         world.dialogoAtual = roteiro.pav.dialogo2
     elseif id == 'roteiro.pav.dialogo3' then
+        npcGoTo(vagner, 388, 248)
+        npcGoTo(vagner, 216, 238)
         world.dialogoAtual = roteiro.pav.dialogo3
     elseif id == 'roteiro.biblio.dialogo1' then
         world.dialogoAtual = roteiro.biblio.dialogo1

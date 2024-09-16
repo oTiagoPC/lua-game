@@ -171,8 +171,10 @@ end
 
 function player:checkTransition()
     if player:enter('Transitions') then
-        local data = player:getEnterCollisionData('Transitions')
-        enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+        if #world.enemies == 0 then
+            local data = player:getEnterCollisionData('Transitions')
+            enterTransition(data.collider.id, data.collider.destX, data.collider.destY)
+        end
     end
 end
 

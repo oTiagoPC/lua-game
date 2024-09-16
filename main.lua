@@ -55,5 +55,11 @@ function love.keypressed(key)
         if key == "x" then
             player:heal()
         end
+        if key == 'z' then
+            print(player.x, player.y)
+        end
+        if key == 'k' then
+            clearCollider(world.enemies)
+        end
     end
 end

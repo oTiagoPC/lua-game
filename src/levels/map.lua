@@ -5,13 +5,31 @@ function loadMap(mapName)
     gameMap = sti("maps/" .. mapName .. ".lua")
 
     if dialogPosition == 0  and loadedMap == 'c3Map' then
-        vagner = createNpc(223, 185)
+        vagner = createNpc(220, 273)
         table.insert(world.NPCs, vagner)
-        npcGoTo(vagner, 260, 160)
+        npcGoTo(vagner, 220, 173)
+        npcGoTo(vagner, 280, 173)
+        table.insert(world.enemies, createEnemy(158, 440))
+        table.insert(world.enemies, createEnemy(178, 519))
+        table.insert(world.enemies, createEnemy(262, 478))
+        table.insert(world.enemies, createEnemy(396, 302))
+        table.insert(world.enemies, createEnemy(533, 248))
+        table.insert(world.enemies, createEnemy(691, 283))
+        table.insert(world.enemies, createEnemy(691, 198))
+        table.insert(world.enemies, createEnemy(544, 403))
+        table.insert(world.enemies, createEnemy(655, 447))
     end
 
-    if loadedMap == 'c3Map' then
-        table.insert(world.enemies, createEnemy(140, 460))
+    if dialogPosition == 2 and loadedMap == 'pavMap' then
+        table.insert(world.enemies, createEnemy(368, 238))
+        table.insert(world.enemies, createEnemy(562, 173))
+        table.insert(world.enemies, createEnemy(510, 150))
+        table.insert(world.enemies, createEnemy(500, 89))
+        table.insert(world.enemies, createEnemy(274, 205))
+        table.insert(world.enemies, createEnemy(214, 277))
+        table.insert(world.enemies, createEnemy(113, 229))
+        table.insert(world.enemies, createEnemy(212, 142))
+
     end
     
     if gameMap.layers['walls'] then
