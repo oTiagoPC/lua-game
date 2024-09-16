@@ -41,3 +41,4 @@ fonts = {}
 fonts.default = love.graphics.newFont('fonts/pixel-font.ttf', 20)
 
 sounds = {}
+sounds.menuSong = love.audio.newSource("sounds/musics/menuMusic.mp3" , "stream")
