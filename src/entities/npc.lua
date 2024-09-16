@@ -6,7 +6,7 @@ function createNpc(x, y)
     npc.targetX, npc.targetY = nil, nil
     npc.walking = false
     npc.ready = true
-    npc.destinationQueue = {}  -- Fila de destinos
+    npc.destinationQueue = {}
 
     npc.collider:setCollisionClass('Npc')
     npc.collider:setFixedRotation(true)
@@ -23,7 +23,6 @@ function createNpc(x, y)
     npc.anim = npc.animations.downRight
 
     function npc:update(dt)
-        -- Adiciona destinos
         if dialogPosition == 1 and #world.enemies == 0 then
             if npc.ready == true then
                 npcGoTo(vagner, 221, 170)
@@ -34,7 +33,6 @@ function createNpc(x, y)
             end
         end
 
-        -- Se não houver destino atual e a fila não estiver vazia, pegue o próximo
         if not npc.targetX and not npc.targetY and #npc.destinationQueue > 0 then
             local nextDestination = table.remove(npc.destinationQueue, 1)
             npcGoTo(npc, nextDestination.x, nextDestination.y)
@@ -42,7 +40,6 @@ function createNpc(x, y)
 
         npc.x, npc.y = npc.collider:getPosition()
 
-        -- Se o NPC tiver um destino, mova-o até lá
         if npc.targetX and npc.targetY then
             if npc.y > npc.targetY then
                 if npc.x > npc.targetX then
@@ -60,8 +57,7 @@ function createNpc(x, y)
 
             local dist = distanceBetween(npc.x, npc.y, npc.targetX, npc.targetY)
 
-            -- Ajuste na precisão da verificação de distância
-            if dist > 5 then  -- Aumente esse valor se o NPC ainda estiver travando
+            if dist > 5 then
                 local dir = vector(npc.targetX - npc.x, npc.targetY - npc.y):normalized()
                 npc.collider:setLinearVelocity(dir.x * npc.speed, dir.y * npc.speed)
                 npc.walking = true

@@ -34,6 +34,9 @@ function love.draw()
 end
 
 function love.keypressed(key)
+    if key == 'escape' then
+        love.event.quit()
+    end
     if key == 'space' then
         gameState = "game"
     end
@@ -45,9 +48,6 @@ function love.keypressed(key)
             if world.dialog then
                 dialog:next()
             end
-        end
-        if key == 'escape' then
-            love.event.quit()
         end
         if key == 'lshift' then
             player:dash()

@@ -5,6 +5,7 @@ sprites.vagnerSheet = love.graphics.newImage('sprites/sheets/vagnerSheet.png')
 sprites.coinSheet = love.graphics.newImage('sprites/sheets/coinSheet.png')
 sprites.burgerSheet = love.graphics.newImage('sprites/sheets/burgerSheet.png')
 sprites.bulletSheet = love.graphics.newImage('sprites/sheets/bulletSheet.png')
+sprites.berriSheet = love.graphics.newImage('sprites/sheets/berriSheet.png')
 
 sprites.characters = {}
 sprites.characters.tiaguin = love.graphics.newImage('sprites/characters/tiaguin.png')

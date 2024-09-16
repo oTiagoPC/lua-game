@@ -1,5 +1,6 @@
 function updateAll(dt)
     credits:update(dt)
+    menu:update(dt)
     if world.dialog then
         dialog:update(dt)
     else
@@ -11,7 +12,6 @@ function updateGame(dt)
     world:update(dt)
     player:update(dt)
     dialog:update(dt)
-
     if #world.enemies > 0 then    
         for i, enemy in ipairs(world.enemies) do
             enemy:update(dt)
