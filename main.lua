@@ -16,7 +16,9 @@ end
 function love.draw()
     if gameState == "menu" then
         menu:draw()
-        --credits:draw()
+        sounds.menuSong:play()
+    elseif gameState == 'credits' then
+        credits:draw()
         sounds.menuSong:play()
     else
         sounds.menuSong:stop()

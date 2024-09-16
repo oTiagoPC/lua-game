@@ -14,7 +14,6 @@ sprites.characters.vicenzo = love.graphics.newImage('sprites/characters/vicenzo.
 sprites.characters.caio = love.graphics.newImage('sprites/characters/caio.png')
 sprites.characters.bibliotecaria = love.graphics.newImage('sprites/characters/bibliotecaria.png')
 
-
 sprites.portraits = {}
 sprites.portraits.berri = love.graphics.newImage('sprites/portraits/berri-portrait.png')
 sprites.portraits.vagner = love.graphics.newImage('sprites/portraits/vagner-portrait.png')
@@ -36,6 +35,7 @@ sprites.hud.startingText = love.graphics.newImage('sprites/ui/startingText.png')
 sprites.hud.titleBackground = love.graphics.newImage('sprites/ui/titleBackground.png')
 sprites.hud.textBox = love.graphics.newImage('sprites/ui/textBox.png')
 sprites.hud.dialogBackground = love.graphics.newImage('sprites/ui/dialogBackground.png')
+sprites.hud.credits = love.graphics.newImage('sprites/ui/credits.png')
 
 fonts = {}
 fonts.default = love.graphics.newFont('fonts/pixel-font.ttf', 20)

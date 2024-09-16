@@ -86,7 +86,7 @@ function dialog:draw()
         portrait = sprites.portraits.tiaguin
     elseif dialog.character == "Tiago Azevedo" then
         portrait = sprites.portraits.tiago
-    elseif dialog.character == "Caio Barcelos" then
+    elseif dialog.character == "Caio Brito" then
         portrait = sprites.portraits.caio
     elseif dialog.character == "Henrique Bertochi" then
         portrait = sprites.portraits.henrique
