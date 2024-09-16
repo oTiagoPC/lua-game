@@ -50,7 +50,7 @@ function love.keypressed(key)
         if key == 'lshift' then
             player:dash()
         end
-        if key == "j" then
+        if key == "x" then
             player:heal()
         end
     end

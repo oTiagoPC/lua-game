@@ -1,63 +1,60 @@
 function createBullet(playerX, playerY, dirX, dirY)
-    local offset = 10
-    local bulletX = playerX + dirX * offset
-    local bulletY = playerY + dirY * offset
+    local bullet = {}
+    
+    bullet.x = playerX + dirX * 10
+    bullet.y = playerY + dirY * 10
+    bullet.width = 10
+    bullet.height = 2
+    bullet.speed = 100
+    bullet.damage = 1
+    bullet.direction = vector(dirX, dirY):normalized()
 
-    local bullet = {
-        x = bulletX,
-        y = bulletY,
-        width = 10,
-        height = 2,
-        speed = 100,
-        damage = 1,
-        direction = vector(dirX, dirY):normalized(),
-        grid = anim8.newGrid(16, 16, sprites.bulletSheet:getWidth(), sprites.bulletSheet:getHeight()),
-        animation = anim8.newAnimation(anim8.newGrid(16, 16, sprites.bulletSheet:getWidth(), sprites.bulletSheet:getHeight())('1-5', 1), 0.1),
-        collider = world:newRectangleCollider(bulletX, bulletY, 10, 2)
-    }
+    bullet.grid = anim8.newGrid(16, 16, sprites.bulletSheet:getWidth(), sprites.bulletSheet:getHeight())
+    bullet.animation = anim8.newAnimation(bullet.grid('1-5', 1), 0.1)
 
+    bullet.collider = world:newCircleCollider(bulletX, bulletY, 4)
     bullet.collider:setCollisionClass('Bullet')
     bullet.collider:setObject(bullet)
 
     table.insert(player.bullets, bullet)
 
     function bullet:update(dt)
-        if self.collider then
-            self.x = self.x + self.direction.x * self.speed * dt
-            self.y = self.y + self.direction.y * self.speed * dt
-            self.collider:setPosition(self.x, self.y)
+        if bullet.collider then
+            bullet.x = bullet.x + bullet.direction.x * bullet.speed * dt
+            bullet.y = bullet.y + bullet.direction.y * bullet.speed * dt
+            bullet.collider:setPosition(bullet.x, bullet.y)
         end
-        self.animation:update(dt)
+        bullet.animation:update(dt)
 
-        if self:isOffScreen() then
-            self:destroy()
+        if bullet:isOffScreen() then
+            bullet:destroy()
         end
     end
 
     function bullet:draw()
         love.graphics.push()
-        love.graphics.translate(self.x, self.y)
-        love.graphics.rotate(math.atan2(self.direction.y, self.direction.x))
-        local scale = self.direction.x < 0 and -0.6 or 0.6
-        self.animation:draw(sprites.bulletSheet, -self.width / 2, -self.height / 2, nil, scale, scale)
+        love.graphics.translate(bullet.x, bullet.y)
+        love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
+        local scale = bullet.direction.x < 0 and -0.6 or 0.6
+        bullet.animation:draw(sprites.bulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scale, scale)
         love.graphics.pop()
     end
 
     function bullet:isOffScreen()
-        return self.x + self.width / 2 < 0 or
-               self.x - self.width / 2 > world.mapWidth or
-               self.y + self.height / 2 < 0 or
-               self.y - self.height / 2 > world.mapHeight
+        return bullet.x + bullet.width / 2 < 0 or
+               bullet.x - bullet.width / 2 > world.mapWidth or
+               bullet.y + bullet.height / 2 < 0 or
+               bullet.y - bullet.height / 2 > world.mapHeight
     end
 
     function bullet:destroy()
-        if self.collider then
-            self.collider:destroy()
-            self.collider = nil
+        if bullet.collider then
+            bullet.collider:destroy()
+            bullet.collider = nil
         end
 
         for i, b in ipairs(player.bullets) do
-            if b == self then
+            if b == bullet then
                 table.remove(player.bullets, i)
                 break
             end
@@ -66,7 +63,7 @@ function createBullet(playerX, playerY, dirX, dirY)
     end
 
     function bullet:enter(collisionClass)
-        return self.collider and self.collider:enter(collisionClass) or false
+        return bullet.collider and bullet.collider:enter(collisionClass) or false
     end
 
     return bullet
