@@ -87,7 +87,6 @@ function player:update(dt)
             if bullet:enter('Wall') then
                 local collisionData = bullet.collider:getEnterCollisionData('Wall')
                 if collisionData then
-                    -- apenas removo a bala, mas poderia fazer algo mais interessante
                     bullet:destroy()
                     table.remove(self.bullets, i)
                 end
@@ -241,15 +240,12 @@ function knockback(obj, enemyInstance)
 end
 
 function player:shoot()
-    -- pega a posição do mouse em coordenadas do mundo
     local mouseX, mouseY = cam:mousePosition()
     local mousePos = vector(mouseX, mouseY)
 
-    -- pega a posição do jogador em coordenadas do mundo
     local playerPos = vector(player.x, player.y)
     local direction = (mousePos - playerPos):normalized()
 
-    -- cria e adiciona uma nova bala à lista de balas do jogador
     local bullet = createBullet(player.x, player.y, direction.x, direction.y)
     table.insert(player.bullets, bullet)
     player.lastShootTime = love.timer.getTime()
