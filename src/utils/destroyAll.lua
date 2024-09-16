@@ -2,9 +2,11 @@ function destroyAll()
     clearColliderTable(walls)
     clearColliderTable(transitions)
     clearColliderTable(dialogues)
-
+    
     clearTable(world.coins)
     clearTable(world.food)
+    
+    clearNPCs()
     
     for i=#world.enemies, 1, -1 do
         if world.enemies[i] ~= nil then
@@ -16,6 +18,9 @@ function destroyAll()
         end
     end
 
+end
+
+function clearNPCs()
     for i=#world.NPCs, 1, -1 do
         if world.NPCs[i] ~= nil then
             local npcData = world.NPCs[i]:getObject()

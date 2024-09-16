@@ -55,5 +55,3 @@ function npcGoTo(npc, x, y)
     npc.targetX = x
     npc.targetY = y
 end
-
-vagner = createNpc(223, 185)
