@@ -251,13 +251,6 @@ function player:shoot()
     player.lastShootTime = love.timer.getTime()
 end
 
-function player:spawn(x, y)
-    player.x = x
-    player.y = y
-    player:setPosition(x, y)
-    -- Transição de tela
-end
-
 function player:heal()
     if player.health < player.maxHealth and player.healing > 0 then
         player.health = player.health + 1

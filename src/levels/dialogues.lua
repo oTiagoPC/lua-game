@@ -1,10 +1,9 @@
 dialogues = {}
+dialogPosition = 0
 
 local previousDialog = nil
 
 function spawnDialog(x, y, width, height, id, requiredDialog)
-    print(previousDialog, requiredDialog)
-
     if previousDialog == requiredDialog then
         local dialog = world:newRectangleCollider(x, y, width, height)
         dialog:setType('static')
@@ -41,7 +40,9 @@ function playDialog(id)
     end
 
     dialog:start()
-
+    
+    dialogPosition = dialogPosition + 1
+    
     for i, dialog in ipairs(dialogues) do
         if dialog.id == id then
             dialog:destroy()

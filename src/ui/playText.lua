@@ -19,7 +19,7 @@ end
 function dialog:update(dt)
     if world.dialog then
         dialog.textTimer = dialog.textTimer + dt
-        local speed = 0.05
+        local speed = 0.02
 
         if dialog.textTimer >= speed then
             dialog.textTimer = 0

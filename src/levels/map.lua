@@ -4,6 +4,12 @@ function loadMap(mapName)
     loadedMap = mapName
     gameMap = sti("maps/" .. mapName .. ".lua")
 
+    if dialogPosition == 0  and loadedMap == 'c3Map' then
+        table.insert(world.NPCs, vagner)
+        npcGoTo(vagner, 220, 160)
+        npcGoTo(vagner, 260, 160)
+    end
+
     if loadedMap == 'c3Map' then
         table.insert(world.enemies, createEnemy(140, 460))
     end

@@ -5,7 +5,6 @@ function destroyAll()
 
     clearTable(world.coins)
     clearTable(world.food)
-    clearTable(world.NPCs)
     
     for i=#world.enemies, 1, -1 do
         if world.enemies[i] ~= nil then
@@ -14,6 +13,16 @@ function destroyAll()
                 enemyData.collider:destroy()
             end
             table.remove(world.enemies, i)
+        end
+    end
+
+    for i=#world.NPCs, 1, -1 do
+        if world.NPCs[i] ~= nil then
+            local npcData = world.NPCs[i]:getObject()
+            if npcData then
+                npcData.collider:destroy()
+            end
+            table.remove(world.NPCs, i)
         end
     end
 end
