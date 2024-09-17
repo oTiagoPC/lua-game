@@ -9,14 +9,14 @@ function loadMap(mapName)
         table.insert(world.NPCs, vagner)
         npcGoTo(vagner, 220, 173)
         npcGoTo(vagner, 280, 173)
-        --[[table.insert(world.enemies, createEnemy(158, 440))
+        table.insert(world.enemies, createEnemy(158, 440))
         table.insert(world.enemies, createEnemy(178, 519))
         table.insert(world.enemies, createEnemy(262, 478))
         table.insert(world.enemies, createEnemy(396, 302))
         table.insert(world.enemies, createEnemy(691, 283))
         table.insert(world.enemies, createEnemy(691, 198))
         table.insert(world.enemies, createEnemy(544, 403))
-        table.insert(world.enemies, createEnemy(655, 447))]]
+        table.insert(world.enemies, createEnemy(655, 447))
     end
 
     if dialogPosition == 2 and loadedMap == 'pavMap' then

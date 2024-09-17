@@ -10,6 +10,7 @@ function requireAll()
     require('src/utils/cam')
     require('src/utils/destroyAll')
     require('src/utils/functions')
+    require('src/utils/shaders')
 
     require('src/levels/dialogues')
     require('src/levels/map')

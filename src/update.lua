@@ -18,7 +18,7 @@ function updateGame(dt)
         end 
     end
     if boss.isAlive then 
-        boss:uptade(dt)
+        boss:update(dt)
     end
     if #world.coins > 0 then
         for i, coin in ipairs(world.coins) do

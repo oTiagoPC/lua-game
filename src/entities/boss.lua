@@ -36,7 +36,7 @@ function boss:draw()
     boss.anim:draw(sprites.bossSheet, boss.x, boss.y-2, nil, 4, 4, 11, 10.5)
 end 
 
-function boss:uptade(dt)
+function boss:update(dt)
     local bossX, bossY = boss.collider:getPosition()
 
     local directionX = player.x - bossX
@@ -56,12 +56,12 @@ function boss:uptade(dt)
         end
     end
 
-
     if distance > 0 then
         directionX = directionX / distance
         directionY = directionY / distance
     end
 
+    boss.anim:update(dt)
 
     boss.collider:setLinearVelocity(directionX * boss.speed, directionY * boss.speed)
     boss.x = bossX

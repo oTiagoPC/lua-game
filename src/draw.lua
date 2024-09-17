@@ -38,7 +38,11 @@ function drawInCamera()
 
     if #world.enemies > 0 then
         for i, enemy in ipairs(world.enemies) do
+            if enemy.flashTimer > 0 then 
+                love.graphics.setShader(shaders.flash)
+            end
             enemy.anim:draw(sprites.enemySheet, enemy.x, enemy.y-2, nil, enemy.dirX, 1, 11, 10.5)
+            love.graphics.setShader()
         end
     end
 

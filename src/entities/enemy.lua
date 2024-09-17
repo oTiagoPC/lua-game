@@ -10,6 +10,7 @@ function createEnemy(x, y)
     enemy.health = 5
     enemy.damage = 1
     enemy.walking = false
+    enemy.flashTimer = 0
     enemy.avoidanceTimer = 0
     enemy.avoidanceDirection = {x = 0, y = 0}
     enemy.attackRange = 125
@@ -40,8 +41,8 @@ function createEnemy(x, y)
     enemy.anim = enemy.animations.downRight
 
     function enemy:takeDamage(damage)
+        enemy.flashTimer = 0.12
         enemy.health = enemy.health - damage
-        knockback("enemy", enemy)
         enemy.attackRange = 300 -- ideia de aumentar a visão do inimigo ao ser atacado 
         enemy.speed = player.speed * 0.8 -- ideia de aumentar a velocidade do inimigo ao ser atacado
     end
@@ -158,6 +159,12 @@ function createEnemy(x, y)
         if enemy.health <= 0 then
             enemy:onDeath()
             return
+        end
+        if enemy.flashTimer > 0 then
+            enemy.flashTimer = enemy.flashTimer - dt
+            if enemy.flashTimer < 0 then
+                enemy.flashTimer = 0
+            end
         end
 
         enemy:checkCollision()
