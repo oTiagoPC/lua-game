@@ -6,6 +6,7 @@ function boss:create(x, y)
     boss.health = 100
     boss.speed = player.speed * 0.8
     boss.isAlive = true
+    boss.flashTimer = 0
     boss.summonTimer = 10
     boss.avoidanceTimer = 0
     boss.avoidanceDirection = {x = 0, y = 0}
@@ -30,6 +31,7 @@ end
 
 function boss:takeDamage(damage)
     boss.health = boss.health - damage
+    boss.flashTimer = 0.12
     if boss.health <= 0 then
         boss.isAlive = false
         id = 'roteiro.c3Parte2.dialogo3'
@@ -46,7 +48,11 @@ function boss:summonEnemy()
 end
 
 function boss:draw()
+    if boss.flashTimer > 0 then 
+        love.graphics.setShader(shaders.flash)
+    end
     boss.anim:draw(sprites.bossSheet, boss.x, boss.y-2, nil, 3, 3, 11, 10.5)
+    love.graphics.setShader()
 end 
 
 function boss:drawLifeBarOnTop()
@@ -130,7 +136,14 @@ end
 function boss:update(dt)
     local bossX, bossY = boss.collider:getPosition()
 
-    if distanceBetween(bossX, bossY, player.x, player.y) < 100 then
+    if boss.flashTimer > 0 then
+            boss.flashTimer = boss.flashTimer - dt
+            if boss.flashTimer < 0 then
+                boss.flashTimer = 0
+            end
+        end
+
+    if distanceBetween(bossX, bossY, player.x, player.y) < 80 then
         if dialogPosition == 9 then
             id = 'roteiro.c3Parte2.dialogo2'
             previousDialog = 'roteiro.c3Parte2.dialogo2'
