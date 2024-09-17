@@ -33,6 +33,7 @@ function boss:takeDamage(damage)
     boss.health = boss.health - damage
     boss.flashTimer = 0.12
     if boss.health <= 0 then
+        boss.collider:destroy()
         boss.isAlive = false
         id = 'roteiro.c3Parte2.dialogo3'
         previousDialog = 'roteiro.c3Parte2.dialogo3'
@@ -69,7 +70,7 @@ function boss:drawLifeBarOnTop()
     love.graphics.rectangle('fill', barX, barY, barWidth, barHeight)
 
     love.graphics.setColor(1, 0, 0)
-    love.graphics.rectangle('fill', barX, barY, barWidth * (boss.health / 100), barHeight)
+    love.graphics.rectangle('fill', barX, barY, barWidth * (boss.health / 150), barHeight)
 
     love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle('line', barX, barY, barWidth, barHeight)

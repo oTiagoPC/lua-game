@@ -2,7 +2,7 @@ menu = {}
 
 berri = {}
 berri.grid = anim8.newGrid(64, 64, sprites.berriSheet:getWidth(), sprites.berriSheet:getHeight())
-berri.blink = anim8.newAnimation(berri.grid('1-4', 1), {4, 0.1, 0.1, 0.1})
+berri.blink = anim8.newAnimation(berri.grid('1-4', 1), {3, 0.1, 0.1, 0.1})
 
 function menu:draw()
     love.graphics.draw(sprites.hud.titleBackground, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, 0, 1.1, 1.1, sprites.hud.titleBackground:getWidth() / 2, sprites.hud.titleBackground:getHeight() / 2)

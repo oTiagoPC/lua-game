@@ -64,5 +64,8 @@ function love.keypressed(key)
         if key == 'k' then
             clearCollider(world.enemies)
         end
+        if key == 'i' then
+            gameState = 'credits'
+        end
     end
 end
