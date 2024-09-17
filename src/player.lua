@@ -35,6 +35,18 @@ function player:update(dt)
     player:setLinearDamping(12)
     local dirX, dirY = 0, 0
 
+    if player.health <= 0 then 
+        if loadedMap == "c3Map" then
+            player:setPosition(318, 160)
+        elseif loadedMap == "pavMap" then
+            player:setPosition(516, 278)
+        elseif loadedMap == "biblioMap" then
+            player:setPosition(606, 483)
+        end
+        love.timer.sleep(1)
+        player.health = player.maxHealth
+    end
+
     if dialogPosition == 7 and #world.enemies == 0 then
         id = 'roteiro.biblio.dialogo3'
         previousDialog = 'roteiro.biblio.dialogo3'
