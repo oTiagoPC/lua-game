@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 162,
+  nextobjectid = 163,
   properties = {},
   tilesets = {
     {
@@ -1681,7 +1681,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["req"] = "roteiro.biblio.dialogo2"
+            ["req"] = "roteiro.biblio.dialogo3"
           }
         }
       }

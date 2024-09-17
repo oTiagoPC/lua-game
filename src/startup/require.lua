@@ -27,6 +27,7 @@ function requireAll()
     require('src/features/bullet')
     require('src/features/coin')
     require('src/features/healing')
+    require('src/features/book')
 
     require('src/ui/hud')
     require('src/ui/menu')

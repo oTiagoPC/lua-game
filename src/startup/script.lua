@@ -52,7 +52,10 @@ roteiro = {
             {speaker = "Berri", text = "Fica sossegada, eu cuido disso!"}
         },
         dialogo2 = {
-            {speaker = "Berri", text = "Beleza, agora que acabei com as máquinas aqui posso voltar para o C3!"},
+            {speaker = "Berri", text = "Beleza."}
+        },
+        dialogo3 = {
+            {speaker = "Berri", text = "Certo, agora que acabei com as máquinas aqui posso voltar para o C3!"},
             {speaker = "Vagner", text = "Berri, más notícias! Estou te ligando aqui do C3 pois descobri que as máquinas têm um líder, e ele é um grande conhecido seu..."},
             {speaker = "Berri", text = "Não!! Não pode ser! O 'Artificialis Intellectus' é o responsável por isso tudo?"},
             {speaker = "Vagner", text = "Sim, Berri! O 'Artificialis Intellectus' está controlando todas as máquinas da FURG. Você precisa voltar para o C3 e acabar com isso!"},

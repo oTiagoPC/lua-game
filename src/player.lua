@@ -35,10 +35,10 @@ function player:update(dt)
     player:setLinearDamping(12)
     local dirX, dirY = 0, 0
 
-    if dialogPosition == 6 and #world.enemies == 0 then
-        id = 'roteiro.biblio.dialogo2'
-        previousDialog = 'roteiro.biblio.dialogo2'
-        world.dialogoAtual = roteiro.biblio.dialogo2
+    if dialogPosition == 7 and #world.enemies == 0 then
+        id = 'roteiro.biblio.dialogo3'
+        previousDialog = 'roteiro.biblio.dialogo3'
+        world.dialogoAtual = roteiro.biblio.dialogo3
         playDialog(id)
     end
 

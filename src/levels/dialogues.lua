@@ -39,6 +39,8 @@ function playDialog(id)
         world.dialogoAtual = roteiro.biblio.dialogo1
     elseif id == 'roteiro.biblio.dialogo2' then
         world.dialogoAtual = roteiro.biblio.dialogo2
+    elseif id == 'roteiro.biblio.dialogo3' then
+        world.dialogoAtual = roteiro.biblio.dialogo3
     elseif id == 'roteiro.c3Parte2.dialogo1' then
         world.dialogoAtual = roteiro.c3Parte2.dialogo1
     elseif id == 'roteiro.c3Parte2.dialogo2' then

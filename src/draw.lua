@@ -51,6 +51,7 @@ function drawInCamera()
             food:draw()
         end
     end
+    drawBook()
 end
 
 function drawAfterCamera()

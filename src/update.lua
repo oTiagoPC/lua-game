@@ -27,6 +27,7 @@ function updateGame(dt)
             food:update(dt)
         end
     end
+    updateBook(dt)
     if #world.NPCs > 0 then
         for i, npc in ipairs(world.NPCs) do 
             npc:update(dt)

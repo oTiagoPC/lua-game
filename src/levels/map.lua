@@ -29,6 +29,7 @@ function loadMap(mapName)
     end
 
     if dialogPosition == 5 and loadedMap == 'biblioMap' then
+        createUniqueBook(408, 288)
         table.insert(world.enemies, createEnemy(728, 272))
         table.insert(world.enemies, createEnemy(753, 178))
         table.insert(world.enemies, createEnemy(634, 178))
