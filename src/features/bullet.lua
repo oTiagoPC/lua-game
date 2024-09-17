@@ -1,10 +1,12 @@
 function createBullet(playerX, playerY, dirX, dirY)
     local bullet = {}
     
+    -- Variáveis de controle para o desenho e collider
     bullet.x = playerX + dirX * 10
     bullet.y = playerY + dirY * 10
     bullet.width = 10
-    bullet.height = 2
+    bullet.height = 10
+
     bullet.speed = 100
     bullet.damage = 1
     bullet.direction = vector(dirX, dirY):normalized()
@@ -12,7 +14,13 @@ function createBullet(playerX, playerY, dirX, dirY)
     bullet.grid = anim8.newGrid(16, 16, sprites.bulletSheet:getWidth(), sprites.bulletSheet:getHeight())
     bullet.animation = anim8.newAnimation(bullet.grid('1-5', 1), 0.1)
 
-    bullet.collider = world:newCircleCollider(bulletX, bulletY, 4)
+    -- Cria o collider centralizado na posição da bala
+    bullet.collider = world:newRectangleCollider(
+        bullet.x - bullet.width / 2,
+        bullet.y - bullet.height / 2,
+        bullet.width,
+        bullet.height
+    )
     bullet.collider:setCollisionClass('Bullet')
     bullet.collider:setObject(bullet)
 
@@ -26,8 +34,11 @@ function createBullet(playerX, playerY, dirX, dirY)
 
     function bullet:update(dt)
         if bullet.collider then
+            -- Atualiza a posição da bala
             bullet.x = bullet.x + bullet.direction.x * bullet.speed * dt
             bullet.y = bullet.y + bullet.direction.y * bullet.speed * dt
+            
+            -- Atualiza a posição do collider para coincidir com a bala
             bullet.collider:setPosition(bullet.x, bullet.y)
         end
         bullet.animation:update(dt)
@@ -41,7 +52,7 @@ function createBullet(playerX, playerY, dirX, dirY)
         love.graphics.push()
         love.graphics.translate(bullet.x, bullet.y)
         love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
-        local scale = bullet.direction.x < 0 and -0.6 or 0.6
+        local scale = 0.6
         bullet.animation:draw(sprites.bulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scale, scale)
         if bookCollected then
             bullet.animation:draw(sprites.upgradedBulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scale, scale)
@@ -68,7 +79,6 @@ function createBullet(playerX, playerY, dirX, dirY)
                 break
             end
         end
-
     end
 
     function bullet:enter(collisionClass)
