@@ -123,6 +123,23 @@ end
 function boss:update(dt)
     local bossX, bossY = boss.collider:getPosition()
 
+    if distanceBetween(bossX, bossY, player.x, player.y) < 100 then
+        if dialogPosition == 9 then
+            id = 'roteiro.c3Parte2.dialogo2'
+            previousDialog = 'roteiro.c3Parte2.dialogo2'
+            world.dialogoAtual = roteiro.c3Parte2.dialogo2
+            playDialog(id)
+        end 
+    end
+
+    --[[if not boss.isAlive then
+        id = 'roteiro.c3Parte2.dialogo3'
+        previousDialog = 'roteiro.c3Parte2.dialogo3'
+        world.dialogoAtual = roteiro.c3Parte2.dialogo3
+        playDialog(id)
+        boss.collider:destroy()
+    end]]
+
     local directionX = player.x - bossX
     local directionY = player.y - bossY
 
