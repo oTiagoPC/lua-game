@@ -32,6 +32,8 @@ function createUniqueBook(x, y)
         previousDialog = 'roteiro.biblio.dialogo2'
         world.dialogoAtual = roteiro.biblio.dialogo2
         playDialog(id)
+        player.maxHealth = 7
+        player.health = player.health + 2 
     end
 
     function book:update(dt)
