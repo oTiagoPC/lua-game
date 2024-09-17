@@ -27,6 +27,8 @@ sprites.portraits.caio = love.graphics.newImage('sprites/portraits/caio-portrait
 sprites.portraits.henrique = love.graphics.newImage('sprites/portraits/henrique-portrait.png')
 sprites.portraits.vicenzo = love.graphics.newImage('sprites/portraits/vicenzo-portrait.png')
 sprites.portraits.bibliotecaria = love.graphics.newImage('sprites/portraits/bibliotecaria-portrait.png')
+sprites.portraits.artificialis = love.graphics.newImage('sprites/portraits/artificialis-portrait.png')
+
 
 sprites.hud = {}
 sprites.hud.fullHeart = love.graphics.newImage('sprites/ui/fullHeart.png')

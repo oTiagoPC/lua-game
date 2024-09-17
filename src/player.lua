@@ -115,7 +115,6 @@ function player:update(dt)
                     local bossInstance = collisionData.collider:getObject()
                     if bossInstance then
                         bossInstance:takeDamage(bullet.damage)
-                        knockback("enemy", bossInstance)
                         bullet:destroy()
                         table.remove(self.bullets, i)
                     end

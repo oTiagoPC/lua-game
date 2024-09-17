@@ -94,7 +94,7 @@ function dialog:draw()
     elseif dialog.character == "Moça da Portaria" then
         portrait = sprites.portraits.bibliotecaria
     elseif dialog.character == "Artificialis Intellectus" then
-        portrait = sprites.portraits.bibliotecaria
+        portrait = sprites.portraits.artificialis
     end
 
     love.graphics.draw(portrait,  textBoxX - 10, textBoxY + 10, nil, 4)
