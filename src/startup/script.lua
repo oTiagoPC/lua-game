@@ -63,10 +63,6 @@ roteiro = {
             {speaker = "Vagner", text = "Eu sei o quanto o 'Artificialis Intellectus' importava pra você. Mas é o momento de finalizar isso tudo!"},
             {speaker = "Vagner", text = "Você precisa voltar para o C3 e enfrentar o 'Artificialis Intellectus' e salvar a FURG. O futuro da FURG está nas suas mãos, Berri."},
             {speaker = "Berri", text = "Obrigado por tudo Vagner. Fica sossegado. Vou acabar com isso tudo!"}
-        },
-        naoSair = {
-            {speaker = "Moça da Portaria", text = "Eii, vai sair e me deixar com essas máquinas aqui sozinha???"},
-            {speaker = "Berri", text = "Beleza. Não tinha visto as máquinas ali, fica sossegada que eu cuido disso."}
         }
     },
     c3Parte2 = {

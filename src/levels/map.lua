@@ -38,6 +38,15 @@ function loadMap(mapName)
         table.insert(world.enemies, createEnemy(339, 289))
         table.insert(world.enemies, createEnemy(412, 158))
     end
+
+    if dialogPosition == 8 and loadedMap == "c3Map" then
+        table.insert(world.enemies, createEnemy(158, 440))
+        table.insert(world.enemies, createEnemy(178, 519))
+        table.insert(world.enemies, createEnemy(396, 302))
+        table.insert(world.enemies, createEnemy(691, 198))
+        table.insert(world.enemies, createEnemy(655, 447))
+        boss:create(691, 283)
+    end
     
     if gameMap.layers['walls'] then
         for i, obj in pairs(gameMap.layers['walls'].objects) do

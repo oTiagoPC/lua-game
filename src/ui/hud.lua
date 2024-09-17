@@ -6,7 +6,7 @@ function drawHUD()
     drawCoins()
     drawHamburguer()
     drawDashMeter()
-    drawDebug()
+    -- drawDebug()
 end
 
 function drawHearts()
