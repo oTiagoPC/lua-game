@@ -55,6 +55,8 @@ function drawInCamera()
     if boss.isAlive then 
         boss:draw()
     end 
+    drawBook()
+    
 end
 
 function drawAfterCamera()

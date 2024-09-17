@@ -16,6 +16,12 @@ function createBullet(playerX, playerY, dirX, dirY)
     bullet.collider:setCollisionClass('Bullet')
     bullet.collider:setObject(bullet)
 
+    if bookCollected then
+        bullet.damage = 5
+        bullet.grid = anim8.newGrid(16, 16, sprites.upgradedBulletSheet:getWidth(), sprites.upgradedBulletSheet:getHeight())
+        bullet.animation = anim8.newAnimation(bullet.grid('1-5', 1), 0.1)
+    end
+
     table.insert(player.bullets, bullet)
 
     function bullet:update(dt)
@@ -37,6 +43,9 @@ function createBullet(playerX, playerY, dirX, dirY)
         love.graphics.rotate(math.atan2(bullet.direction.y, bullet.direction.x))
         local scale = bullet.direction.x < 0 and -0.6 or 0.6
         bullet.animation:draw(sprites.bulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scale, scale)
+        if bookCollected then
+            bullet.animation:draw(sprites.upgradedBulletSheet, -bullet.width / 2, -bullet.height / 2, nil, scale, scale)
+        end
         love.graphics.pop()
     end
 
