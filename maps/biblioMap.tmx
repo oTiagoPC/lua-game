@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="189">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="190">
  <editorsettings>
   <export target="biblioMap.lua" format="lua"/>
  </editorsettings>
@@ -274,7 +274,7 @@
   <object id="185" x="106.938" y="149.875" width="26.125" height="42.125"/>
  </objectgroup>
  <objectgroup id="8" name="dialogues">
-  <object id="187" name="roteiro.biblio.dialogo1" x="576" y="368" width="64" height="48">
+  <object id="187" name="roteiro.biblio.dialogo1" x="576" y="368" width="64" height="32">
    <properties>
     <property name="req" value="roteiro.pav.dialogo3"/>
    </properties>

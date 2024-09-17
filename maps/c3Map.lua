@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 159,
+  nextobjectid = 162,
   properties = {},
   tilesets = {
     {
@@ -1668,6 +1668,21 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 161,
+          name = "roteiro.c3Parte2.dialogo1",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 496,
+          width = 96,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "roteiro.biblio.dialogo2"
+          }
         }
       }
     }

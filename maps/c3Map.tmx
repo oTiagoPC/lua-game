@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="159">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="54" height="35" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="162">
  <editorsettings>
   <export target="c3Map.lua" format="lua"/>
  </editorsettings>
@@ -284,5 +284,10 @@
    </properties>
   </object>
   <object id="157" name="roteiro.c3.dialogo1" x="288" y="80" width="16" height="112"/>
+  <object id="161" name="roteiro.c3Parte2.dialogo1" x="560" y="496" width="96" height="16">
+   <properties>
+    <property name="req" value="roteiro.biblio.dialogo2"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -13,7 +13,6 @@ function loadMap(mapName)
         table.insert(world.enemies, createEnemy(178, 519))
         table.insert(world.enemies, createEnemy(262, 478))
         table.insert(world.enemies, createEnemy(396, 302))
-        table.insert(world.enemies, createEnemy(533, 248))
         table.insert(world.enemies, createEnemy(691, 283))
         table.insert(world.enemies, createEnemy(691, 198))
         table.insert(world.enemies, createEnemy(544, 403))
@@ -23,13 +22,20 @@ function loadMap(mapName)
     if dialogPosition == 2 and loadedMap == 'pavMap' then
         table.insert(world.enemies, createEnemy(368, 238))
         table.insert(world.enemies, createEnemy(562, 173))
-        table.insert(world.enemies, createEnemy(510, 150))
         table.insert(world.enemies, createEnemy(500, 89))
         table.insert(world.enemies, createEnemy(274, 205))
         table.insert(world.enemies, createEnemy(214, 277))
         table.insert(world.enemies, createEnemy(113, 229))
-        table.insert(world.enemies, createEnemy(212, 142))
+    end
 
+    if dialogPosition == 5 and loadedMap == 'biblioMap' then
+        table.insert(world.enemies, createEnemy(728, 272))
+        table.insert(world.enemies, createEnemy(753, 178))
+        table.insert(world.enemies, createEnemy(634, 178))
+        table.insert(world.enemies, createEnemy(160, 184))
+        table.insert(world.enemies, createEnemy(73, 223))
+        table.insert(world.enemies, createEnemy(339, 289))
+        table.insert(world.enemies, createEnemy(412, 158))
     end
     
     if gameMap.layers['walls'] then
