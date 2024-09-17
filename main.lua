@@ -17,11 +17,14 @@ function love.draw()
     if gameState == "menu" then
         menu:draw()
         sounds.menuSong:play()
+        sounds.atual = "menu"
     elseif gameState == 'credits' then
         credits:draw()
         sounds.menuSong:play()
     else
         sounds.menuSong:stop()
+        sounds.worldSong:play()
+        sounds.atual = "world"
         cam:attach()
         drawInCamera()
         if colliderToggle then

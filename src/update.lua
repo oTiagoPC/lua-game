@@ -19,6 +19,7 @@ function updateGame(dt)
     end
     if boss.isAlive then 
         boss:update(dt)
+        sounds.worldSong:stop()
     end
     if #world.coins > 0 then
         for i, coin in ipairs(world.coins) do

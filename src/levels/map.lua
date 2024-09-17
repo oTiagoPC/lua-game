@@ -46,6 +46,8 @@ function loadMap(mapName)
         table.insert(world.enemies, createEnemy(691, 198))
         table.insert(world.enemies, createEnemy(655, 447))
         boss:create(691, 283)
+        sounds.bossSong:play()
+        sounds.atual = "boss"
     end
     
     if gameMap.layers['walls'] then
