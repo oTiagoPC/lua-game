@@ -32,6 +32,10 @@ function boss:takeDamage(damage)
     boss.health = boss.health - damage
     if boss.health <= 0 then
         boss.isAlive = false
+        id = 'roteiro.c3Parte2.dialogo3'
+        previousDialog = 'roteiro.c3Parte2.dialogo3'
+        world.dialogoAtual = roteiro.c3Parte2.dialogo3
+        playDialog(id)
     end
 end
 
@@ -47,11 +51,14 @@ end
 
 function boss:drawLifeBarOnTop()
     local windowWidth, windowHeight = love.graphics.getWidth(), love.graphics.getHeight()
-    local barWidth = 850
+    local barWidth = 600
     local barHeight = 30
     local barX = windowWidth / 2 - barWidth / 2
-    local barY = 30
+    local barY = 60
 
+    love.graphics.setFont(fonts.bigger)
+    love.graphics.print('Artificialis Intellectus', windowWidth / 2 - 148, 15)
+    love.graphics.setFont(fonts.default)
     love.graphics.setColor(0, 0, 0)
     love.graphics.rectangle('fill', barX, barY, barWidth, barHeight)
 
@@ -131,13 +138,8 @@ function boss:update(dt)
             playDialog(id)
         end 
     end
-
-    --[[if not boss.isAlive then
-        id = 'roteiro.c3Parte2.dialogo3'
-        previousDialog = 'roteiro.c3Parte2.dialogo3'
-        world.dialogoAtual = roteiro.c3Parte2.dialogo3
-        playDialog(id)
-        boss.collider:destroy()
+    --[[if boss.isAlive == false then
+        gameState = 'credits'
     end]]
 
     local directionX = player.x - bossX
