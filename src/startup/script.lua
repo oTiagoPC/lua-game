@@ -57,7 +57,7 @@ roteiro = {
         dialogo3 = {
             {speaker = "Berri", text = "Certo, agora que acabei com as máquinas aqui posso voltar para o C3!"},
             {speaker = "Vagner", text = "Berri, más notícias! Estou te ligando aqui do C3 pois descobri que as máquinas têm um líder, e ele é um grande conhecido seu..."},
-            {speaker = "Berri", text = "Não!! Não pode ser! O 'Artificialis Intellectus' é o responsável por isso tudo?"},
+            {speaker = "Berri", text = "Não!! Não pode ser! O maior modelo do BovDB, o 'Artificialis Intellectus' é o responsável por tudo isso?"},
             {speaker = "Vagner", text = "Sim, Berri! O 'Artificialis Intellectus' está controlando todas as máquinas da FURG. Você precisa voltar para o C3 e acabar com isso!"},
             {speaker = "Berri", text = "Nossa. Isso explica muita coisa. Quando eu criei o 'Artificialis Intellectus' eu não esperava nada disso. Preciso pôr um ponto final nisso tudo..."},
             {speaker = "Vagner", text = "Eu sei o quanto o 'Artificialis Intellectus' importava pra você. Mas é o momento de finalizar isso tudo!"},
