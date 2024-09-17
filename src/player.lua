@@ -60,6 +60,12 @@ function player:update(dt)
         knockback("player", enemyInstance)
     end
 
+    if player:enter('Boss') then
+        local enemyInstance = player:getEnterCollisionData('Boss').collider:getObject()
+        player.health = player.health - 1
+        knockback("player", enemyInstance)
+    end
+
     if player:enter("Coin") then
         local collisionData = player:getEnterCollisionData("Coin")
         if collisionData then -- Verificar se o dado de colisão existe
