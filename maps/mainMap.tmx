@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="137">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="139">
  <editorsettings>
   <export target="mainMap.lua" format="lua"/>
  </editorsettings>
@@ -301,6 +301,8 @@
   <object id="133" x="272" y="416" width="42.0222" height="48"/>
   <object id="134" x="341.966" y="416" width="42.0341" height="48"/>
   <object id="136" x="560" y="128" width="16" height="32"/>
+  <object id="137" x="272" y="400" width="16" height="16"/>
+  <object id="138" x="368" y="400" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="transitions">
   <object id="120" name="toBiblio" x="544" y="160" width="20.0111" height="16">

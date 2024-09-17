@@ -10,7 +10,7 @@ roteiro = {
         },
         dialogo2 = {
             {speaker = "Berri", text = "As máquinas estão mais fortes do que eu pensava."},
-            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Strada, o cara é brabo também."},
+            {speaker = "Vagner", text = "Como você está atirando CÓDIGOS??? Não esperava isso de nenhum professor da FURG, fora o Emanuel Estrada, o cara é brabo também."},
             {speaker = "Vagner", text = "Caramba, aquele bicho conseguiu te machucar hein? Aqui, eu sempre ando com um hambúrguer de grão de bico caso você precise."},
             {speaker = "Berri", text = "Obrigado Vagner."},
             {speaker = "Vagner", text = "Aproveita seu hamburguer mas se adianta porque eu recebi informações dos meus contatos do C3 e descobri que as máquinas estão indo para o Pav. 3!"},
