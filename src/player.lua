@@ -91,6 +91,19 @@ function player:update(dt)
                 end
             end
 
+            if bullet:enter('Boss') then
+                local collisionData = bullet.collider:getEnterCollisionData('Boss')
+                if collisionData then
+                    local bossInstance = collisionData.collider:getObject()
+                    if bossInstance then
+                        bossInstance:takeDamage(bullet.damage)
+                        knockback("enemy", bossInstance)
+                        bullet:destroy()
+                        table.remove(self.bullets, i)
+                    end
+                end
+            end
+
             if bullet:enter('Wall') then
                 local collisionData = bullet.collider:getEnterCollisionData('Wall')
                 if collisionData then
