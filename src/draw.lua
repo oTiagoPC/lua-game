@@ -43,6 +43,7 @@ function drawInCamera()
             end
             enemy.anim:draw(sprites.enemySheet, enemy.x, enemy.y-2, nil, enemy.dirX, 1, 11, 10.5)
             love.graphics.setShader()
+            enemy:drawLifeBar()
         end
     end
 
@@ -69,6 +70,8 @@ function drawAfterCamera()
         dialog:draw()
     end
     
+    if boss.isAlive then boss:drawLifeBarOnTop() end
+
     love.graphics.printf("Posiçao do player: " .. math.floor(player.x) .. " " .. math.floor(player.y), 0, 0, 800, 'left')
     
 end

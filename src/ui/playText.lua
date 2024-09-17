@@ -29,7 +29,6 @@ function dialog:update(dt)
             if dialog.currentTextProgress <= fullTextLen then
                 local bytePos = utf8.offset(dialog.fullText, dialog.currentTextProgress + 1) - 1
                 dialog.text = string.sub(dialog.fullText, 1, bytePos)
-                
             else
                 dialog.text = dialog.fullText
             end

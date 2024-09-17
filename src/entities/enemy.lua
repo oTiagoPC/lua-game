@@ -115,6 +115,14 @@ function createEnemy(x, y)
         end
     end
 
+    function enemy:drawLifeBar()
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', enemy.x - 8, enemy.y - 12, 17, 2)
+        love.graphics.setColor(1, 0, 0)
+        love.graphics.rectangle('fill', enemy.x - 8, enemy.y - 12, 17 * (enemy.health / 5), 2)
+        love.graphics.setColor(1, 1, 1)
+    end
+
     function enemy:randomPatrol(dt)
         enemy.patrolTimer = enemy.patrolTimer - dt
         
