@@ -51,6 +51,10 @@ function drawInCamera()
             food:draw()
         end
     end
+
+    if boss.isAlive then 
+        boss:draw()
+    end 
 end
 
 function drawAfterCamera()

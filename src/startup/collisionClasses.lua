@@ -1,6 +1,7 @@
 function createCollisionClasses()
     world:addCollisionClass('Player')
     world:addCollisionClass('Enemy')
+    world:addCollisionClass('Boss')
     world:addCollisionClass('Bullet')
     world:addCollisionClass('Wall')
     world:addCollisionClass('Coin', {ignores = {'Enemy'}})
