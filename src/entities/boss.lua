@@ -138,9 +138,6 @@ function boss:update(dt)
             playDialog(id)
         end 
     end
-    --[[if boss.isAlive == false then
-        gameState = 'credits'
-    end]]
 
     local directionX = player.x - bossX
     local directionY = player.y - bossY
