@@ -43,6 +43,7 @@ sprites.hud.credits = love.graphics.newImage('sprites/ui/credits.png')
 
 fonts = {}
 fonts.default = love.graphics.newFont('fonts/pixel-font.ttf', 20)
+fonts.bigger = love.graphics.newFont('fonts/pixel-font.ttf', 30)
 
 sounds = {}
 sounds.menuSong = love.audio.newSource("sounds/musics/menuMusic.mp3" , "stream")
